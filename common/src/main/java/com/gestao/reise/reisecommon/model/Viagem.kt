@@ -11,5 +11,6 @@ data class Viagem(val uid: String,
                   val destino: String,
                   val horario: Date,
                   val preco: Double,
+                  val qtd_vagas: Int,
                   val passageiros: MutableList<Passageiro>,
                   val motorista: Motorista)
