@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "144088907975",
+    "firebase_url": "https://reise-gps.firebaseio.com",
+    "project_id": "reise-gps",
+    "storage_bucket": "reise-gps.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:144088907975:android:092801752a3b5588",
+        "android_client_info": {
+          "package_name": "com.gestao.reise.motorista"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "144088907975-pcot6jio7fhjcq0f415n0tm8fbjap7np.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gestao.reise.motorista",
+            "certificate_hash": "1574a6e447b0c5c88b531b9b13b695e6c522420b"
+          }
+        },
+        {
+          "client_id": "144088907975-g0q7l5hj8u6k0p8h5mjvqi73ef4cmp21.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-twc-wXoDwmxivv6biNmkTLuqBVebH70"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "144088907975-g0q7l5hj8u6k0p8h5mjvqi73ef4cmp21.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
