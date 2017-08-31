@@ -8,4 +8,6 @@ data class Notificacao(val uid: String,
                        val timestamp: String,
                        val from: String,
                        val to: String,
-                       val mensagem: String)
+                       val mensagem: String) {
+    constructor() : this("", "", "", "", "")
+}

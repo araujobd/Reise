@@ -6,4 +6,6 @@ package com.gestao.reise.reisecommon.model
 
 data class Passageiro(val uid: String,
                       var telefone: String,
-                      var endereco: String)
+                      var endereco: String) {
+    constructor() : this("", "", "")
+}

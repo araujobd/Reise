@@ -7,6 +7,7 @@ package com.gestao.reise.reisecommon.model
 data class Motorista(val uid: String,
                      var telefone: String,
                      var endereco: String,
-                     val carro: Carro)
-
+                     val carro: Carro) {
+    constructor() : this("", "", "", Carro())
+}
 

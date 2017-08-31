@@ -9,6 +9,8 @@ data class Carro(val uid: String,
                  val modelo: String,
                  val cor: String,
                  val qtd_vagas: Int,
-                 val vaga_crianca: Int)
+                 val vaga_crianca: Int) {
+    constructor() : this("", "", "", "", -1, -1)
+}
 
 

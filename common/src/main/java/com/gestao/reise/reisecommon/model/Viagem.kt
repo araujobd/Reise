@@ -13,4 +13,7 @@ data class Viagem(val uid: String,
                   val preco: Double,
                   val qtd_vagas: Int,
                   val passageiros: MutableList<Passageiro>,
-                  val motorista: Motorista)
+                  val motorista: Motorista) {
+    constructor() : this("", "", "", Date(), (-1).toDouble(), -1,
+            emptyList<Passageiro>() as MutableList<Passageiro>, Motorista())
+}
