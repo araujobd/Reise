@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Reise Common</string>
+    <string name="cliente_nome">Nome</string>
+    <string name="cliente_celular">Celular</string>
+    <string name="cliente_desc">Descrição (Opicional)</string>
 </resources>
