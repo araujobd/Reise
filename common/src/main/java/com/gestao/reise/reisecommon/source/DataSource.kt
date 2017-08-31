@@ -14,5 +14,5 @@ interface DataSource {
     fun salvarViagem(viagem: Viagem)
     fun salvarCarro(carro: Carro)
 
-    fun buscarPassageiros()
+    fun buscarPassageiros(callback: (MutableList<Passageiro>) -> Unit)
 }

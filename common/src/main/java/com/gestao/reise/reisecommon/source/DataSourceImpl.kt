@@ -4,8 +4,7 @@ import com.gestao.reise.reisecommon.model.Carro
 import com.gestao.reise.reisecommon.model.Motorista
 import com.gestao.reise.reisecommon.model.Passageiro
 import com.gestao.reise.reisecommon.model.Viagem
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 
 /**
  * Created by bruno on 31/08/17.
@@ -41,6 +40,28 @@ object DataSourceImpl : DataSource  {
     override fun salvarCarro(carro: Carro) {
         carro.uid = root.child("carros").push().key
         root.child("carros").child(carro.uid).setValue(carro)
+    }
+
+    override fun buscarPassageiros(callback: (MutableList<Passageiro>) -> Unit) {
+        val passageiros: MutableList<Passageiro> = mutableListOf()
+        root.child("passageiros").addListenerForSingleValueEvent(object : ValueEventListener{
+            override fun onCancelled(p0: DatabaseError?) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onDataChange(dataSnapshot: DataSnapshot?) {
+                //for (data: DataSnapshot in dataSnapshot?.children!!) {
+                //    val passageiro: Passageiro = data.getValue(Passageiro::class.java)
+                //    passageiros.add(passageiro)
+                //}
+                dataSnapshot?.children?.forEach {
+                    val passageiro: Passageiro = it.getValue(Passageiro::class.java)
+                    passageiros.add(passageiro)
+                }
+            }
+
+        })
+        callback(passageiros)
     }
 
 }
