@@ -13,4 +13,6 @@ interface DataSource {
     fun salvarPassageiro(passageiro: Passageiro)
     fun salvarViagem(viagem: Viagem)
     fun salvarCarro(carro: Carro)
+
+    fun buscarPassageiros()
 }
