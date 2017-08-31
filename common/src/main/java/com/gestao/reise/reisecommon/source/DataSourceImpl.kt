@@ -13,8 +13,8 @@ import com.google.firebase.database.FirebaseDatabase
 
 object DataSourceImpl : DataSource  {
 
-    private lateinit var database: FirebaseDatabase
-    private lateinit var root: DatabaseReference
+    private val database: FirebaseDatabase
+    private val root: DatabaseReference
 
     init {
         FirebaseDatabase.getInstance().setPersistenceEnabled(true)
@@ -24,19 +24,19 @@ object DataSourceImpl : DataSource  {
     }
 
     override fun salvarMotorista(uid: String, motorista: Motorista) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        root.child("motoristas").child(uid).setValue(motorista)
     }
 
     override fun salvarPassageiro(uid: String, passageiro: Passageiro) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        root.child("passageiros").child(uid).setValue(passageiro)
     }
 
     override fun salvarViagem(uid: String, viagem: Viagem) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        root.child("viagens").child(uid).setValue(viagem)
     }
 
     override fun salvarCarro(uid: String, carro: Carro) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        root.child("carros").child(uid).setValue(carro)
     }
 
 }
