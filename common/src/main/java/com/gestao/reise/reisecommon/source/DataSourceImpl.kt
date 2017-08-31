@@ -23,20 +23,24 @@ object DataSourceImpl : DataSource  {
         root.keepSynced(true)
     }
 
-    override fun salvarMotorista(uid: String, motorista: Motorista) {
-        root.child("motoristas").child(uid).setValue(motorista)
+    override fun salvarMotorista(motorista: Motorista) {
+        motorista.uid = root.child("motoristas").push().key
+        root.child("motoristas").child(motorista.uid).setValue(motorista)
     }
 
-    override fun salvarPassageiro(uid: String, passageiro: Passageiro) {
-        root.child("passageiros").child(uid).setValue(passageiro)
+    override fun salvarPassageiro(passageiro: Passageiro) {
+        passageiro.uid = root.child("passgeiros").push().key
+        root.child("passageiros").child(passageiro.uid).setValue(passageiro)
     }
 
-    override fun salvarViagem(uid: String, viagem: Viagem) {
-        root.child("viagens").child(uid).setValue(viagem)
+    override fun salvarViagem(viagem: Viagem) {
+        viagem.uid = root.child("viagens").push().key
+        root.child("viagens").child(viagem.uid).setValue(viagem)
     }
 
-    override fun salvarCarro(uid: String, carro: Carro) {
-        root.child("carros").child(uid).setValue(carro)
+    override fun salvarCarro(carro: Carro) {
+        carro.uid = root.child("carros").push().key
+        root.child("carros").child(carro.uid).setValue(carro)
     }
 
 }

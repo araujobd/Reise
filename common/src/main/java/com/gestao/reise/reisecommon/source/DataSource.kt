@@ -9,8 +9,8 @@ import com.gestao.reise.reisecommon.model.Viagem
  * Created by bruno on 31/08/17.
  */
 interface DataSource {
-    fun salvarMotorista(uid: String, motorista: Motorista)
-    fun salvarPassageiro(uid: String, passageiro: Passageiro)
-    fun salvarViagem(uid: String, viagem: Viagem)
-    fun salvarCarro(uid: String, carro: Carro)
+    fun salvarMotorista(motorista: Motorista)
+    fun salvarPassageiro(passageiro: Passageiro)
+    fun salvarViagem(viagem: Viagem)
+    fun salvarCarro(carro: Carro)
 }
