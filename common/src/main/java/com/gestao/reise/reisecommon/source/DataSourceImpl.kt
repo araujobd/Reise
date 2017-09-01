@@ -54,8 +54,10 @@ object DataSourceImpl : DataSource  {
             override fun onDataChange(dataSnapshot: DataSnapshot?) {
                 Log.d("DATASSS", "OK")
                 dataSnapshot?.children?.forEach {
-                  val passageiro: Passageiro = it.getValue(Passageiro::class.java)
-                  passageiros.add(passageiro)
+                  val passageiro: Passageiro? = it.getValue(Passageiro::class.java)
+                    if (passageiro != null) {
+                        passageiros.add(passageiro)
+                    }
                 }
                 Log.d("DATASSS", "Pass ++ " + passageiros.size)
                 callback(passageiros)

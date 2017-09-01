@@ -1,12 +1,12 @@
 package com.gestao.reise.passageiro.splash
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.widget.Toast
 import com.gestao.reise.passageiro.R
-import com.gestao.reise.reisecommon.model.Passageiro
-import com.gestao.reise.reisecommon.source.DA
-import com.gestao.reise.reisecommon.source.DataSourceImpl
+import com.gestao.reise.reisecommon.login.LoginActivity
 
 class Splash : Activity()  {
 
@@ -14,7 +14,11 @@ class Splash : Activity()  {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        DataSourceImpl.buscarPassageiros{ mostrarMensagem(it.size.toString())}
+        iniciarLogin()
+    }
+
+    private fun iniciarLogin() {
+        Handler().postDelayed({ startActivity( Intent(this@Splash, LoginActivity::class.java))}, 2000)
     }
 
     fun mostrarMensagem(mensagem: String) {
