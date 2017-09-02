@@ -1,1 +1,1 @@
-include ':passageiro', ':motorista', ':common', ':login'
+include ':passageiro', ':motorista', ':common'
