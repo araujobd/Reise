@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Reise - Motorista</string>
+    <string name="comp_perfil_infor_pessoais">Informações pessoais</string>
+    <string name="comp_perfil_infor_carro">Informações do carro</string>
 </resources>
