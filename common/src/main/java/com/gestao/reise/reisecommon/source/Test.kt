@@ -20,7 +20,7 @@ class Test {
 
     fun buscarPassageiros() : MutableList<Passageiro>  {
         var list: MutableList<Passageiro> = mutableListOf()
-        //source.buscarPassageiros()
+        source.buscarPassageiros { list.addAll(it) }
         return list
     }
 }
