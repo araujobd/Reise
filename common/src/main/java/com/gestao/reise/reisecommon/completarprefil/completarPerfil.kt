@@ -1,6 +1,6 @@
 
 package com.gestao.reise.reisecommon.completarprefil
-/*
+
 import android.app.Activity
 import android.os.Bundle
 
@@ -13,4 +13,3 @@ class completarPerfil : Activity() {
         setContentView(R.layout.activity_completar_perfil)
     }
 }
-*/
