@@ -11,7 +11,7 @@ import com.google.firebase.database.*
  * Created by bruno on 31/08/17.
  */
 
-object DataSourceImpl : DataSource  {
+object DataSourceImpl : DataSource {
 
     private val database: FirebaseDatabase
     private val root: DatabaseReference
@@ -53,7 +53,7 @@ object DataSourceImpl : DataSource  {
 
             override fun onDataChange(dataSnapshot: DataSnapshot?) {
                 dataSnapshot?.children?.forEach {
-                  val passageiro: Passageiro? = it.getValue(Passageiro::class.java)
+                    val passageiro: Passageiro? = it.getValue(Passageiro::class.java)
                     if (passageiro != null) {
                         passageiros.add(passageiro)
                     }
@@ -65,4 +65,20 @@ object DataSourceImpl : DataSource  {
         root.child("passageiros").addValueEventListener(listener)
     }
 
+    override fun buscarUidPassageiro(uid: String): Boolean {
+        var valido = false
+        val listener = object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError?) {
+                Log.d("DATASSS", "Error")
+            }
+            override fun onDataChange(dataSnapshot: DataSnapshot?) {
+                valido = true
+            }
+        }
+        //                     Busca exata pelo Uid
+        root.child("passageiros").equalTo(uid).addListenerForSingleValueEvent(listener)
+        // Acho que precisa de um callback
+        return valido
+    }
 }
+

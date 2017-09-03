@@ -30,10 +30,12 @@ class SplashPresenter(val view: SplashContrato.View) : SplashContrato.Presenter 
         val passageiro = Passageiro()
 
         passageiro.uid = user?.uid.toString()
+        //val validaUser = source.buscarUidPassageiro(passageiro.uid)
         passageiro.nome = user?.displayName.toString()
         passageiro.fotoUrl = user?.photoUrl.toString()
 
         source.salvarPassageiro(passageiro)
         Log.d("SPLASHSSS", "====== " + user?.uid)
     }
+
 }

@@ -14,5 +14,6 @@ interface DataSource {
     fun salvarViagem(viagem: Viagem)
     fun salvarCarro(carro: Carro)
 
+    fun buscarUidPassageiro(uid: String): Boolean
     fun buscarPassageiros(callback: (MutableList<Passageiro>) -> Unit)
 }
