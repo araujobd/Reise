@@ -14,7 +14,7 @@ class LoginPresenter(val view: LoginContrato.View) : LoginContrato.Presenter {
 
     override fun verificarLogin() {
         if (auth.currentUser != null)
-            view.iniciarPrincipal()
+            view.returnUserLogged()
     }
 
     override fun signinWithGoogle(account: GoogleSignInAccount?) {
@@ -30,8 +30,7 @@ class LoginPresenter(val view: LoginContrato.View) : LoginContrato.Presenter {
     private fun signinFirebase(credential: AuthCredential) {
         auth.signInWithCredential(credential).addOnCompleteListener {
             if (it.isSuccessful) {
-                val user = auth.currentUser
-                view.iniciarPrincipal()
+                view.returnUserLogged()
             } else {
                 view.ExibirErro()
             }

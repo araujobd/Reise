@@ -29,7 +29,7 @@ object DataSourceImpl : DataSource  {
     }
 
     override fun salvarPassageiro(passageiro: Passageiro) {
-        passageiro.uid = root.child("passgeiros").push().key
+        //passageiro.uid = root.child("passgeiros").push().key
         root.child("passageiros").child(passageiro.uid).setValue(passageiro)
     }
 
@@ -52,18 +52,16 @@ object DataSourceImpl : DataSource  {
             }
 
             override fun onDataChange(dataSnapshot: DataSnapshot?) {
-                Log.d("DATASSS", "OK")
                 dataSnapshot?.children?.forEach {
                   val passageiro: Passageiro? = it.getValue(Passageiro::class.java)
                     if (passageiro != null) {
                         passageiros.add(passageiro)
                     }
                 }
-                Log.d("DATASSS", "Pass ++ " + passageiros.size)
                 callback(passageiros)
             }
-
         }
+
         root.child("passageiros").addValueEventListener(listener)
     }
 
