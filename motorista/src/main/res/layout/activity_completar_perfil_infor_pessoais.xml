@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1"
+    tools:context="com.gestao.reise.motorista.Completar_perfil_infor_pessoais">
+
+    <QuickContactBadge
+        android:id="@+id/imagem_perfil"
+        android:layout_width="match_parent"
+        android:layout_height="175dp"
+        android:layout_marginTop="10dp"
+        app:srcCompat="@drawable/com_facebook_profile_picture_blank_square" />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="77dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="63dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:hint="Telefone" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="75dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="63dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:hint="Endereço" />
+        />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="74dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="63dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:hint="Descrição (opcional)" />
+    </android.support.design.widget.TextInputLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_proximo"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="30dp"
+            android:layout_weight="0.40"
+            android:background="@android:drawable/ic_menu_send"
+            android:clickable="true"
+            android:theme="@style/AppTheme"
+            app:backgroundTint="@color/colorAccent"
+            app:fabSize="mini" />
+    </RelativeLayout>
+
+
+</LinearLayout>
