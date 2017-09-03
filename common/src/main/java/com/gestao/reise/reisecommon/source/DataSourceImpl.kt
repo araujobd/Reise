@@ -65,20 +65,22 @@ object DataSourceImpl : DataSource {
         root.child("passageiros").addValueEventListener(listener)
     }
 
-    override fun buscarUidPassageiro(uid: String): Boolean {
-        var valido = false
+    override fun buscarUidPassageiro(uid: String, sucesso: () -> Unit, erro: () -> Unit) {
         val listener = object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError?) {
-                Log.d("DATASSS", "Error")
+                Log.d("DATASSS", p0.toString())
             }
+
             override fun onDataChange(dataSnapshot: DataSnapshot?) {
-                valido = true
+                if ( dataSnapshot?.value != null)
+                    sucesso()
+                else
+                    erro()
             }
         }
         //                     Busca exata pelo Uid
-        root.child("passageiros").equalTo(uid).addListenerForSingleValueEvent(listener)
-        // Acho que precisa de um callback
-        return valido
+        root.child("passageiros").orderByKey().equalTo(uid).addListenerForSingleValueEvent(listener)
+
     }
 }
 

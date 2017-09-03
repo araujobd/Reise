@@ -18,10 +18,10 @@ class SplashActivity : Activity(), SplashContrato.View {
         setContentView(R.layout.activity_splash)
 
         presenter = SplashPresenter(this)
-        iniciarLogin()
+        esperar()
     }
 
-    private fun iniciarLogin() {
+    private fun esperar() {
         Handler().postDelayed({ presenter.verificarLogin() }, 2000)
     }
 
@@ -35,14 +35,21 @@ class SplashActivity : Activity(), SplashContrato.View {
 
     override fun iniciarPrincipal() {
         //startActivity(this, ?::class.java)
-        mostrarMensagem("PROXIMA TELA")
+        mostrarMensagem("PROXIMA TELA -> Principal")
+        //finish()
+    }
+
+    override fun primeiroLogin() {
+        //startActivity(this, ?::class.java)
+        mostrarMensagem("PROXIMA TELA -> Completar Login")
+        //finish()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == RC_LOGIN && resultCode == Activity.RESULT_OK) {
-            presenter.completeLogin()
+            presenter.escolherAcao()
         } else {
             finish()
         }

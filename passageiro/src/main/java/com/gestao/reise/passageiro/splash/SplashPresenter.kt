@@ -15,27 +15,29 @@ class SplashPresenter(val view: SplashContrato.View) : SplashContrato.Presenter 
     private val source: DataSource = DataSourceImpl
 
     override fun verificarLogin() {
-        Log.d("SPLASHSSS", "verificarLogin ====== " + (auth.currentUser?.uid))
         if (auth.currentUser != null)
             view.iniciarPrincipal()
         else
             view.logar()
     }
 
-    override fun finish() {
+    override fun escolherAcao() {
+        source.buscarUidPassageiro(auth.currentUser?.uid.toString(),
+               sucesso = { view.iniciarPrincipal() },
+               erro = { primeiroLogin() })
+
     }
 
-    override fun completeLogin() {
+    private fun primeiroLogin() {
         val user = auth.currentUser
         val passageiro = Passageiro()
 
         passageiro.uid = user?.uid.toString()
-        //val validaUser = source.buscarUidPassageiro(passageiro.uid)
         passageiro.nome = user?.displayName.toString()
         passageiro.fotoUrl = user?.photoUrl.toString()
 
         source.salvarPassageiro(passageiro)
-        Log.d("SPLASHSSS", "====== " + user?.uid)
+        view.primeiroLogin()
     }
 
 }

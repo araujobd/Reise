@@ -11,12 +11,12 @@ interface SplashContrato {
     interface View {
         fun logar()
         fun iniciarPrincipal()
+        fun primeiroLogin()
     }
 
     interface Presenter {
-        fun completeLogin()
+        fun escolherAcao()
         fun verificarLogin()
-        fun finish()
     }
 
 }
