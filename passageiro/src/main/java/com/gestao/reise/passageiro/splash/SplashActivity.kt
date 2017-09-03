@@ -25,7 +25,7 @@ class SplashActivity : Activity(), SplashContrato.View {
         Handler().postDelayed({ presenter.verificarLogin() }, 2000)
     }
 
-    fun mostrarMensagem(mensagem: String) {
+    private fun mostrarMensagem(mensagem: String) {
         Toast.makeText(this, mensagem, Toast.LENGTH_LONG).show()
     }
 

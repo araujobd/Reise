@@ -15,9 +15,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Completar_perfil_infor_pessoais"
-            android:label="@string/comp_perfil_infor_pessoais" />
         <activity android:name=".Completar_perfil_infor_carro"></activity>
     </application>
 
