@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Reise - Motorista</string>
-    <string name="comp_perfil_infor_pessoais">Informações pessoais</string>
-    <string name="comp_perfil_infor_carro">Informações do carro</string>
+    <string name="comp_perfil_infor_pessoais">Informações Pessoais</string>
+    <string name="comp_perfil_infor_carro">Informações do Carro</string>
+    <string name="veiculo_modelo">Modelo</string>
+    <string name="veiculo_placa">Placa</string>
+    <string name="qte_vagas">Quantidade de Vagas</string>
+    <string name="vaga_crianca">Vagas para Crianças</string>
 </resources>
