@@ -15,9 +15,7 @@ import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
-import com.google.firebase.auth.AuthCredential
 import kotlinx.android.synthetic.main.activity_login.*
-import java.io.Serializable
 
 class LoginActivity : AppCompatActivity(), LoginContrato.View, GoogleApiClient.OnConnectionFailedListener {
 

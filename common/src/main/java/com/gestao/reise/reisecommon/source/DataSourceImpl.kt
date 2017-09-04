@@ -24,7 +24,7 @@ object DataSourceImpl : DataSource {
     }
 
     override fun salvarMotorista(motorista: Motorista) {
-        motorista.uid = root.child("motoristas").push().key
+        //motorista.uid = root.child("motoristas").push().key
         root.child("motoristas").child(motorista.uid).setValue(motorista)
     }
 
@@ -65,7 +65,7 @@ object DataSourceImpl : DataSource {
         root.child("passageiros").addValueEventListener(listener)
     }
 
-    override fun buscarUidPassageiro(uid: String, sucesso: () -> Unit, erro: () -> Unit) {
+    override fun buscarUidUser(typeUser: String, uid: String, sucesso: () -> Unit, erro: () -> Unit) {
         val listener = object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError?) {
                 Log.d("DATASSS", p0.toString())
@@ -79,8 +79,9 @@ object DataSourceImpl : DataSource {
             }
         }
         //                     Busca exata pelo Uid
-        root.child("passageiros").orderByKey().equalTo(uid).addListenerForSingleValueEvent(listener)
+        root.child(typeUser).orderByKey().equalTo(uid).addListenerForSingleValueEvent(listener)
 
     }
+
 }
 

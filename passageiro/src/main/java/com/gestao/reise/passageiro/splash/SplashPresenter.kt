@@ -1,6 +1,5 @@
 package com.gestao.reise.passageiro.splash
 
-import android.util.Log
 import com.gestao.reise.reisecommon.model.Passageiro
 import com.gestao.reise.reisecommon.source.DataSource
 import com.gestao.reise.reisecommon.source.DataSourceImpl
@@ -22,7 +21,7 @@ class SplashPresenter(val view: SplashContrato.View) : SplashContrato.Presenter 
     }
 
     override fun escolherAcao() {
-        source.buscarUidPassageiro(auth.currentUser?.uid.toString(),
+        source.buscarUidUser("passageiros", auth.currentUser?.uid.toString(),
                sucesso = { view.iniciarPrincipal() },
                erro = { primeiroLogin() })
 
