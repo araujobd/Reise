@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">Reise Common</string>
-    <string name="comp_perfil_infor_pessoais">Informações Pessoais</string>
     <string name="cliente_nome">Nome</string>
     <string name="cliente_end">Endereço</string>
     <string name="cliente_celular">Celular</string>
-    <string name="cliente_desc">Descrição (Opicional)</string>
-    <string name="or">ou</string>
-    <string name="signin_facebook">Signin with Facebook</string>
+    <string name="cliente_descricao">Descrição (Opicional)</string>
+    <string name="comp_perfil_infor_pessoais">Informações Pessoais</string>
     <string name="default_web_client_id">144088907975-g0q7l5hj8u6k0p8h5mjvqi73ef4cmp21.apps.googleusercontent.com</string>
     <string name="facebook_app_id">819312438244188</string>
+    <string name="or">ou</string>
+    <string name="signin_facebook">Signin with Facebook</string>
 </resources>

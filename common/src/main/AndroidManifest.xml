@@ -6,7 +6,6 @@
         android:allowBackup="true"
         android:label="@string/app_name"
         android:supportsRtl="true">
-        <activity android:name=".completarPerfil.CompletarPerfilActivity" />
         <activity android:name=".login.LoginActivity"
             android:theme="@style/Theme.Design.NoActionBar" />
 
