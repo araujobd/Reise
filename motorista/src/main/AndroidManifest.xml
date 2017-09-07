@@ -8,6 +8,14 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <service android:name=".principal.PrincipalPresenter"
+            android:permission="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+
         <activity android:name=".splash.SplashActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

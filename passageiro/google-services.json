@@ -59,6 +59,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "144088907975-tkstrfcgmi1a9emv3ljgfl0ibghohp1f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gestao.reise.passageiro",
+            "certificate_hash": "56e8ee44b74dd26e3a8a875ea4012a267d342368"
+          }
+        },
+        {
           "client_id": "144088907975-t8orel3vi3u9qhuvv701a8fpuaa9114q.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

@@ -33,6 +33,7 @@ dependencies {
     compile "com.google.firebase:firebase-database:$firebase_version"
     compile "com.google.firebase:firebase-auth:$firebase_version"
     compile "com.google.android.gms:play-services:$gms_version"
+    compile 'com.google.firebase:firebase-messaging:10.2.6'
     compile project(path: ':common')
 }
 repositories {

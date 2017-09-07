@@ -15,10 +15,70 @@
       },
       "oauth_client": [
         {
+          "client_id": "144088907975-tbudn8ii1njdh6prqeuif8ho33vgdc89.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gestao.reise.motorista",
+            "certificate_hash": "56e8ee44b74dd26e3a8a875ea4012a267d342368"
+          }
+        },
+        {
           "client_id": "144088907975-pcot6jio7fhjcq0f415n0tm8fbjap7np.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.gestao.reise.motorista",
+            "certificate_hash": "1574a6e447b0c5c88b531b9b13b695e6c522420b"
+          }
+        },
+        {
+          "client_id": "144088907975-g0q7l5hj8u6k0p8h5mjvqi73ef4cmp21.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-twc-wXoDwmxivv6biNmkTLuqBVebH70"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "144088907975-g0q7l5hj8u6k0p8h5mjvqi73ef4cmp21.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:144088907975:android:3871abdc39345fbd",
+        "android_client_info": {
+          "package_name": "com.gestao.reise.passageiro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "144088907975-tkstrfcgmi1a9emv3ljgfl0ibghohp1f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gestao.reise.passageiro",
+            "certificate_hash": "56e8ee44b74dd26e3a8a875ea4012a267d342368"
+          }
+        },
+        {
+          "client_id": "144088907975-t8orel3vi3u9qhuvv701a8fpuaa9114q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gestao.reise.passageiro",
             "certificate_hash": "1574a6e447b0c5c88b531b9b13b695e6c522420b"
           }
         },
