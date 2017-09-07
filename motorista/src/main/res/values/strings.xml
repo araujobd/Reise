@@ -6,4 +6,10 @@
     <string name="veiculo_placa">Placa</string>
     <string name="qte_vagas">Quantidade de Vagas</string>
     <string name="vaga_crianca">Vagas para Crianças</string>
+    <string name="destino">Destino</string>
+    <string name="sabado">S</string>
+    <string name="origem">Origem</string>
+    <string name="preco">Preço</string>
+    <string name="horario">Horário</string>
+    <string name="frequencia">Frequência</string>
 </resources>

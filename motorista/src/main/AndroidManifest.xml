@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Completar_perfil_infor_carro"></activity>
+        <activity android:name=".completarPerfil.pessoal.CompletarPerfilActivity" />
     </application>
 
 </manifest>
