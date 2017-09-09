@@ -1,6 +1,7 @@
 package com.gestao.reise.reisecommon.source
 
 import android.util.Log
+import com.gestao.reise.reisecommon.Listener
 import com.gestao.reise.reisecommon.model.Carro
 import com.gestao.reise.reisecommon.model.Motorista
 import com.gestao.reise.reisecommon.model.Passageiro
@@ -41,6 +42,28 @@ object DataSourceImpl : DataSource {
     override fun salvarCarro(carro: Carro) {
         carro.uid = root.child("carros").push().key
         root.child("carros").child(carro.uid).setValue(carro)
+    }
+
+    override fun buscarViagensMotorista(uid: String, action : Listener.Viagens) {
+        val viagens: MutableList<Viagem> = mutableListOf()
+
+        val listener = object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError?) {
+                Log.d("DATASSS", "Error")
+            }
+
+            override fun onDataChange(dataSnapshot: DataSnapshot?) {
+                dataSnapshot?.children?.forEach {
+                    val viagem: Viagem? = it.getValue(Viagem::class.java)
+                    if (viagem != null) {
+                        viagens.add(viagem)
+                    }
+                }
+                action.pronto(viagens)
+            }
+        }
+
+        root.child("viagens").orderByChild("motorista").equalTo(uid).addValueEventListener(listener)
     }
 
     override fun buscarPassageiros(callback: (MutableList<Passageiro>) -> Unit) {

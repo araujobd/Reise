@@ -1,5 +1,6 @@
 package com.gestao.reise.reisecommon.source
 
+import com.gestao.reise.reisecommon.Listener
 import com.gestao.reise.reisecommon.model.Carro
 import com.gestao.reise.reisecommon.model.Motorista
 import com.gestao.reise.reisecommon.model.Passageiro
@@ -16,4 +17,5 @@ interface DataSource {
 
     fun buscarUidUser(typeUser: String, uid: String, sucesso: () -> Unit, erro: () -> Unit)
     fun buscarPassageiros(callback: (MutableList<Passageiro>) -> Unit)
+    fun buscarViagensMotorista(uid: String, action: Listener.Viagens)
 }
