@@ -17,5 +17,5 @@ interface DataSource {
 
     fun buscarUidUser(typeUser: String, uid: String, sucesso: () -> Unit, erro: () -> Unit)
     fun buscarPassageiros(callback: (MutableList<Passageiro>) -> Unit)
-    fun buscarViagensMotorista(uid: String, action: Listener.Viagens)
+    fun buscarViagens(user: String, uid: String, action: Listener.Viagens)
 }

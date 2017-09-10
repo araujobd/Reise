@@ -8,7 +8,8 @@ import com.gestao.reise.reisecommon.model.Viagem
 interface Listener {
 
     interface Viagens {
-        fun pronto(viagens: (MutableList<Viagem>))
+        fun prontoMotorista(viagens: (MutableList<Viagem>))
+        fun prontoPassageiro(viagens: (MutableList<Viagem>))
     }
 
 }

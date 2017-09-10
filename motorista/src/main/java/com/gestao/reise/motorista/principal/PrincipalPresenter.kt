@@ -23,8 +23,9 @@ class PrincipalPresenter(val view: PrincipalContrato.View) : FirebaseMessagingSe
     }
 
     override fun possuiViagens() {
-        source.buscarViagensMotorista(auth.currentUser!!.uid, object : Listener.Viagens{
-            override fun pronto(viagens: (MutableList<Viagem>)) {
+        source.buscarViagens("motorista",auth.currentUser!!.uid, object : Listener.Viagens{
+            override fun prontoPassageiro(viagens: MutableList<Viagem>) {/*Tem nada*/}
+            override fun prontoMotorista(viagens: (MutableList<Viagem>)) {
                 if(viagens.isEmpty()){
                     view.direcionarCadastro()
                 }else{

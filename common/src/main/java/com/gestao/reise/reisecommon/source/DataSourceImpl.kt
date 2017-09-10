@@ -44,7 +44,7 @@ object DataSourceImpl : DataSource {
         root.child("carros").child(carro.uid).setValue(carro)
     }
 
-    override fun buscarViagensMotorista(uid: String, action : Listener.Viagens) {
+    override fun buscarViagens(user: String, uid: String, action : Listener.Viagens) {
         val viagens: MutableList<Viagem> = mutableListOf()
 
         val listener = object : ValueEventListener {
@@ -59,12 +59,16 @@ object DataSourceImpl : DataSource {
                         viagens.add(viagem)
                     }
                 }
-                action.pronto(viagens)
+                if(user.equals("motorista"))
+                    action.prontoMotorista(viagens)
+                else if(user.equals("passageiro"))
+                    action.prontoPassageiro(viagens)
             }
         }
 
-        root.child("viagens").orderByChild("motorista").equalTo(uid).addValueEventListener(listener)
+        root.child(user).orderByChild(uid).orderByChild("viagens").addValueEventListener(listener)
     }
+
 
     override fun buscarPassageiros(callback: (MutableList<Passageiro>) -> Unit) {
         val passageiros: MutableList<Passageiro> = mutableListOf()
