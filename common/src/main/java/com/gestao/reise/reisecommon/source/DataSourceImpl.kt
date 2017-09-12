@@ -1,7 +1,6 @@
 package com.gestao.reise.reisecommon.source
 
 import android.util.Log
-import com.gestao.reise.reisecommon.Listener
 import com.gestao.reise.reisecommon.model.Carro
 import com.gestao.reise.reisecommon.model.Motorista
 import com.gestao.reise.reisecommon.model.Passageiro
@@ -30,7 +29,6 @@ object DataSourceImpl : DataSource {
     }
 
     override fun salvarPassageiro(passageiro: Passageiro) {
-        //passageiro.uid = root.child("passgeiros").push().key
         root.child("passageiros").child(passageiro.uid).setValue(passageiro)
     }
 
@@ -44,7 +42,7 @@ object DataSourceImpl : DataSource {
         root.child("carros").child(carro.uid).setValue(carro)
     }
 
-    override fun buscarViagens(user: String, uid: String, action : Listener.Viagens) {
+    override fun buscarViagens(user: String, uid: String, action: (MutableList<Viagem>) -> Unit) {
         val viagens: MutableList<Viagem> = mutableListOf()
 
         val listener = object : ValueEventListener {
@@ -60,9 +58,9 @@ object DataSourceImpl : DataSource {
                     }
                 }
                 if(user.equals("motorista"))
-                    action.prontoMotorista(viagens)
+                    action(viagens)
                 else if(user.equals("passageiro"))
-                    action.prontoPassageiro(viagens)
+                    action(viagens)
             }
         }
 
@@ -108,6 +106,34 @@ object DataSourceImpl : DataSource {
         //                     Busca exata pelo Uid
         root.child(typeUser).orderByKey().equalTo(uid).addListenerForSingleValueEvent(listener)
 
+    }
+
+    override fun buscarMotorista(uid: String, sucesso: (motorista: Motorista) -> Unit) {
+        val listener = object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError?) {
+            }
+
+            override fun onDataChange(dataSnapshot: DataSnapshot?) {
+                val motorista: Motorista? = dataSnapshot?.getValue(Motorista::class.java)
+                motorista?.let { sucesso(it) }
+            }
+
+        }
+        root.child("motoristas").child(uid).addValueEventListener(listener)
+    }
+
+    override fun buscarPassageiro(uid: String, sucesso: (passageiro: Passageiro) -> Unit) {
+        val listener = object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError?) {
+            }
+
+            override fun onDataChange(dataSnapshot: DataSnapshot?) {
+                val passageiro: Passageiro? = dataSnapshot?.getValue(Passageiro::class.java)
+                passageiro?.let { sucesso(it) }
+            }
+
+        }
+        root.child("passageiros").child(uid).addValueEventListener(listener)
     }
 
 }

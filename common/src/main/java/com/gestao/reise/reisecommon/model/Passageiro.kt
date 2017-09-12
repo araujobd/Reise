@@ -8,7 +8,7 @@ data class Passageiro(var uid: String,
                       var nome: String,
                       var fotoUrl: String,
                       var telefone: String,
-                      var viagens: MutableList<Viagem>,
+                      var viagens: MutableList<String>,
                       var endereco: String) {
-    constructor() : this("", "", "", "", emptyList<Viagem>() as MutableList<Viagem>, "")
+    constructor() : this("", "", "", "", mutableListOf(), "")
 }

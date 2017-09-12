@@ -1,7 +1,6 @@
 package com.gestao.reise.passageiro.principal
 
 import android.util.Log
-import com.gestao.reise.reisecommon.Listener
 import com.gestao.reise.reisecommon.model.Viagem
 import com.gestao.reise.reisecommon.source.DataSource
 import com.gestao.reise.reisecommon.source.DataSourceImpl
@@ -18,7 +17,7 @@ class PrincipalPresenter(val view: PrincipalContrato.View) : FirebaseMessagingSe
     private val source: DataSource = DataSourceImpl
 
     override fun possuiViagens() {
-        source.buscarViagens("passageiro",auth.currentUser!!.uid, object: Listener.Viagens{
+        source.buscarViagens("passageiro",auth.currentUser!!.uid, object{
             override fun prontoMotorista(viagens: MutableList<Viagem>) {/*Tem nada*/}
             override fun prontoPassageiro(viagens: MutableList<Viagem>) {
                 if(viagens.isEmpty())

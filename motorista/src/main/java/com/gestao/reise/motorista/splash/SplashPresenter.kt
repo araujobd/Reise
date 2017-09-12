@@ -15,6 +15,7 @@ class SplashPresenter(val view: SplashContrato.View) :SplashContrato.Presenter {
     private val source: DataSource = DataSourceImpl
 
     override fun verificarLogin() {
+        source.buscarMotorista(auth.currentUser?.uid.toString()) {}
         if (auth.currentUser != null)
             view.iniciarPrincipal()
         else
