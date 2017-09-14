@@ -1,0 +1,70 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.Material.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:colorBackground">@color/background</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar" parent="android:Theme.Material.Light.NoActionBar.Fullscreen">
+        <item name="android:backgroundTint">@color/background</item>
+    </style>
+
+    <!-- Customizes -->
+
+    <!-- Button -->
+    <style name="Button">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:color">@color/textColorPrimary</item>
+    </style>
+
+    <!-- Edit Text -->
+    <style name="EditText">
+        <item name="android:inputType">text</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textColorHint">@color/textHint</item>
+    </style>
+
+    <!-- Floating Action Button -->
+    <style name="FATButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">@dimen/eight</item>
+        <item name="android:layout_marginStart">@dimen/eight</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+    <!-- Images -->
+    <style name="Image">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/eight</item>
+        <item name="android:layout_marginRight">@dimen/eight</item>
+        <item name="android:layout_marginTop">@dimen/eight</item>
+    </style>
+
+    <!-- Text Input Layout -->
+    <style name="InputTIL">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">@dimen/eight</item>
+        <item name="android:layout_marginStart">@dimen/eight</item>
+        <item name="android:layout_gravity">center_vertical</item>
+    </style>
+
+    <!-- Switch -->
+    <style name="Switch">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/fourty</item>
+        <item name="android:layout_marginEnd">@dimen/eight</item>
+        <item name="android:layout_marginStart">@dimen/eight</item>
+        <item name="android:colorActivatedHighlight">@color/colorAccent</item>
+        <item name="android:textColor">@color/textHint</item>
+    </style>
+</resources>
