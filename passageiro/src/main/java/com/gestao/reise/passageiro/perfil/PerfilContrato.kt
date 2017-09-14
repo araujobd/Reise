@@ -15,6 +15,6 @@ interface PerfilContrato {
 
     interface Presenter : BasePresenter {
         fun carregarPerfil()
-        fun atualizarPerfil()
+        fun atualizarPerfil(passageiro: Passageiro)
     }
 }

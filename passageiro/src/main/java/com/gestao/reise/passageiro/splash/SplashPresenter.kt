@@ -10,8 +10,8 @@ import com.google.firebase.auth.FirebaseAuth
  */
 class SplashPresenter(val view: SplashContrato.View) : SplashContrato.Presenter {
 
-    private val auth: FirebaseAuth = FirebaseAuth.getInstance()
-    private val source: DataSource = DataSourceImpl
+    private val auth: FirebaseAuth by lazy { FirebaseAuth.getInstance() }
+    private val source: DataSource by lazy { DataSourceImpl }
 
     override fun verificarLogin() {
         if (auth.currentUser != null)

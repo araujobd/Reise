@@ -17,15 +17,15 @@ class PrincipalPresenter(val view: PrincipalContrato.View) : FirebaseMessagingSe
     private val source: DataSource = DataSourceImpl
 
     override fun possuiViagens() {
-        source.buscarViagens("passageiro",auth.currentUser!!.uid, object{
-            override fun prontoMotorista(viagens: MutableList<Viagem>) {/*Tem nada*/}
-            override fun prontoPassageiro(viagens: MutableList<Viagem>) {
-                if(viagens.isEmpty())
-                    view.direcionarBusca()
-                else
-                    view.mostrarViagens(viagens)
-            }
-        })
+//        source.buscarViagens("passageiro",auth.currentUser!!.uid, object{
+//            override fun prontoMotorista(viagens: MutableList<Viagem>) {/*Tem nada*/}
+//            override fun prontoPassageiro(viagens: MutableList<Viagem>) {
+//                if(viagens.isEmpty())
+//                    view.direcionarBusca()
+//                else
+//                    view.mostrarViagens(viagens)
+//            }
+//        })
     }
 
     override fun onMessageReceived(p0: RemoteMessage?) {

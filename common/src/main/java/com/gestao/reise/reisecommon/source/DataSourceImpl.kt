@@ -67,7 +67,6 @@ object DataSourceImpl : DataSource {
         root.child(user).orderByChild(uid).orderByChild("viagens").addValueEventListener(listener)
     }
 
-
     override fun buscarPassageiros(callback: (MutableList<Passageiro>) -> Unit) {
         val passageiros: MutableList<Passageiro> = mutableListOf()
 
