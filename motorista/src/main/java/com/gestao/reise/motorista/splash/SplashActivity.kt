@@ -18,7 +18,8 @@ class SplashActivity : Activity(), SplashContrato.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or
+                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
 
         presenter = SplashPresenter(this)
         esperar()

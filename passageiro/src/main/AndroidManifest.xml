@@ -17,14 +17,19 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".splash.SplashActivity">
+        <activity
+            android:name=".splash.SplashActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".principal.PrincipalActivity"></activity>
+        <activity android:name=".principal.PrincipalActivity"
+            android:theme="@style/Base.Theme.AppCompat.Light"/>
+        <activity android:name=".primeiroLogin.CompletarPerfilActivity"
+            android:theme="@style/Base.Theme.AppCompat.Light"/>
     </application>
 
 </manifest>
