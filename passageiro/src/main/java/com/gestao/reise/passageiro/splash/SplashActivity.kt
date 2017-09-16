@@ -4,8 +4,10 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.view.View
 import android.widget.Toast
 import com.gestao.reise.passageiro.R
+import com.gestao.reise.passageiro.primeiroLogin.CompletarPerfilActivity
 import com.gestao.reise.passageiro.principal.PrincipalActivity
 import com.gestao.reise.reisecommon.login.LoginActivity
 
@@ -17,6 +19,9 @@ class SplashActivity : Activity(), SplashContrato.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or
+                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
 
         presenter = SplashPresenter(this)
         esperar()
@@ -41,9 +46,9 @@ class SplashActivity : Activity(), SplashContrato.View {
     }
 
     override fun primeiroLogin() {
-        //startActivity(this, ?::class.java)
+        startActivity(Intent(this@SplashActivity, CompletarPerfilActivity::class.java))
         mostrarMensagem("PROXIMA TELA -> Completar Login")
-        //finish()
+        finish()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
