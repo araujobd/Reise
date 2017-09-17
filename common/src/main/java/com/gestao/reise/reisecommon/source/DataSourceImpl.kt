@@ -141,7 +141,7 @@ object DataSourceImpl : DataSource {
 
     override fun salvarImagem(uid: String, imagePath: Uri?, sucesso: (String) -> Unit) {
         val storageRef = FirebaseStorage.getInstance().reference.child("images")
-        val upload = storageRef.child(uid + imagePath!!.lastPathSegment).putFile(imagePath!!)
+        val upload = storageRef.child(uid).child("profile").putFile(imagePath!!)
 
        upload.addOnCompleteListener { sucesso(it.result.downloadUrl.toString()) }
     }

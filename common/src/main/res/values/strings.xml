@@ -11,8 +11,12 @@
     <string name="celular">Celular</string>
     <string name="descricao">Descrição (Opicional)</string>
 
+    <!-- Validação -->
+    <string name="campo_obrigatorio">Campo obrigatório!</string>
+
     <!--  -->
     <string name="or">ou</string>
     <string name="signin_facebook">Signin with Facebook</string>
+    <string name="title_activity_main">MainActivity</string>
 
 </resources>

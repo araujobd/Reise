@@ -26,10 +26,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".principal.PrincipalActivity"
-            android:theme="@style/Base.Theme.AppCompat.Light"/>
-        <activity android:name=".primeiroLogin.CompletarPerfilActivity"
-            android:theme="@style/Base.Theme.AppCompat.Light"/>
+        <activity
+            android:name=".principal.PrincipalActivity"
+            android:theme="@style/Base.Theme.AppCompat.Light" />
+        <activity
+            android:name=".primeiroLogin.CompletarPerfilActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
 
 </manifest>

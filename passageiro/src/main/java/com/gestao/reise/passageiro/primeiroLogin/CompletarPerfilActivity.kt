@@ -5,12 +5,13 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.text.TextUtils
 import com.gestao.reise.passageiro.BaseActivity
 
 import com.gestao.reise.passageiro.R
 import com.gestao.reise.reisecommon.model.Passageiro
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_completar_perfil.*
+import kotlinx.android.synthetic.main.content_completar_perfil.*
 
 class CompletarPerfilActivity : BaseActivity(), CompletarPerfilContrato.View {
 
@@ -47,17 +48,44 @@ class CompletarPerfilActivity : BaseActivity(), CompletarPerfilContrato.View {
             startActivityForResult(Intent.createChooser(intent, "Escolha uma Imagem"), RC_PICK_IMAGE)
         }
 
-        fab_atualizar.setOnClickListener {
-            presenter.atualizarPerfil(imagePath, ed_nome.text.toString(), ed_celular.text.toString(), ed_endereco.text.toString(), ed_descricao.text.toString())
-        }
+        fab_atualizar.setOnClickListener { atualizarPerfil() }
     }
 
     override fun mostrarPerfil(passageiro: Passageiro) {
-        Picasso.with(this).load(passageiro.fotoUrl).into(img_perfil)
+        Picasso.with(this).load(passageiro.fotoUrl).noFade().into(img_perfil)
 
         ed_nome.setText(passageiro.nome)
         ed_celular.setText(passageiro.telefone)
         ed_descricao.setText(passageiro.descricao)
         ed_endereco.setText(passageiro.endereco)
+    }
+
+    private fun validar() : Boolean {
+        var flag = true
+        if (TextUtils.isEmpty(ed_nome.text)) {
+            flag = false
+            ed_nome.error = getString(R.string.campo_obrigatorio)
+        }
+
+        if (TextUtils.isEmpty(ed_celular.text)) {
+            flag = false
+            ed_celular.error = getString(R.string.campo_obrigatorio)
+        }
+
+        if (TextUtils.isEmpty(ed_endereco.text)) {
+            flag = false
+            ed_endereco.error = getString(R.string.campo_obrigatorio)
+        }
+
+        return flag
+    }
+
+    private fun atualizarPerfil() {
+        if (validar())
+            presenter.atualizarPerfil(imagePath,
+                    ed_nome.text.toString(),
+                    ed_celular.text.toString(),
+                    ed_endereco.text.toString(),
+                    ed_descricao.text.toString())
     }
 }

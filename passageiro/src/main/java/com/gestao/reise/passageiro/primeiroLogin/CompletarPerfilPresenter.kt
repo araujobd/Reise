@@ -5,7 +5,6 @@ import com.gestao.reise.reisecommon.model.Passageiro
 import com.gestao.reise.reisecommon.source.DataSource
 import com.gestao.reise.reisecommon.source.DataSourceImpl
 import com.google.firebase.auth.FirebaseAuth
-import java.net.Authenticator
 
 /**
  * Created by bruno on 13/09/17.

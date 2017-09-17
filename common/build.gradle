@@ -36,13 +36,14 @@ dependencies {
     compile "com.google.firebase:firebase-messaging:$firebase_version"
     compile "com.google.android.gms:play-services-auth:$firebase_version"
 
-    compile 'com.squareup.picasso:picasso:2.5.2'
-    compile 'com.facebook.android:facebook-android-sdk:[4,5)'
 
     compile "com.android.support:appcompat-v7:$support_version"
     compile "com.android.support:design:$support_version"
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
 
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.facebook.android:facebook-android-sdk:[4,5)'
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
 }
 repositories {
