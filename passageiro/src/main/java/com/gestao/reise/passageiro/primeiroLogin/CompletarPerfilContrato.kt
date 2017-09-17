@@ -1,5 +1,6 @@
 package com.gestao.reise.passageiro.primeiroLogin
 
+import android.net.Uri
 import com.gestao.reise.passageiro.BasePresenter
 import com.gestao.reise.passageiro.BaseView
 import com.gestao.reise.reisecommon.model.Passageiro
@@ -15,5 +16,6 @@ interface CompletarPerfilContrato {
 
     interface Presenter : BasePresenter {
         fun carregarPerfil()
+        fun atualizarPerfil(imagePath: Uri?, nome: String, celular: String, endereco: String, descricao: String)
     }
 }

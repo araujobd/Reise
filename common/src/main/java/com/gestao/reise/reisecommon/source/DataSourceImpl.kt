@@ -1,11 +1,14 @@
 package com.gestao.reise.reisecommon.source
 
+import android.net.Uri
 import android.util.Log
 import com.gestao.reise.reisecommon.model.Carro
 import com.gestao.reise.reisecommon.model.Motorista
 import com.gestao.reise.reisecommon.model.Passageiro
 import com.gestao.reise.reisecommon.model.Viagem
 import com.google.firebase.database.*
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 
 /**
  * Created by bruno on 31/08/17.
@@ -29,7 +32,8 @@ object DataSourceImpl : DataSource {
     }
 
     override fun salvarPassageiro(passageiro: Passageiro) {
-        root.child("passageiros").child(passageiro.uid).setValue(passageiro)
+        //root.child("passageiros").child(passageiro.uid).setValue(passageiro)
+        root.child("passageiros").child(passageiro.uid).updateChildren(passageiro.toMap())
     }
 
     override fun salvarViagem(viagem: Viagem) {
@@ -133,6 +137,13 @@ object DataSourceImpl : DataSource {
 
         }
         root.child("passageiros").child(uid).addValueEventListener(listener)
+    }
+
+    override fun salvarImagem(uid: String, imagePath: Uri?, sucesso: (String) -> Unit) {
+        val storageRef = FirebaseStorage.getInstance().reference.child("images")
+        val upload = storageRef.child(uid + imagePath!!.lastPathSegment).putFile(imagePath!!)
+
+       upload.addOnCompleteListener { sucesso(it.result.downloadUrl.toString()) }
     }
 
 }

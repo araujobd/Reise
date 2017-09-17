@@ -1,5 +1,6 @@
 package com.gestao.reise.reisecommon.source
 
+import android.net.Uri
 import com.gestao.reise.reisecommon.model.Carro
 import com.gestao.reise.reisecommon.model.Motorista
 import com.gestao.reise.reisecommon.model.Passageiro
@@ -20,4 +21,6 @@ interface DataSource {
     fun buscarMotorista(uid: String, sucesso: (motorista: Motorista) -> Unit)
     fun buscarPassageiro(uid: String, sucesso: (passageiro: Passageiro) -> Unit)
     fun buscarViagens(user: String, uid: String, action: (MutableList<Viagem>) -> Unit)
+
+    fun salvarImagem(uid: String, imagePath : Uri?, sucesso: (String) -> Unit)
 }

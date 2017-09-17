@@ -1,5 +1,6 @@
 package com.gestao.reise.reisecommon.model
 
+
 /**
  * Created by bruno on 30/08/17.
  */
@@ -12,4 +13,18 @@ data class Passageiro(var uid: String,
                       var endereco: String,
                       var descricao: String) {
     constructor() : this("", "", "", "", mutableListOf(), "", "")
+
+    fun toMap(): MutableMap<String, Any> {
+        val map = mutableMapOf<String, Any>()
+
+        map.put("uid", uid)
+        map.put("nome", nome)
+        map.put("fotoUrl", fotoUrl)
+        map.put("telefone", telefone)
+        map.put("viagens", viagens)
+        map.put("endereco", endereco)
+        map.put("descricao", descricao)
+
+        return map
+    }
 }

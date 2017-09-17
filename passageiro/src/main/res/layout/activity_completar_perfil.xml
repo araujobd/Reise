@@ -19,18 +19,18 @@
         android:id="@+id/img_perfil"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:src="@color/colorAccent"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="76dp"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        android:layout_marginTop="76dp"
+        android:src="@color/colorAccent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/btimg_upload"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@mipmap/ic_edit"
@@ -56,7 +56,7 @@
             android:id="@+id/ed_nome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/cliente_nome" />
+            android:hint="@string/nome" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -77,7 +77,7 @@
             android:id="@+id/ed_celular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/cliente_celular" />
+            android:hint="@string/celular" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -98,7 +98,7 @@
             android:id="@+id/ed_endereco"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/cliente_end" />
+            android:hint="@string/endereco" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -116,6 +116,18 @@
             android:id="@+id/ed_descricao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/cliente_descricao" />
+            android:hint="@string/descricao" />
     </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_atualizar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/com_facebook_button_icon_blue"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp" />
 </android.support.constraint.ConstraintLayout>
