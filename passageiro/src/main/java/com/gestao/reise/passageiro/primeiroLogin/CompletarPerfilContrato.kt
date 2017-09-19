@@ -12,6 +12,7 @@ interface CompletarPerfilContrato {
 
     interface View : BaseView {
         fun mostrarPerfil(passageiro: Passageiro)
+        fun iniciarPrincipal()
     }
 
     interface Presenter : BasePresenter {

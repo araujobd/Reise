@@ -12,6 +12,7 @@ abstract class BaseActivity : AppCompatActivity() {
     private val progressBar: ProgressBar by lazy { ProgressBar(applicationContext, null, android.R.attr.progressBarStyle) }
 
     fun showProgress() {
+        progressBar.isIndeterminate = true
         progressBar.visibility = View.VISIBLE
     }
 

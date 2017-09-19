@@ -132,7 +132,8 @@ object DataSourceImpl : DataSource {
 
             override fun onDataChange(dataSnapshot: DataSnapshot?) {
                 val passageiro: Passageiro? = dataSnapshot?.getValue(Passageiro::class.java)
-                passageiro?.let { sucesso(it) }
+                if (passageiro != null)
+                    sucesso(passageiro)
             }
 
         }

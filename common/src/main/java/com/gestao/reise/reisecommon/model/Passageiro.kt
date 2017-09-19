@@ -19,11 +19,12 @@ data class Passageiro(var uid: String,
 
         map.put("uid", uid)
         map.put("nome", nome)
-        map.put("fotoUrl", fotoUrl)
         map.put("telefone", telefone)
         map.put("viagens", viagens)
         map.put("endereco", endereco)
         map.put("descricao", descricao)
+        if (fotoUrl.length > 0)
+            map.put("fotoUrl", fotoUrl)
 
         return map
     }

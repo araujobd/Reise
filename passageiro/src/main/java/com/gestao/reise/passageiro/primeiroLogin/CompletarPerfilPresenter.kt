@@ -1,6 +1,7 @@
 package com.gestao.reise.passageiro.primeiroLogin
 
 import android.net.Uri
+import android.util.Log
 import com.gestao.reise.reisecommon.model.Passageiro
 import com.gestao.reise.reisecommon.source.DataSource
 import com.gestao.reise.reisecommon.source.DataSourceImpl
@@ -33,11 +34,13 @@ class CompletarPerfilPresenter(val view: CompletarPerfilContrato.View) : Complet
         if (imagePath != null)
             source.salvarImagem(uid, imagePath) {
                 passageiro.fotoUrl = it
+                Log.d("URL", it)
                 source.salvarPassageiro(passageiro)
             }
         else
             source.salvarPassageiro(passageiro)
 
+        //view.iniciarPrincipal()
     }
 
 }

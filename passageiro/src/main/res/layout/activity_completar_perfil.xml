@@ -8,14 +8,12 @@
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/AppTheme2.AppBarOverlay">
+        android:layout_height="wrap_content" >
 
         <Toolbar
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            style="@style/AppTheme2.PopupOverlay"/>
+            android:background="?attr/colorPrimary" />
     </android.support.design.widget.AppBarLayout>
 
     <ScrollView
