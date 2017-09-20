@@ -6,16 +6,6 @@
     android:layout_height="match_parent"
     tools:context="com.gestao.reise.passageiro.primeiroLogin.CompletarPerfilActivity">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <Toolbar
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary" />
-    </android.support.design.widget.AppBarLayout>
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -23,5 +13,11 @@
         <include
             layout="@layout/content_completar_perfil"/>
     </ScrollView>
+
+    <Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/transparent" />
 
 </android.support.design.widget.CoordinatorLayout>

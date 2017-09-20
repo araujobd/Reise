@@ -9,9 +9,11 @@ import android.text.TextUtils
 import com.gestao.reise.passageiro.BaseActivity
 
 import com.gestao.reise.passageiro.R
+import com.gestao.reise.passageiro.perfil.PerfilActivity
 import com.gestao.reise.passageiro.principal.PrincipalActivity
 import com.gestao.reise.reisecommon.model.Passageiro
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_completar_perfil.*
 import kotlinx.android.synthetic.main.content_completar_perfil.*
 
 class CompletarPerfilActivity : BaseActivity(), CompletarPerfilContrato.View {
@@ -24,6 +26,10 @@ class CompletarPerfilActivity : BaseActivity(), CompletarPerfilContrato.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_completar_perfil)
+
+        setActionBar(toolbar)
+        actionBar.setDisplayHomeAsUpEnabled(true)
+        actionBar.title = "Atualizar Perfil"
 
         configurarTela()
     }
@@ -83,15 +89,18 @@ class CompletarPerfilActivity : BaseActivity(), CompletarPerfilContrato.View {
 
     private fun atualizarPerfil() {
         showProgress()
-        if (validar())
+        if (validar()) {
             presenter.atualizarPerfil(imagePath,
                     ed_nome.text.toString(),
                     ed_celular.text.toString(),
                     ed_endereco.text.toString(),
                     ed_descricao.text.toString())
+            iniciarPrincipal()
+        }
     }
 
     override fun iniciarPrincipal() {
-        startActivity(Intent(this@CompletarPerfilActivity, PrincipalActivity::class.java))
+        startActivity(Intent(this@CompletarPerfilActivity, PerfilActivity::class.java))
+        finish()
     }
 }

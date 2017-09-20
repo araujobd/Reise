@@ -1,9 +1,11 @@
 package com.gestao.reise.passageiro.perfil
 
+import android.content.Intent
 import android.os.Bundle
 import com.gestao.reise.passageiro.BaseActivity
 
 import com.gestao.reise.passageiro.R
+import com.gestao.reise.passageiro.primeiroLogin.CompletarPerfilActivity
 import com.gestao.reise.reisecommon.model.Passageiro
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_perfil.*
@@ -21,6 +23,16 @@ class PerfilActivity : BaseActivity(), PerfilContrato.View {
         actionBar.setDisplayHomeAsUpEnabled(true)
         actionBar.title = ""
         presenter.carregarPerfil()
+
+        configureButtons()
+    }
+
+    private fun configureButtons() {
+        fab_editar.setOnClickListener {
+            startActivity(Intent(this@PerfilActivity, CompletarPerfilActivity::class.java))
+        }
+
+        bt_call.setOnClickListener { mostrarMensagem(it, "CHAMANDO") }
     }
 
     override fun mostrarPerfil(passageiro: Passageiro) {
@@ -28,5 +40,6 @@ class PerfilActivity : BaseActivity(), PerfilContrato.View {
         tv_nome.setText(passageiro.nome)
         tv_telefone.setText(passageiro.telefone)
         tv_endereco.setText(passageiro.endereco)
+        tv_descricao.setText(passageiro.descricao)
     }
 }

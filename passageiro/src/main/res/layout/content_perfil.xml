@@ -2,13 +2,13 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingBottom="10dp">
 
     <com.github.florent37.diagonallayout.DiagonalLayout
         android:id="@+id/diagonal"
-        android:layout_width="368dp"
+        android:layout_width="match_parent"
         android:layout_height="230dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -52,6 +52,18 @@
         android:src="@color/colorAccentDark"
         android:elevation="10dp"
         android:layout_marginStart="30dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_editar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="115dp"
+        android:layout_gravity="end"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:src="@mipmap/ic_edit"
+        android:tint="@color/background"/>
 
     <android.support.v7.widget.CardView
         android:id="@+id/card_telefone"
@@ -97,13 +109,13 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginBottom="8dp" />
 
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/floatingActionButton"
+            <ImageButton
+                android:id="@+id/bt_call"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:clickable="true"
-                app:fabSize="mini"
-                app:srcCompat="@android:drawable/sym_action_call"
+                android:src="@android:drawable/sym_action_call"
+                android:tint="@color/colorAccent"
+                android:background="@android:color/transparent"
                 android:layout_alignTop="@+id/tv_telefone"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="16dp"
@@ -113,6 +125,24 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginBottom="8dp" />
+
+<!--            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/floatingActionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                app:fabSize="mini"
+                android:src="@android:drawable/sym_action_call"
+                android:tint="@color/background"
+                android:layout_alignTop="@+id/tv_telefone"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="8dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="8dp" />-->
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>
 
@@ -155,6 +185,53 @@
                 android:layout_alignStart="@+id/tv_endereco"
                 android:layout_marginTop="1dp"
                 app:layout_constraintTop_toBottomOf="@+id/tv_endereco"
+                android:layout_marginLeft="24dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="8dp" />
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_descricao"
+        android:layout_width="0dp"
+        android:layout_height="74dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_endereco"
+        app:layout_constraintHorizontal_bias="0.0">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_descricao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:text="asdhaksdkas"
+                android:textSize="20sp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintLeft_toLeftOf="parent" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Descrição"
+                android:layout_below="@id/tv_descricao"
+                android:layout_alignStart="@+id/tv_descricao"
+                android:layout_marginTop="1dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_descricao"
                 android:layout_marginLeft="24dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
