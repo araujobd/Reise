@@ -20,7 +20,7 @@ object DataSourceImpl : DataSource {
     private val root: DatabaseReference
 
     init {
-        //FirebaseDatabase.getInstance().setPersistenceEnabled(true)
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true)
         database = FirebaseDatabase.getInstance()
         root = database.reference
         root.keepSynced(true)
