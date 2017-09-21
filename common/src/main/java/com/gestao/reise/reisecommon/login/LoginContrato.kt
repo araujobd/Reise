@@ -10,7 +10,7 @@ interface LoginContrato {
 
     interface View {
         fun returnUserLogged()
-        fun ExibirErro()
+        fun ExibirErro(mensagem: String)
     }
 
     interface Presenter {

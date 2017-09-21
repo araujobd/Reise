@@ -7,6 +7,7 @@ import android.os.Handler
 import android.view.View
 import android.widget.Toast
 import com.gestao.reise.motorista.R
+import com.gestao.reise.motorista.cadastrarViagem.CadastrarViagemActivity
 import com.gestao.reise.reisecommon.login.LoginActivity
 
 class SplashActivity : Activity(), SplashContrato.View {
@@ -38,15 +39,15 @@ class SplashActivity : Activity(), SplashContrato.View {
     }
 
     override fun iniciarPrincipal() {
-        //startActivity(this, ?::class.java)
+        startActivity(Intent(this@SplashActivity, CadastrarViagemActivity::class.java))
         mostrarMensagem("PROXIMA TELA -> Principal")
-        //finish()
+        finish()
     }
 
     override fun primeiroLogin() {
-        //startActivity(this, ?::class.java)
+        startActivity(Intent(this@SplashActivity, CadastrarViagemActivity::class.java))
         mostrarMensagem("PROXIMA TELA -> Completar Login")
-        //finish()
+        finish()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

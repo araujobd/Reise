@@ -32,7 +32,7 @@ class LoginPresenter(val view: LoginContrato.View) : LoginContrato.Presenter {
             if (it.isSuccessful) {
                 view.returnUserLogged()
             } else {
-                view.ExibirErro()
+                view.ExibirErro("Erro ao tentar logar")
             }
         }
     }

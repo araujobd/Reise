@@ -37,8 +37,10 @@ object DataSourceImpl : DataSource {
     }
 
     override fun salvarViagem(viagem: Viagem) {
+        Log.i("log","source ok")
         viagem.uid = root.child("viagens").push().key
         root.child("viagens").child(viagem.uid).setValue(viagem)
+        Log.i("log","source salvou ok")
     }
 
     override fun salvarCarro(carro: Carro) {
