@@ -2,7 +2,10 @@ package com.gestao.reise.reisecommon.login
 
 import com.facebook.AccessToken
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.firebase.auth.*
+import com.google.firebase.auth.AuthCredential
+import com.google.firebase.auth.FacebookAuthProvider
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 
 /**
  * Created by bruno on 01/09/17.
@@ -32,7 +35,7 @@ class LoginPresenter(val view: LoginContrato.View) : LoginContrato.Presenter {
             if (it.isSuccessful) {
                 view.returnUserLogged()
             } else {
-                view.ExibirErro("Erro ao tentar logar")
+                view.exibirErro(it.exception.toString())
             }
         }
     }

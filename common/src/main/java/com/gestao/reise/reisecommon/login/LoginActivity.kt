@@ -57,7 +57,7 @@ class LoginActivity : AppCompatActivity(), LoginContrato.View, GoogleApiClient.O
         signin_facebook.setReadPermissions("email", "public_profile")
         signin_facebook.registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
             override fun onError(error: FacebookException?) {
-                ExibirErro(error.toString())
+                exibirErro(error.toString())
             }
 
             override fun onSuccess(result: LoginResult?) {
@@ -70,7 +70,7 @@ class LoginActivity : AppCompatActivity(), LoginContrato.View, GoogleApiClient.O
         })
     }
 
-    override fun ExibirErro(mensagem: String) {
+    override fun exibirErro(mensagem: String) {
         Toast.makeText(this, mensagem, Toast.LENGTH_LONG).show()
     }
 
@@ -81,8 +81,7 @@ class LoginActivity : AppCompatActivity(), LoginContrato.View, GoogleApiClient.O
             RC_SIGN_IN -> {
                 val result = Auth.GoogleSignInApi.getSignInResultFromIntent(data)
                 if (result.isSuccess) presenter.signinWithGoogle(result.signInAccount)
-                else
-                    ExibirErro("Erro com google")
+                else exibirErro(result.status.statusMessage!!)
             }
             else -> {
                 callbackManager.onActivityResult(requestCode, resultCode, data)

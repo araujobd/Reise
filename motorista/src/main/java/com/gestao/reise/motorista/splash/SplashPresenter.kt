@@ -1,43 +1,27 @@
 package com.gestao.reise.motorista.splash
 
 import com.gestao.reise.reisecommon.model.Motorista
-import com.gestao.reise.reisecommon.source.DataSource
-import com.gestao.reise.reisecommon.source.DataSourceImpl
-import com.google.firebase.auth.FirebaseAuth
+import com.gestao.reise.reisecommon.splash.BaseSplashPresenter
+import com.gestao.reise.reisecommon.splash.SplashContrato
+import com.google.firebase.auth.FirebaseUser
 
 /**
  * Created by bruno on 03/09/17.
  */
 
-class SplashPresenter(val view: SplashContrato.View) :SplashContrato.Presenter {
+class SplashPresenter(view: SplashContrato.View) : BaseSplashPresenter(view) {
 
-    private val auth: FirebaseAuth = FirebaseAuth.getInstance()
-    private val source: DataSource = DataSourceImpl
+    override val typeUser: String = "passageiros"
 
-    override fun verificarLogin() {
-        source.buscarMotorista(auth.currentUser?.uid.toString()) {}
-        if (auth.currentUser != null)
-            view.iniciarPrincipal()
-        else
-            view.logar()
-    }
 
-    override fun escolherAcao() {
-        source.buscarUidUser("motoristas", auth.currentUser?.uid.toString(),
-                sucesso = { view.iniciarPrincipal() },
-                erro = { primeiroLogin() })
-    }
-
-    private fun primeiroLogin() {
-        val user = auth.currentUser
+    override fun salvarUsuario(user: FirebaseUser) {
         val motorista = Motorista()
 
-        motorista.uid = user?.uid.toString()
-        motorista.nome = user?.displayName.toString()
-        motorista.fotoUrl = user?.photoUrl.toString()
+        motorista.uid = user.uid
+        motorista.nome = user.displayName.toString()
+        motorista.fotoUrl = user.photoUrl.toString()
 
         source.salvarMotorista(motorista)
-        view.primeiroLogin()
     }
 
 }
