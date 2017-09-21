@@ -1,8 +1,7 @@
-package com.gestao.reise.passageiro.splash
-
+package com.gestao.reise.reisecommon.splash
 
 /**
- * Created by arthur on 30/08/17.
+ * Created by bruno on 21/09/17.
  */
 
 interface SplashContrato {
