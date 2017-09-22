@@ -6,7 +6,6 @@ import com.gestao.reise.passageiro.primeiroLogin.CompletarPerfilActivity
 import com.gestao.reise.reisecommon.splash.BaseSplashActivity
 import com.gestao.reise.reisecommon.splash.SplashContrato
 
-
 class SplashActivity : BaseSplashActivity() {
 
     override val presenter: SplashContrato.Presenter by lazy { SplashPresenter(this) }
