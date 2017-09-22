@@ -20,4 +20,14 @@
     <string name="signin_facebook">Signin with Facebook</string>
     <string name="title_activity_main">MainActivity</string>
 
+    <!-- Drawer Menu -->
+    <string name="opcoes">Opções</string>
+    <string name="principal">Principal</string>
+    <string name="viagem">Viagem</string>
+    <string name="sair">Sair</string>
+    <string name="notificacoes">Notificações</string>
+    <string name="configuracoes">Configurações</string>
+
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
 </resources>

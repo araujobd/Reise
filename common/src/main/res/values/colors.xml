@@ -7,6 +7,6 @@
     <color name="colorAccentDark">#32861a</color>
     <color name="colorAccentLight">#98ea79</color>
     <color name="textColorPrimary">#000000</color>
-    <color name="textHint">#555555</color>
+        <color name="textHint">#555555</color>
     <color name="background">#ffffff</color>
 </resources>
