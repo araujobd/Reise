@@ -3,7 +3,7 @@ package com.gestao.reise.motorista.cadastrarViagem
 import android.app.Activity
 import android.os.Bundle
 import com.gestao.reise.motorista.R
-import kotlinx.android.synthetic.main.activity_cadastrar_viagem.*
+import kotlinx.android.synthetic.main.content_cadastrar_viagem.*
 import java.util.*
 
 /**
@@ -17,7 +17,7 @@ class CadastrarViagemActivity : Activity(), CadastrarViagemContrato.view{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_cadastrar_viagem)
+        setContentView(R.layout.content_cadastrar_viagem)
         presenter = CadastrarViagemPresenter(this)
         bt_salvar.setOnClickListener{ salvarViagem() }
     }
