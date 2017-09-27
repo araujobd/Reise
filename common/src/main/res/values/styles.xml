@@ -13,9 +13,9 @@
         <item name="android:backgroundTint">@color/background</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.AppBarOverlay" parent="android:Theme.Material.Light.DarkActionBar"/>
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+    <style name="AppTheme.PopupOverlay" parent="android:Theme.Material.Light"/>
 
 
     <!-- Customizes -->
@@ -26,6 +26,8 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:color">@color/textColorPrimary</item>
     </style>
+
+    <!-- CheckBox -->
 
     <!-- Edit Text -->
     <style name="EditText">
@@ -72,4 +74,5 @@
         <item name="android:colorActivatedHighlight">@color/colorAccent</item>
         <item name="android:textColor">@color/textHint</item>
     </style>
+
 </resources>
