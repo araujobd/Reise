@@ -24,6 +24,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Completar_perfil_infor_carro"/>
+        <activity android:name=".principal.PrincipalActivity"/>
         <activity android:name=".completarPerfil.pessoal.CompletarPerfilActivity" />
         <activity android:name=".cadastrarViagem.CadastrarViagemActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />

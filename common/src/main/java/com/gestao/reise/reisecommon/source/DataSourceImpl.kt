@@ -9,6 +9,11 @@ import com.gestao.reise.reisecommon.model.Viagem
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.ValueEventListener
+
+
 
 /**
  * Created by bruno on 31/08/17.
@@ -36,11 +41,10 @@ object DataSourceImpl : DataSource {
         root.child("passageiros").child(passageiro.uid).updateChildren(passageiro.toMap())
     }
 
-    override fun salvarViagem(viagem: Viagem) {
-        Log.i("log","source ok")
+    override fun salvarViagem(viagem: Viagem, uid_motorista: String) {
         viagem.uid = root.child("viagens").push().key
         root.child("viagens").child(viagem.uid).setValue(viagem)
-        Log.i("log","source salvou ok")
+        root.child("motoristas").child(uid_motorista).child("viagens").child(viagem.uid).setValue(true)
     }
 
     override fun salvarCarro(carro: Carro) {
@@ -57,20 +61,30 @@ object DataSourceImpl : DataSource {
             }
 
             override fun onDataChange(dataSnapshot: DataSnapshot?) {
-                dataSnapshot?.children?.forEach {
-                    val viagem: Viagem? = it.getValue(Viagem::class.java)
-                    if (viagem != null) {
-                        viagens.add(viagem)
-                    }
+                for (data in dataSnapshot!!.children) {
+                    Log.i("logBusca", "data.key: " + data.key)
+                    root.child("viagens").child(data.key).addValueEventListener(object : ValueEventListener {
+
+                        override fun onCancelled(p0: DatabaseError?) {
+                            Log.d("DATASSS", "Error")
+                        }
+
+                        override fun onDataChange(p0: DataSnapshot?) {
+                            val viagem: Viagem? = p0!!.getValue(Viagem::class.java)
+                            Log.i("logBusca", "viagem: " + viagem!!.origem + " / " + viagem!!.destino)
+                            if (viagem != null) {
+                                viagens.add(viagem)
+                                action(viagens)
+                            }
+                        }
+
+                    })
                 }
-                if(user.equals("motorista"))
-                    action(viagens)
-                else if(user.equals("passageiro"))
-                    action(viagens)
+
             }
         }
-
-        root.child(user).orderByChild(uid).orderByChild("viagens").addValueEventListener(listener)
+        Log.i("logBusca",user+" "+uid)
+        root.child(user).child(uid).child("viagens").addValueEventListener(listener)
     }
 
     override fun buscarPassageiros(callback: (MutableList<Passageiro>) -> Unit) {
@@ -150,4 +164,5 @@ object DataSourceImpl : DataSource {
     }
 
 }
+
 

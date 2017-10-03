@@ -29,7 +29,7 @@ class CadastrarViagemPresenter(val view: CadastrarViagemContrato.view) : Cadastr
         viagem.horario = horario
         viagem.frequencia = frequencia
         viagem.motorista = uid_motorista
-        source.salvarViagem(viagem)
+        source.salvarViagem(viagem,uid_motorista)
 
     }
 

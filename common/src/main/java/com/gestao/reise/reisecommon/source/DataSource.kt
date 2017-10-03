@@ -12,7 +12,7 @@ import com.gestao.reise.reisecommon.model.Viagem
 interface DataSource {
     fun salvarMotorista(motorista: Motorista)
     fun salvarPassageiro(passageiro: Passageiro)
-    fun salvarViagem(viagem: Viagem)
+    fun salvarViagem(viagem: Viagem,uid_motorista: String)
     fun salvarCarro(carro: Carro)
 
     fun buscarUidUser(typeUser: String, uid: String, sucesso: () -> Unit, erro: () -> Unit)
