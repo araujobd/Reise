@@ -19,7 +19,10 @@ class CadastrarViagemActivity : Activity(), CadastrarViagemContrato.view{
         super.onCreate(savedInstanceState)
         setContentView(R.layout.content_cadastrar_viagem)
         presenter = CadastrarViagemPresenter(this)
-        bt_salvar.setOnClickListener{ salvarViagem() }
+        bt_salvar.setOnClickListener{
+            salvarViagem()
+            finish()
+        }
     }
     override fun msgSucesso() {
 

@@ -16,7 +16,7 @@ class SplashActivity : BaseSplashActivity() {
     }
 
     override fun primeiroLogin() {
-        startActivity(Intent(this@SplashActivity, CadastrarViagemActivity::class.java))
+        //startActivity(Intent(this@SplashActivity, ::class.java))
         mostrarMensagem("PROXIMA TELA -> Completar Login")
         finish()
     }

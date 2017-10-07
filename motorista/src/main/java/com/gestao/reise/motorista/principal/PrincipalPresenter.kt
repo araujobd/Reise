@@ -23,7 +23,6 @@ class PrincipalPresenter(val view: PrincipalContrato.View) : FirebaseMessagingSe
     override fun possuiViagens() {
         source.buscarViagens("motoristas",auth.currentUser!!.uid) { viagens ->
                 if(viagens.isEmpty()){
-                    Log.i("logBusca","direcionarCadastro")
                     view.direcionarCadastro()
                 }else{
                     view.mostrarViagens(viagens)

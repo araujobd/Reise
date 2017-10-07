@@ -72,10 +72,8 @@ object DataSourceImpl : DataSource {
                         override fun onDataChange(p0: DataSnapshot?) {
                             val viagem: Viagem? = p0!!.getValue(Viagem::class.java)
                             Log.i("logBusca", "viagem: " + viagem!!.origem + " / " + viagem!!.destino)
-                            if (viagem != null) {
-                                viagens.add(viagem)
-                                action(viagens)
-                            }
+                            viagens.add(viagem)
+                            action(viagens)
                         }
 
                     })
