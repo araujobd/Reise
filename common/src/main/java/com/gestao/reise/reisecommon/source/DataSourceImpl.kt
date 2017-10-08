@@ -61,9 +61,9 @@ object DataSourceImpl : DataSource {
             }
 
             override fun onDataChange(dataSnapshot: DataSnapshot?) {
-                for (data in dataSnapshot!!.children) {
-                    Log.i("logBusca", "data.key: " + data.key)
-                    root.child("viagens").child(data.key).addValueEventListener(object : ValueEventListener {
+                dataSnapshot!!.children.forEach {
+                    Log.i("logBusca", "data.key: " + it.key)
+                    root.child("viagens").child(it.key).addValueEventListener(object : ValueEventListener {
 
                         override fun onCancelled(p0: DatabaseError?) {
                             Log.d("DATASSS", "Error")
@@ -83,6 +83,27 @@ object DataSourceImpl : DataSource {
         }
         Log.i("logBusca",user+" "+uid)
         root.child(user).child(uid).child("viagens").addValueEventListener(listener)
+    }
+
+    override fun buscarViagensOD(origem: String, destino: String, action: (MutableList<Viagem>) -> Unit) {
+        val viagens: MutableList<Viagem> = mutableListOf()
+
+        val listener = object: ChildEventListener{
+            override fun onChildMoved(p0: DataSnapshot?, p1: String?) {}
+            override fun onChildChanged(p0: DataSnapshot?, p1: String?) {}
+            override fun onChildRemoved(p0: DataSnapshot?) {}
+            override fun onCancelled(p0: DatabaseError?) {Log.d("DATASSS", "Error")}
+            override fun onChildAdded(p0: DataSnapshot?, p1: String?) {
+                val viagem: Viagem? = p0!!.getValue(Viagem::class.java)
+                Log.i("logBusca", viagem.toString())
+                if (viagem!!.destino.equals(destino)) {
+                    Log.i("logBusca", viagem.origem + viagem.destino)
+                    viagens.add(viagem)
+                    action(viagens)
+                }
+            }
+        }
+        root.child("viagens").orderByChild("origem").equalTo(origem).addChildEventListener(listener)
     }
 
     override fun buscarPassageiros(callback: (MutableList<Passageiro>) -> Unit) {

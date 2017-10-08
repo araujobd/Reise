@@ -9,7 +9,7 @@ interface PrincipalContrato {
 
     interface View {
         fun direcionarBusca()
-        fun mostrarViagens(viagens: (MutableList<Viagem>))
+        fun mostrarViagens(viagens: MutableList<Viagem>)
     }
 
     interface Presenter {
