@@ -95,7 +95,6 @@ object DataSourceImpl : DataSource {
             override fun onCancelled(p0: DatabaseError?) {Log.d("DATASSS", "Error")}
             override fun onChildAdded(p0: DataSnapshot?, p1: String?) {
                 val viagem: Viagem? = p0!!.getValue(Viagem::class.java)
-                Log.i("logBusca", viagem.toString())
                 if (viagem!!.destino.equals(destino)) {
                     Log.i("logBusca", viagem.origem + viagem.destino)
                     viagens.add(viagem)

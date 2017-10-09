@@ -2,6 +2,9 @@ package com.gestao.reise.passageiro.buscarViagem
 
 import android.app.Activity
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.widget.LinearLayout
 import android.widget.Toast
 import com.gestao.reise.passageiro.R
 import com.gestao.reise.reisecommon.model.Viagem
@@ -35,7 +38,10 @@ class BuscarViagemActivity: Activity(),BuscarViagemContrato.View {
     }
 
     override fun listarViagens(viagens: MutableList<Viagem>) {
-        Toast.makeText(this,"LISTANDO VIAGENS!"+viagens,Toast.LENGTH_SHORT).show()
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewPas)
+        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
+        val adapter = Adaptador(viagens)
+        recyclerView.adapter = adapter
     }
 
 }

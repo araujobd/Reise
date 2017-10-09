@@ -11,12 +11,20 @@ class BuscarViagemPresenter(val view: BuscarViagemContrato.View): BuscarViagemCo
     private var source: DataSource = DataSourceImpl
 
     override fun contemViagens(origem: String, destino: String) {
-        source.buscarViagensOD(origem,destino){viagens ->
-            if(viagens.isEmpty()){
-                view.mostrarMSG()
-            }else{
-                view.listarViagens(viagens)
+        if(validarEntrada(origem,destino))
+            source.buscarViagensOD(origem,destino){viagens ->
+                if(viagens.isEmpty())
+                    view.mostrarMSG()
+                else
+                    view.listarViagens(viagens)
             }
-        }
+        else
+            view.mostrarMSG()
+    }
+
+    fun validarEntrada(origem: String, destino: String): Boolean {
+        if(origem.isBlank() or destino.isBlank())
+            return false
+        return true
     }
 }
