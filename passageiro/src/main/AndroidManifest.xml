@@ -28,7 +28,7 @@
         </activity>
         <activity
             android:name=".principal.PrincipalActivity"
-            android:theme="@style/Base.Theme.AppCompat.Light" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".primeiroLogin.CompletarPerfilActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />

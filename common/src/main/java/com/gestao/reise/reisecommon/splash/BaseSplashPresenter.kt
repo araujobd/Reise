@@ -24,7 +24,7 @@ abstract class BaseSplashPresenter(val view: SplashContrato.View) : SplashContra
 
     override fun escolherAcao() {
         source.buscarUidUser(typeUser, auth.currentUser?.uid.toString(),
-                sucesso = { view.iniciarPrincipal() },
+                sucesso = { view.iniciarPrincipal()},
                 erro = { primeiroLogin() })
     }
 

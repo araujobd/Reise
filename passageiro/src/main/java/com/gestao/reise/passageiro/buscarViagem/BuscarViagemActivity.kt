@@ -38,7 +38,7 @@ class BuscarViagemActivity: Activity(),BuscarViagemContrato.View {
     }
 
     override fun listarViagens(viagens: MutableList<Viagem>) {
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewPas)
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewPasBusca)
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
         val adapter = Adaptador(viagens)
         recyclerView.adapter = adapter

@@ -1,15 +1,16 @@
 package com.gestao.reise.passageiro.splash
 
 import com.gestao.reise.reisecommon.model.Passageiro
+import com.gestao.reise.reisecommon.source.DataSourceImpl
 import com.gestao.reise.reisecommon.splash.BaseSplashPresenter
 import com.gestao.reise.reisecommon.splash.SplashContrato
 import com.google.firebase.auth.FirebaseUser
+import javax.xml.transform.Source
 
 /**
  * Created by bruno on 02/09/17.
  */
 class SplashPresenter(view: SplashContrato.View) : BaseSplashPresenter(view) {
-
     override val typeUser: String = "passageiros"
 
     override fun salvarUsuario(user: FirebaseUser) {

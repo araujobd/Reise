@@ -1,24 +1,20 @@
-package com.gestao.reise.passageiro.buscarViagem
+package com.gestao.reise.passageiro.principal
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
 import com.gestao.reise.passageiro.R
 import com.gestao.reise.reisecommon.model.Viagem
-import com.gestao.reise.reisecommon.source.DataSource
-import com.gestao.reise.reisecommon.source.DataSourceImpl
-import com.google.firebase.auth.FirebaseAuth
 
 /**
- * Created by cainan on 08/10/17.
+ * Created by cainan on 14/10/17.
  */
 class Adaptador(val viagens: MutableList<Viagem>): RecyclerView.Adapter<Adaptador.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
-        val vr = LayoutInflater.from(parent?.context).inflate(R.layout.card_view_buscar,parent,false)
+        val vr = LayoutInflater.from(parent?.context).inflate(R.layout.card_view,parent,false)
         return ViewHolder(vr)
 
     }
@@ -29,7 +25,6 @@ class Adaptador(val viagens: MutableList<Viagem>): RecyclerView.Adapter<Adaptado
         holder!!.tituloDestino!!.text = viagem.destino
         holder!!.tituloHorario!!.text = viagem.horario
         holder!!.tituloPreco!!.text = viagem.preco
-        holder!!.tituloVagas!!.text = viagem.qtd_vagas.toString()
     }
 
     override fun getItemCount(): Int {
@@ -37,11 +32,10 @@ class Adaptador(val viagens: MutableList<Viagem>): RecyclerView.Adapter<Adaptado
     }
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        val tituloOrigem = itemView.findViewById<TextView>(R.id.tv_origem)
-        val tituloDestino = itemView.findViewById<TextView>(R.id.tv_destino)
-        val tituloHorario = itemView.findViewById<TextView>(R.id.tv_horario)
-        val tituloPreco = itemView.findViewById<TextView>(R.id.tv_preco)
-        val tituloVagas = itemView.findViewById<TextView>(R.id.tv_qtd_vagas)
+        val tituloOrigem = itemView.findViewById<TextView>(R.id.tv_origem_pas)
+        val tituloDestino = itemView.findViewById<TextView>(R.id.tv_destino_pas)
+        val tituloHorario = itemView.findViewById<TextView>(R.id.tv_horario_pas)
+        val tituloPreco = itemView.findViewById<TextView>(R.id.tv_preco_pas)
     }
 
 }

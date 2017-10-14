@@ -27,7 +27,7 @@ class PrincipalPresenter(val view: PrincipalContrato.View) : FirebaseMessagingSe
                 }else{
                     view.mostrarViagens(viagens)
                 }
-            }
+        }
     }
 
 }
