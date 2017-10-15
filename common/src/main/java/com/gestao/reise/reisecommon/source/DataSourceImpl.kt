@@ -47,8 +47,9 @@ object DataSourceImpl : DataSource {
         root.child("motoristas").child(uid_motorista).child("viagens").child(viagem.uid).setValue(true)
     }
 
-    override fun reservarViagem(uid_viagem: String, uid_passageiro: String) {
+    override fun reservarViagem(uid_viagem: String, uid_passageiro: String, sucesso: () -> Unit) {
         root.child("passageiros").child(uid_passageiro).child("viagens").child(uid_viagem).setValue(true)
+        sucesso()
     }
 
     override fun salvarCarro(carro: Carro) {
