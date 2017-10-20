@@ -2,10 +2,7 @@ package com.gestao.reise.reisecommon.source
 
 import android.net.Uri
 import android.util.Log
-import com.gestao.reise.reisecommon.model.Carro
-import com.gestao.reise.reisecommon.model.Motorista
-import com.gestao.reise.reisecommon.model.Passageiro
-import com.gestao.reise.reisecommon.model.Viagem
+import com.gestao.reise.reisecommon.model.*
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
@@ -42,13 +39,18 @@ object DataSourceImpl : DataSource {
     }
 
     override fun salvarViagem(viagem: Viagem, uid_motorista: String) {
+        val frequencia = Frequencia()
+        frequencia.uid = root.child("frequencias").push().key
+        viagem.uid_frequencia = frequencia.uid
         viagem.uid = root.child("viagens").push().key
         root.child("viagens").child(viagem.uid).setValue(viagem)
+        root.child("frequencias").child(frequencia.uid).setValue(frequencia)
         root.child("motoristas").child(uid_motorista).child("viagens").child(viagem.uid).setValue(true)
     }
 
-    override fun reservarViagem(uid_viagem: String, uid_passageiro: String, sucesso: () -> Unit) {
-        root.child("passageiros").child(uid_passageiro).child("viagens").child(uid_viagem).setValue(true)
+    override fun reservarViagem(dia: String,viagem: Viagem, uid_passageiro: String, sucesso: () -> Unit) {
+        root.child("frequencias").child(viagem.uid_frequencia).child(dia).child(uid_passageiro).setValue(true)
+        root.child("passageiros").child(uid_passageiro).child("viagens").child(viagem.uid).setValue(dia)
         sucesso()
     }
 
@@ -57,7 +59,7 @@ object DataSourceImpl : DataSource {
         root.child("carros").child(carro.uid).setValue(carro)
     }
 
-    override fun buscarViagens(user: String, uid: String, action: (MutableList<Viagem>) -> Unit) {
+    override fun buscarViagens(user: String, uid: String, action: (MutableList<Viagem>) -> Unit){
         val viagens: MutableList<Viagem> = mutableListOf()
 
         val listener = object : ValueEventListener {
@@ -103,11 +105,12 @@ object DataSourceImpl : DataSource {
                 if (viagem!!.destino.equals(destino)) {
                     Log.i("logBusca", viagem.origem + viagem.destino)
                     viagens.add(viagem)
-                    action(viagens)
                 }
+                action(viagens)
             }
         }
         root.child("viagens").orderByChild("origem").equalTo(origem).addChildEventListener(listener)
+        action(mutableListOf())
     }
 
     override fun buscarPassageiros(callback: (MutableList<Passageiro>) -> Unit) {

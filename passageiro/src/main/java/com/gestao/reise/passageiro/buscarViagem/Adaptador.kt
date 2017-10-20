@@ -34,11 +34,10 @@ class Adaptador(val viagens: MutableList<Viagem>): RecyclerView.Adapter<Adaptado
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
         val viagem: Viagem = viagens[position]
-        holder!!.tituloOrigem!!.text = viagem.origem
-        holder!!.tituloDestino!!.text = viagem.destino
+        holder!!.tituloOrigem!!.text = viagem.origem.capitalize()
+        holder!!.tituloDestino!!.text = viagem.destino.capitalize()
         holder!!.tituloHorario!!.text = viagem.horario
         holder!!.tituloPreco!!.text = viagem.preco
-        holder!!.tituloVagas!!.text = viagem.qtd_vagas.toString()
         holder!!.botaoDetalhes.setOnClickListener { mostrarDetalhes(holder.context,viagem) }
     }
 
@@ -51,7 +50,6 @@ class Adaptador(val viagens: MutableList<Viagem>): RecyclerView.Adapter<Adaptado
         val tituloDestino = itemView.findViewById<TextView>(R.id.tv_destino)
         val tituloHorario = itemView.findViewById<TextView>(R.id.tv_horario)
         val tituloPreco = itemView.findViewById<TextView>(R.id.tv_preco)
-        val tituloVagas = itemView.findViewById<TextView>(R.id.tv_qtd_vagas)
         val botaoDetalhes = itemView.findViewById<Button>(R.id.bt_detalhes)
         val context = itemView.context
 

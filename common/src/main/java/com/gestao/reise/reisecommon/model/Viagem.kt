@@ -9,13 +9,13 @@ import kotlin.collections.HashMap
  */
 
 data class Viagem(var uid: String,
+                  var uid_frequencia: String,
                   var origem: String,
                   var destino: String,
                   var horario: String,
                   var preco: String,
                   var qtd_vagas: Int,
                   var frequencia: HashMap<String,Boolean>,
-                  var passageiros: MutableList<String>,
                   var motorista: String) : Serializable{
-    constructor() : this("", "", "", "", "", -1, HashMap<String,Boolean>(),mutableListOf(), "")
+    constructor() : this("", "", "", "", "", "", -1, HashMap<String,Boolean>(), "")
 }

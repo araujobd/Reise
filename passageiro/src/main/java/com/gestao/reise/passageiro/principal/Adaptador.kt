@@ -21,10 +21,11 @@ class Adaptador(val viagens: MutableList<Viagem>): RecyclerView.Adapter<Adaptado
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
         val viagem: Viagem = viagens[position]
-        holder!!.tituloOrigem!!.text = viagem.origem
-        holder!!.tituloDestino!!.text = viagem.destino
+        holder!!.tituloOrigem!!.text = viagem.origem.capitalize()
+        holder!!.tituloDestino!!.text = viagem.destino.capitalize()
         holder!!.tituloHorario!!.text = viagem.horario
         holder!!.tituloPreco!!.text = viagem.preco
+        //holder!!.tituloDia!!.text =
     }
 
     override fun getItemCount(): Int {
@@ -36,6 +37,7 @@ class Adaptador(val viagens: MutableList<Viagem>): RecyclerView.Adapter<Adaptado
         val tituloDestino = itemView.findViewById<TextView>(R.id.tv_destino_pas)
         val tituloHorario = itemView.findViewById<TextView>(R.id.tv_horario_pas)
         val tituloPreco = itemView.findViewById<TextView>(R.id.tv_preco_pas)
+        val tituloDia = itemView.findViewById<TextView>(R.id.tv_dia_pas)
     }
 
 }

@@ -111,64 +111,76 @@
         android:layout_marginTop="5dp"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tv_dom"
+        <Button
+            android:id="@+id/bt_dom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
             android:layout_weight="1"
-            android:text="Dom" />
-        <TextView
-            android:id="@+id/tv_seg"
+            android:background="@color/background"
+            android:clickable="false"
+            android:text="Dom"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/bt_seg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
             android:layout_weight="1"
-            android:text="Seg" />
-        <TextView
-            android:id="@+id/tv_ter"
+            android:background="@color/background"
+            android:clickable="false"
+            android:text="Seg"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/bt_ter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
             android:layout_weight="1"
-            android:text="Ter" />
-        <TextView
-            android:id="@+id/tv_qua"
+            android:background="@color/background"
+            android:clickable="false"
+            android:text="Ter"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/bt_qua"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
             android:layout_weight="1"
-            android:text="Qua" />
-        <TextView
-            android:id="@+id/tv_qui"
+            android:background="@color/background"
+            android:clickable="false"
+            android:text="Qua"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/bt_qui"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
             android:layout_weight="1"
-            android:text="Qui" />
-        <TextView
-            android:id="@+id/tv_sex"
+            android:background="@color/background"
+            android:clickable="false"
+            android:text="Qui"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/bt_sex"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
             android:layout_weight="1"
-            android:text="Sex" />
-        <TextView
-            android:id="@+id/tv_sab"
+            android:background="@color/background"
+            android:clickable="false"
+            android:text="Sex"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/bt_sab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
             android:layout_weight="1"
-            android:text="Sáb" />
+            android:background="@color/background"
+            android:clickable="false"
+            android:text="Sáb"
+            android:textSize="12sp" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/bt_reservar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="80dp"
-        android:layout_marginRight="80dp"
-        android:layout_marginTop="20dp"
-        android:text="Reservar vaga" />
 
 </LinearLayout>

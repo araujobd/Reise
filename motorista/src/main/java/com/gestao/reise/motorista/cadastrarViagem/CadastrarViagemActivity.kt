@@ -5,6 +5,10 @@ import android.os.Bundle
 import com.gestao.reise.motorista.R
 import kotlinx.android.synthetic.main.content_cadastrar_viagem.*
 import java.util.*
+import java.text.Normalizer
+import java.util.Collections.replaceAll
+
+
 
 /**
  * Created by cainan on 20/09/17.
@@ -28,11 +32,13 @@ class CadastrarViagemActivity : Activity(), CadastrarViagemContrato.view{
 
     }
 
+    fun removerAcentos(str: String): String = Normalizer.normalize(str, Normalizer.Form.NFD)
+
     fun salvarViagem(){
         marcaFrequencia()
         presenter.cadastrarViagem(
-                et_origem.text.toString(),
-                et_destino.text.toString(),
+                et_origem.text.toString().toLowerCase(),
+                et_destino.text.toString().toLowerCase(),
                 et_preco.text.toString(),
                 et_horario.text.toString(),
                 frequencia)

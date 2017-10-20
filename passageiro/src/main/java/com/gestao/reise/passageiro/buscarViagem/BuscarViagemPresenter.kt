@@ -18,13 +18,16 @@ class BuscarViagemPresenter(val view: BuscarViagemContrato.View): BuscarViagemCo
                 else
                     view.listarViagens(viagens)
             }
-        else
+        else {
             view.mostrarMSG()
+            view.listarViagens(mutableListOf())
+        }
     }
 
     fun validarEntrada(origem: String, destino: String): Boolean {
-        if(origem.isBlank() or destino.isBlank())
+        if(origem.isBlank() or destino.isBlank()){
             return false
+        }
         return true
     }
 }

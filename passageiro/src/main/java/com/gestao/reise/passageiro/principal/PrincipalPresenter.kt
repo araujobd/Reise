@@ -18,12 +18,12 @@ class PrincipalPresenter(val view: PrincipalContrato.View) : FirebaseMessagingSe
 
     override fun possuiViagens() {
         source.buscarViagens("passageiros",auth.currentUser!!.uid) { viagens ->
-        if(viagens.isEmpty()){
-            view.direcionarBusca()
-        }else{
-            view.mostrarViagens(viagens)
+            if(viagens.isEmpty()){
+                view.direcionarBusca()
+            }else{
+                view.mostrarViagens(viagens)
+            }
         }
-    }
     }
 
     override fun onMessageReceived(p0: RemoteMessage?) {

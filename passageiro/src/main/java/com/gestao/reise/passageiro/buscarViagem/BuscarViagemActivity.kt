@@ -27,8 +27,8 @@ class BuscarViagemActivity: Activity(),BuscarViagemContrato.View {
     private fun configurarBotao() {
         bt_buscar.setOnClickListener{
             presenter.contemViagens(
-                et_origem.text.toString(),
-                et_destino.text.toString()
+                et_origem.text.toString().toLowerCase(),
+                et_destino.text.toString().toLowerCase()
             )
         }
     }

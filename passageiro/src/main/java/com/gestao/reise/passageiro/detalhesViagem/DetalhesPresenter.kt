@@ -13,8 +13,12 @@ class DetalhesPresenter(val view: DetalhesContrato.view) : DetalhesContrato.pres
     private val source: DataSource = DataSourceImpl
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
-    override fun reservarVaga(viagem: Viagem) {
-        source.reservarViagem(viagem.uid,auth.currentUser!!.uid,
+    override fun interesseVaga(viagem: Viagem,dia: String) {
+        view.dialogo(viagem,dia)
+    }
+
+    override fun reservarVaga(viagem: Viagem,dia: String) {
+        source.reservarViagem(dia,viagem,auth.currentUser!!.uid,
                 sucesso = {view.msgSucesso()})
     }
 }
