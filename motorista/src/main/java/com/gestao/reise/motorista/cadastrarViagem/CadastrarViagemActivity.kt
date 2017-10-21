@@ -32,8 +32,6 @@ class CadastrarViagemActivity : Activity(), CadastrarViagemContrato.view{
 
     }
 
-    fun removerAcentos(str: String): String = Normalizer.normalize(str, Normalizer.Form.NFD)
-
     fun salvarViagem(){
         marcaFrequencia()
         presenter.cadastrarViagem(

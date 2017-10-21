@@ -8,19 +8,19 @@
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="73dp"
+        android:layout_height="60dp"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="60dp"
             android:background="@color/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:title="Reise"
-            app:titleMarginStart="40dp"/>
+            app:title="Reise Driver"
+            app:titleMarginStart="40dp" />
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_principal" />
+    <include layout="@layout/content_principal"/>
 </android.support.design.widget.CoordinatorLayout>
