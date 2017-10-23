@@ -23,11 +23,16 @@ class CadastrarViagemActivity : Activity(), CadastrarViagemContrato.view{
         super.onCreate(savedInstanceState)
         setContentView(R.layout.content_cadastrar_viagem)
         presenter = CadastrarViagemPresenter(this)
+
+        configBotao()
+    }
+
+    private fun configBotao() {
         bt_salvar.setOnClickListener{
             salvarViagem()
-            finish()
         }
     }
+
     override fun msgSucesso() {
 
     }

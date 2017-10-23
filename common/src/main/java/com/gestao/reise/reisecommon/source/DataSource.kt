@@ -14,6 +14,7 @@ interface DataSource {
     fun salvarPassageiro(passageiro: Passageiro)
     fun salvarViagem(viagem: Viagem,uid_motorista: String)
     fun salvarCarro(carro: Carro)
+    fun removerCard(user: String, uid_user: String, uid_viagem: String)
     fun reservarViagem(dia: String,viagem: Viagem,uid_passageiro: String, sucesso: () -> Unit)
 
     fun buscarUidUser(typeUser: String, uid: String, sucesso: () -> Unit, erro: () -> Unit)

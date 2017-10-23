@@ -57,6 +57,8 @@ class PrincipalActivity : Activity(), NavigationView.OnNavigationItemSelectedLis
 
         if(id == R.id.nav_viagem)
             startActivity(Intent(this@PrincipalActivity, CadastrarViagemActivity::class.java))
+        if(id == R.id.nav_perfil)
+           // startActivity(Intent(this@PrincipalActivity, PerfilActivity::class.java))
 
         drawer_layout.closeDrawer(GravityCompat.START)
         return true

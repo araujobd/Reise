@@ -17,7 +17,6 @@ class CadastrarViagemPresenter(val view: CadastrarViagemContrato.view) : Cadastr
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
     override fun cadastrarViagem(origem : String, destino : String, preco : String, horario: String, frequencia: HashMap<String,Boolean>) {
-
         val uid_motorista = auth.currentUser?.uid!!
         val viagem = Viagem()
         source.buscarMotorista(uid_motorista) {

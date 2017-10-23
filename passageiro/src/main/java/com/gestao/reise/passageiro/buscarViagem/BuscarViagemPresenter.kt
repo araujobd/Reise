@@ -1,5 +1,7 @@
 package com.gestao.reise.passageiro.buscarViagem
 
+import android.util.Log
+import com.gestao.reise.reisecommon.model.Viagem
 import com.gestao.reise.reisecommon.source.DataSource
 import com.gestao.reise.reisecommon.source.DataSourceImpl
 
@@ -13,19 +15,20 @@ class BuscarViagemPresenter(val view: BuscarViagemContrato.View): BuscarViagemCo
     override fun contemViagens(origem: String, destino: String) {
         if(validarEntrada(origem,destino))
             source.buscarViagensOD(origem,destino){viagens ->
-                if(viagens.isEmpty())
-                    view.mostrarMSG()
-                else
+                if(viagens.isNotEmpty())
                     view.listarViagens(viagens)
+                else
+                    erroBusca()
             }
-        else {
-            view.mostrarMSG()
-            view.listarViagens(mutableListOf())
-        }
+        else
+            erroBusca()
     }
-
+    fun erroBusca(){
+        view.mostrarMSG()
+        view.listarViagens(mutableListOf())
+    }
     fun validarEntrada(origem: String, destino: String): Boolean {
-        if(origem.isBlank() or destino.isBlank()){
+        if(origem.isBlank()){
             return false
         }
         return true

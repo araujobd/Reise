@@ -48,6 +48,10 @@ object DataSourceImpl : DataSource {
         root.child("motoristas").child(uid_motorista).child("viagens").child(viagem.uid).setValue(true)
     }
 
+    override fun removerCard(user: String, uid_user: String, uid_viagem: String) {
+        root.child(user).child(uid_user).child("viagens").child(uid_viagem).removeValue()
+    }
+
     override fun reservarViagem(dia: String,viagem: Viagem, uid_passageiro: String, sucesso: () -> Unit) {
         root.child("frequencias").child(viagem.uid_frequencia).child(dia).child(uid_passageiro).setValue(true)
         root.child("passageiros").child(uid_passageiro).child("viagens").child(viagem.uid).setValue(dia)
@@ -102,15 +106,14 @@ object DataSourceImpl : DataSource {
             override fun onCancelled(p0: DatabaseError?) {Log.d("DATASSS", "Error")}
             override fun onChildAdded(p0: DataSnapshot?, p1: String?) {
                 val viagem: Viagem? = p0!!.getValue(Viagem::class.java)
-                if (viagem!!.destino.equals(destino)) {
+                if ((viagem!!.destino.equals(destino)) or destino.isBlank()) {
                     Log.i("logBusca", viagem.origem + viagem.destino)
                     viagens.add(viagem)
+                    action(viagens)
                 }
-                action(viagens)
             }
         }
         root.child("viagens").orderByChild("origem").equalTo(origem).addChildEventListener(listener)
-        action(mutableListOf())
     }
 
     override fun buscarPassageiros(callback: (MutableList<Passageiro>) -> Unit) {

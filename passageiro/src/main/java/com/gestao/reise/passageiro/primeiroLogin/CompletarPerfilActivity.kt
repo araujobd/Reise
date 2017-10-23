@@ -60,7 +60,6 @@ class CompletarPerfilActivity : BaseActivity(), CompletarPerfilContrato.View {
 
     override fun mostrarPerfil(passageiro: Passageiro) {
         Picasso.with(this).load(passageiro.fotoUrl).noFade().into(img_perfil)
-
         ed_nome.setText(passageiro.nome)
         ed_celular.setText(passageiro.telefone)
         ed_descricao.setText(passageiro.descricao)

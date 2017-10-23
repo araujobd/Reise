@@ -23,6 +23,7 @@
     <!-- Drawer Menu -->
     <string name="opcoes">Opções</string>
     <string name="principal">Principal</string>
+    <string name="perfil">Perfil</string>
     <string name="viagem">Viagem</string>
     <string name="sair">Sair</string>
     <string name="notificacoes">Notificações</string>

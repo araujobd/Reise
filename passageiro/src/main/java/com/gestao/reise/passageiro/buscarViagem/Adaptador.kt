@@ -21,7 +21,6 @@ class Adaptador(val viagens: MutableList<Viagem>): RecyclerView.Adapter<Adaptado
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder? {
         val vr = LayoutInflater.from(parent?.context).inflate(R.layout.card_view_buscar,parent,false)
-
         return ViewHolder(vr)
 
     }
