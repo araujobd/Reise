@@ -1,6 +1,7 @@
 package com.gestao.reise.reisecommon.source
 
 import android.net.Uri
+import android.text.method.SingleLineTransformationMethod
 import android.util.Log
 import com.gestao.reise.reisecommon.model.*
 import com.google.firebase.database.*
@@ -9,6 +10,9 @@ import com.google.firebase.storage.StorageReference
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.GenericTypeIndicator
+
+
 
 
 
@@ -54,7 +58,7 @@ object DataSourceImpl : DataSource {
 
     override fun reservarViagem(dia: String,viagem: Viagem, uid_passageiro: String, sucesso: () -> Unit) {
         root.child("frequencias").child(viagem.uid_frequencia).child(dia).child(uid_passageiro).setValue(true)
-        root.child("passageiros").child(uid_passageiro).child("viagens").child(viagem.uid).setValue(dia)
+        root.child("passageiros").child(uid_passageiro).child("viagens").child(viagem.uid).child(dia).setValue(true)
         sucesso()
     }
 
@@ -81,6 +85,7 @@ object DataSourceImpl : DataSource {
                         }
 
                         override fun onDataChange(p0: DataSnapshot?) {
+                            Log.i("logBuscaa",p0.toString())
                             val viagem: Viagem? = p0!!.getValue(Viagem::class.java)
                             Log.i("logBusca", "viagem: " + viagem!!.origem + " / " + viagem.destino)
                             viagens.add(viagem)
@@ -126,9 +131,10 @@ object DataSourceImpl : DataSource {
 
             override fun onDataChange(dataSnapshot: DataSnapshot?) {
                 dataSnapshot?.children?.forEach {
-                    val passageiro: Passageiro? = it.getValue(Passageiro::class.java)
+                    val passageiro: MutableMap<String, Any>? = it.getValue(Passageiro::class.java)  as MutableMap<String, Any>
                     if (passageiro != null) {
-                        passageiros.add(passageiro)
+
+                        passageiros.add(passageiro as Passageiro)
                     }
                 }
                 callback(passageiros)
@@ -167,30 +173,33 @@ object DataSourceImpl : DataSource {
             }
 
         }
+
         root.child("motoristas").child(uid).addValueEventListener(listener)
     }
 
     override fun buscarPassageiro(uid: String, sucesso: (passageiro: Passageiro) -> Unit) {
+        Log.i("logBusca", "buscarPassageiro")
         val listener = object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError?) {
             }
 
             override fun onDataChange(dataSnapshot: DataSnapshot?) {
+                Log.i("logBusca", "#################################################")
+                Log.i("logBusca", dataSnapshot.toString())
                 val passageiro: Passageiro? = dataSnapshot?.getValue(Passageiro::class.java)
-                if (passageiro != null)
-                    sucesso(passageiro)
+                Log.i("logBusca", ""+passageiro)
+                sucesso(passageiro as Passageiro)
             }
-
         }
         root.child("passageiros").child(uid).addValueEventListener(listener)
     }
 
-    override fun salvarImagem(uid: String, imagePath: Uri?, sucesso: (String) -> Unit) {
-        val storageRef = FirebaseStorage.getInstance().reference.child("images")
-        val upload = storageRef.child(uid).child("profile").putFile(imagePath!!)
+override fun salvarImagem(uid: String, imagePath: Uri?, sucesso: (String) -> Unit) {
+    val storageRef = FirebaseStorage.getInstance().reference.child("images")
+    val upload = storageRef.child(uid).child("profile").putFile(imagePath!!)
 
-       upload.addOnCompleteListener { sucesso(it.result.downloadUrl.toString()) }
-    }
+   upload.addOnCompleteListener { sucesso(it.result.downloadUrl.toString()) }
+}
 
 }
 

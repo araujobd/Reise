@@ -1,5 +1,7 @@
 package com.gestao.reise.reisecommon.model
 
+import java.io.Serializable
+
 /**
  * Created by cainan on 17/10/17.
  */

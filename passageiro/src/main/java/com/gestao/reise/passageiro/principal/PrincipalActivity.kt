@@ -7,6 +7,7 @@ import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.LinearLayout
@@ -28,7 +29,7 @@ class PrincipalActivity : BaseActivity(), NavigationView.OnNavigationItemSelecte
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_principal)
-
+Log.i("teste","onCreate Principal")
         showProgress()
 
         val toggle = ActionBarDrawerToggle(this, drawer_layout, toolbar, R.string.drawer_open, R.string.drawer_close)
@@ -38,7 +39,7 @@ class PrincipalActivity : BaseActivity(), NavigationView.OnNavigationItemSelecte
 
         nav_drawer.setNavigationItemSelectedListener(this)
         presenter.possuiViagens()
-        presenter.configNavHeader()
+        //presenter.configNavHeader()
     }
 
     override fun mostrarNavHeader(passageiro: Passageiro) {
@@ -52,6 +53,7 @@ class PrincipalActivity : BaseActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun mostrarViagens(viagens: MutableList<Viagem>) {
+        Log.i("teste","mostrarViagens")
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewPas)
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
         val adapter = Adaptador(viagens)

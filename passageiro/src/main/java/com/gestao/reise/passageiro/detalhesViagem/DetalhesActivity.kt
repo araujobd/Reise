@@ -42,6 +42,7 @@ class DetalhesActivity: Activity(), DetalhesContrato.view {
         builder.setTitle("Deseja reservar vaga neste dia?")
         builder.setPositiveButton("Sim", DialogInterface.OnClickListener { dialog, which ->
             presenter.reservarVaga(viagem,dia)
+            finish()
         })
         builder.setNegativeButton("Não", DialogInterface.OnClickListener { dialog, which ->
             dialog.cancel()
@@ -52,31 +53,31 @@ class DetalhesActivity: Activity(), DetalhesContrato.view {
 
     fun mostrarFrequencia(viagem: Viagem){
 
-        if(viagem.frequencia.get("domingo")!!.equals(true)) {
+        if(viagem.frequencia[0]) {
             bt_dom.setBackgroundColor(Color.BLUE)
             bt_dom.setOnClickListener{ presenter.interesseVaga(viagem,"dom") }
         }
-        if(viagem.frequencia.get("segunda")!!.equals(true)) {
+        if(viagem.frequencia[1]) {
             bt_seg.setBackgroundColor(Color.BLUE)
             bt_seg.setOnClickListener{ presenter.interesseVaga(viagem,"seg") }
         }
-        if(viagem.frequencia.get("terca")!!.equals(true)) {
+        if(viagem.frequencia[2]) {
             bt_ter.setBackgroundColor(Color.BLUE)
             bt_ter.setOnClickListener{ presenter.interesseVaga(viagem,"ter") }
         }
-        if(viagem.frequencia.get("quarta")!!.equals(true)) {
+        if(viagem.frequencia[3]) {
             bt_qua.setBackgroundColor(Color.BLUE)
             bt_qua.setOnClickListener{ presenter.interesseVaga(viagem,"qua") }
         }
-        if(viagem.frequencia.get("quinta")!!.equals(true)) {
+        if(viagem.frequencia[4]) {
             bt_qui.setBackgroundColor(Color.BLUE)
             bt_qui.setOnClickListener{ presenter.interesseVaga(viagem,"qui") }
         }
-        if(viagem.frequencia.get("sexta")!!.equals(true)) {
+        if(viagem.frequencia[5]) {
             bt_sex.setBackgroundColor(Color.BLUE)
             bt_sex.setOnClickListener{ presenter.interesseVaga(viagem,"sex") }
         }
-        if(viagem.frequencia.get("sabado")!!.equals(true)) {
+        if(viagem.frequencia[6]) {
             bt_sab.setBackgroundColor(Color.BLUE)
             bt_sab.setOnClickListener{ presenter.interesseVaga(viagem,"sab") }
          }

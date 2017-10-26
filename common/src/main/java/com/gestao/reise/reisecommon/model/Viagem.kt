@@ -15,7 +15,7 @@ data class Viagem(var uid: String,
                   var horario: String,
                   var preco: String,
                   var qtd_vagas: Int,
-                  var frequencia: HashMap<String,Boolean>,
+                  var frequencia: ArrayList<Boolean>,
                   var motorista: String) : Serializable{
-    constructor() : this("", "", "", "", "", "", -1, HashMap<String,Boolean>(), "")
+    constructor() : this("", "", "", "", "", "", -1, arrayListOf(), "")
 }

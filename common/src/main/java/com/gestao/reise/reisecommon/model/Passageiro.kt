@@ -9,12 +9,13 @@ data class Passageiro(var uid: String,
                       var nome: String,
                       var fotoUrl: String,
                       var telefone: String,
-                      var viagens: MutableList<String>,
+                      var viagens: Map<String,Viagem>,
                       var endereco: String,
                       var descricao: String) {
-    constructor() : this("", "", "", "", mutableListOf(), "", "")
+    constructor() : this("", "", "", "", mapOf<String,Viagem>(), "", "")
 
-    fun toMap(): MutableMap<String, Any> {
+
+    fun toMap():MutableMap<String, Any> {
         val map = mutableMapOf<String, Any>()
 
         map.put("uid", uid)

@@ -2,6 +2,7 @@ package com.gestao.reise.passageiro.perfil
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import com.gestao.reise.passageiro.BaseActivity
 
 import com.gestao.reise.passageiro.R
@@ -36,7 +37,9 @@ class PerfilActivity : BaseActivity(), PerfilContrato.View {
     }
 
     override fun mostrarPerfil(passageiro: Passageiro) {
+        Log.i("logBusca", "mostrarPerfil")
         Picasso.with(this).load(passageiro.fotoUrl).noFade().into(img_perfil)
+        Log.i("logBusca", "foto")
         tv_nome.setText(passageiro.nome)
         tv_telefone.setText(passageiro.telefone)
         tv_endereco.setText(passageiro.endereco)
