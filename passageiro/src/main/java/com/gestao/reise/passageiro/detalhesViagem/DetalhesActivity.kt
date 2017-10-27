@@ -4,11 +4,11 @@ import android.app.Activity
 import android.app.AlertDialog
 import android.graphics.Color
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Toast
 import com.gestao.reise.passageiro.R
 import com.gestao.reise.reisecommon.model.Viagem
 import kotlinx.android.synthetic.main.activity_detalhes_viagem.*
-import android.content.DialogInterface
 
 
 
@@ -22,8 +22,11 @@ class DetalhesActivity: Activity(), DetalhesContrato.view {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detalhes_viagem)
-
+        setActionBar(toolbarDetalhes)
+        actionBar.setDisplayHomeAsUpEnabled(true)
+        actionBar.setHomeButtonEnabled(true)
         val viagem = getIntent().getSerializableExtra("detalhes") as Viagem
+        actionBar.setTitle(viagem.origem.capitalize()+" / "+viagem.destino.capitalize())
         mostrarDetalhes(viagem)
     }
 
@@ -40,11 +43,11 @@ class DetalhesActivity: Activity(), DetalhesContrato.view {
     override fun dialogo(viagem: Viagem,dia: String) {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Deseja reservar vaga neste dia?")
-        builder.setPositiveButton("Sim", DialogInterface.OnClickListener { dialog, which ->
+        builder.setPositiveButton("Sim", { dialog, which ->
             presenter.reservarVaga(viagem,dia)
             finish()
         })
-        builder.setNegativeButton("Não", DialogInterface.OnClickListener { dialog, which ->
+        builder.setNegativeButton("Não", { dialog, which ->
             dialog.cancel()
         })
         val alert = builder.create()
@@ -85,6 +88,14 @@ class DetalhesActivity: Activity(), DetalhesContrato.view {
 
     override fun msgSucesso() {
         Toast.makeText(this,"Viagem reservada com sucesso!!",Toast.LENGTH_LONG).show()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item!!.getItemId()) {
+            android.R.id.home -> { finish() }
+            else -> {}
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }

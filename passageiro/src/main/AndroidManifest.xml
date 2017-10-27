@@ -35,7 +35,8 @@
         <activity android:name=".perfil.PerfilActivity"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".buscarViagem.BuscarViagemActivity"/>
+            android:name=".buscarViagem.BuscarViagemActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".detalhesViagem.DetalhesActivity"
             android:theme="@style/Theme.AppCompat.Light" />

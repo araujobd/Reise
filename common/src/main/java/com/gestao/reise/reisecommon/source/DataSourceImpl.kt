@@ -52,8 +52,9 @@ object DataSourceImpl : DataSource {
         root.child("motoristas").child(uid_motorista).child("viagens").child(viagem.uid).setValue(true)
     }
 
-    override fun removerCard(user: String, uid_user: String, uid_viagem: String) {
-        root.child(user).child(uid_user).child("viagens").child(uid_viagem).removeValue()
+    override fun removerCard(uid_user: String, uid_viagem: String,uid_freq: String,dia: String) {
+        root.child("passageiros").child(uid_user).child("viagens").child(uid_viagem).removeValue()
+        //root.child("frequencias").child(uid_freq).child(dia).child(uid_user).removeValue()
     }
 
     override fun reservarViagem(dia: String,viagem: Viagem, uid_passageiro: String, sucesso: () -> Unit) {
@@ -65,6 +66,10 @@ object DataSourceImpl : DataSource {
     override fun salvarCarro(carro: Carro) {
         carro.uid = root.child("carros").push().key
         root.child("carros").child(carro.uid).setValue(carro)
+    }
+
+    override fun buscarDia(uid: String, action: (String) -> Unit) {
+        //root.child()
     }
 
     override fun buscarViagens(user: String, uid: String, action: (MutableList<Viagem>) -> Unit){

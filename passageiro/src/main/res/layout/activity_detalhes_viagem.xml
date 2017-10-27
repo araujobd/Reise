@@ -3,7 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+    <Toolbar
+        android:id="@+id/toolbarDetalhes"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorPrimary" />
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"

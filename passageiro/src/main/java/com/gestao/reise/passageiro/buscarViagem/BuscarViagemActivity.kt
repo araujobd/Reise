@@ -4,11 +4,15 @@ import android.app.Activity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.view.MenuItem
 import android.widget.LinearLayout
 import android.widget.Toast
 import com.gestao.reise.passageiro.R
 import com.gestao.reise.reisecommon.model.Viagem
 import kotlinx.android.synthetic.main.activity_buscar_viagem.*
+import android.content.Intent
+
+
 
 /**
  * Created by cainan on 07/10/17.
@@ -20,6 +24,10 @@ class BuscarViagemActivity: Activity(),BuscarViagemContrato.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_buscar_viagem)
+        setActionBar(toolbarBuscar)
+        actionBar.setDisplayHomeAsUpEnabled(true)
+        actionBar.setHomeButtonEnabled(true)
+        actionBar.title = "Buscar Viagem"
         presenter = BuscarViagemPresenter(this)
         configurarBotao()
     }
@@ -42,6 +50,14 @@ class BuscarViagemActivity: Activity(),BuscarViagemContrato.View {
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
         val adapter = Adaptador(viagens)
         recyclerView.adapter = adapter
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item!!.getItemId()) {
+            android.R.id.home -> { finish() }
+            else -> {}
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }

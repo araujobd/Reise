@@ -1,5 +1,7 @@
 package com.gestao.reise.passageiro.principal
 
+import android.app.AlertDialog
+import android.content.Context
 import android.util.Log
 import com.gestao.reise.reisecommon.model.Viagem
 import com.gestao.reise.reisecommon.source.DataSource
@@ -17,7 +19,7 @@ class PrincipalPresenter(val view: PrincipalContrato.View) : FirebaseMessagingSe
     private val source: DataSource = DataSourceImpl
 
     override fun possuiViagens() {
-        source.buscarViagens("passageiros",auth.currentUser!!.uid.toString()) { viagens ->
+        source.buscarViagens("passageiros", auth.currentUser!!.uid) { viagens ->
             if(viagens.isEmpty()){
                 view.direcionarBusca()
             }else{

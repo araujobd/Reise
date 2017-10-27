@@ -46,19 +46,19 @@ class Adaptador(val viagens: MutableList<Viagem>): RecyclerView.Adapter<Adaptado
     fun dialogo(contexto: Context,viagem: Viagem,posicao: Int) {
         val builder = AlertDialog.Builder(contexto)
         builder.setTitle("Deseja remover esta viagem?")
-        builder.setPositiveButton("Sim", DialogInterface.OnClickListener { dialog, which ->
-            deletarCard(viagem.uid)
+        builder.setPositiveButton("Sim", { dialog, which ->
+            deletarCard(viagem.uid,viagem.uid_frequencia,"seg")
             viagens.remove(viagem)
             notifyItemRemoved(posicao)
         })
-        builder.setNegativeButton("Não", DialogInterface.OnClickListener { dialog, which ->
+        builder.setNegativeButton("Não", { dialog, which ->
             dialog.cancel()
         })
         val alert = builder.create()
         alert.show()
     }
-    fun deletarCard(uid_viagem: String){
-        source.removerCard("passageiros",auth.currentUser!!.uid,uid_viagem)
+    fun deletarCard(uid_viagem: String,uid_freq: String,dia: String){
+        source.removerCard(auth.currentUser!!.uid,uid_viagem,uid_freq,dia)
     }
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
