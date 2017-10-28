@@ -1,13 +1,12 @@
 package com.gestao.reise.motorista.cadastrarViagem
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Toast
 import com.gestao.reise.motorista.R
 import kotlinx.android.synthetic.main.content_cadastrar_viagem.*
-import java.util.*
-import java.text.Normalizer
-import java.util.Collections.replaceAll
 import kotlin.collections.ArrayList
 
 
@@ -22,6 +21,10 @@ class CadastrarViagemActivity : Activity(), CadastrarViagemContrato.view{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.content_cadastrar_viagem)
+        setActionBar(toolbarCadastrar)
+        actionBar.setDisplayHomeAsUpEnabled(true)
+        actionBar.setHomeButtonEnabled(true)
+        actionBar.title = "Cadastrar Viagem"
         presenter = CadastrarViagemPresenter(this)
 
         configBotao()
@@ -39,15 +42,26 @@ class CadastrarViagemActivity : Activity(), CadastrarViagemContrato.view{
 
     fun salvarViagem(){
         marcaFrequencia()
-        presenter.cadastrarViagem(
-                et_origem.text.toString().toLowerCase(),
-                et_destino.text.toString().toLowerCase(),
-                et_preco.text.toString(),
-                et_horario.text.toString(),
-                frequencia)
-        finish()
+        dialogo()
     }
-
+    fun dialogo(){
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Deseja salvar a viagem?")
+        builder.setPositiveButton("Sim", { dialog, which ->
+            presenter.cadastrarViagem(
+                    et_origem.text.toString().toLowerCase(),
+                    et_destino.text.toString().toLowerCase(),
+                    et_preco.text.toString(),
+                    et_horario.text.toString(),
+                    frequencia)
+            finish()
+        })
+        builder.setNegativeButton("Não", { dialog, which ->
+            dialog.cancel()
+        })
+        val alert = builder.create()
+        alert.show()
+    }
     fun marcaFrequencia(){
         if(cb_domingo.isChecked)
             frequencia[0] = true
@@ -63,6 +77,13 @@ class CadastrarViagemActivity : Activity(), CadastrarViagemContrato.view{
             frequencia[5] = true
         if(cb_sabado.isChecked)
             frequencia[6] = true
+    }
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item!!.getItemId()) {
+            android.R.id.home -> { finish() }
+            else -> {}
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }
