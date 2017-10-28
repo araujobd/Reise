@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <com.github.florent37.diagonallayout.DiagonalLayout
+        android:id="@+id/diagonal"
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:diagonal_angle="15"
+        app:diagonal_direction="left"
+        android:elevation="0dp" >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@color/colorPrimary"/>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="250dp"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/ed_nome"
+                android:hint="@string/nome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </android.support.design.widget.TextInputLayout>
+    </com.github.florent37.diagonallayout.DiagonalLayout>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_perfil"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="150dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:civ_border_width="1dp"
+        app:civ_border_color="@color/colorPrimary"
+        android:elevation="10dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <ImageButton
+        android:id="@+id/btimg_upload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/ic_menu_camera"
+        android:backgroundTint="@android:color/transparent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="@+id/img_perfil"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="@+id/img_perfil"
+        app:layout_constraintHorizontal_bias="0.541"
+        app:layout_constraintBottom_toBottomOf="@+id/img_perfil"
+        android:layout_marginBottom="0dp" />
+    <ScrollView
+        android:layout_marginTop="41dp"
+        app:layout_constraintTop_toBottomOf="@+id/btimg_upload"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <include
+            layout="@layout/content_editar_perfil"/>
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>

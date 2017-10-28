@@ -8,7 +8,6 @@ import com.gestao.reise.reisecommon.model.Passageiro
 import com.gestao.reise.reisecommon.model.Viagem
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
 
 /**
  * Created by bruno on 31/08/17.
@@ -20,7 +19,7 @@ object DataSourceImpl : DataSource {
     private val root: DatabaseReference
 
     init {
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true)
+        //FirebaseDatabase.getInstance().setPersistenceEnabled(true)
         database = FirebaseDatabase.getInstance()
         root = database.reference
         root.keepSynced(true)
