@@ -6,7 +6,10 @@
             android:id="@+id/nav_principal"
             android:icon="@drawable/ic_menu_home"
             android:title="@string/principal" />
-
+        <item
+            android:id="@+id/nav_perfil"
+            android:icon="@drawable/ic_menu_perfil"
+            android:title="@string/perfil" />
         <item
             android:id="@+id/nav_viagem"
             android:icon="@drawable/ic_menu_location"

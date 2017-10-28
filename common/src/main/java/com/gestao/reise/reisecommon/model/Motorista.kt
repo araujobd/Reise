@@ -8,10 +8,10 @@ data class Motorista(var uid: String,
                      var nome: String,
                      var fotoUrl: String,
                      var telefone: String,
-                     var viagens: MutableList<String>,
+                     var viagens: Map<String,Boolean>,
                      var endereco: String,
                      var descricao: String,
                      var carro: Carro) {
-    constructor() : this("", "", "", "", mutableListOf(), "", "", Carro())
+    constructor() : this("", "", "", "", mapOf<String,Boolean>(), "", "", Carro())
 }
 

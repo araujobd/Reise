@@ -6,6 +6,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.text.TextUtils
+import android.view.MenuItem
 import com.gestao.reise.passageiro.BaseActivity
 
 import com.gestao.reise.passageiro.R
@@ -29,6 +30,7 @@ class CompletarPerfilActivity : BaseActivity(), CompletarPerfilContrato.View {
 
         setActionBar(toolbar)
         actionBar.setDisplayHomeAsUpEnabled(true)
+        actionBar.setHomeButtonEnabled(true)
         actionBar.title = "Atualizar Perfil"
 
         configurarTela()
@@ -60,7 +62,6 @@ class CompletarPerfilActivity : BaseActivity(), CompletarPerfilContrato.View {
 
     override fun mostrarPerfil(passageiro: Passageiro) {
         Picasso.with(this).load(passageiro.fotoUrl).noFade().into(img_perfil)
-
         ed_nome.setText(passageiro.nome)
         ed_celular.setText(passageiro.telefone)
         ed_descricao.setText(passageiro.descricao)
@@ -102,5 +103,12 @@ class CompletarPerfilActivity : BaseActivity(), CompletarPerfilContrato.View {
     override fun iniciarPrincipal() {
         startActivity(Intent(this@CompletarPerfilActivity, PerfilActivity::class.java))
         finish()
+    }
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item!!.getItemId()) {
+            android.R.id.home -> { finish() }
+            else -> {}
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

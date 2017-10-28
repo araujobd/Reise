@@ -8,32 +8,27 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <service
-            android:name=".principal.PrincipalPresenter"
+
+        <service android:name=".principal.PrincipalPresenter"
             android:permission="true">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>
         </service>
 
-        <activity
-            android:name=".splash.SplashActivity"
+        <activity android:name=".splash.SplashActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Completar_perfil_infor_carro" />
+        <activity android:name=".Completar_perfil_infor_carro"/>
+        <activity android:name=".principal.PrincipalActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".completarPerfil.pessoal.CompletarPerfilActivity" />
-        <activity
-            android:name=".cadastrarViagem.CadastrarViagemActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".carro.EditarCarroActivity"></activity>
-
-        <activity android:name=".perfil.editar.EditarPerfilActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".cadastrarViagem.CadastrarViagemActivity"
+            android:theme="@style/Theme.AppCompat.Light" />
     </application>
 
 </manifest>

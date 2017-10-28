@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
-    tools:context="com.gestao.reise.passageiro.principal.PrincipalActivity">
+    tools:context="com.gestao.reise.motorista.principal.PrincipalActivity">
 
     <include
         layout="@layout/app_bar_principal"
@@ -17,15 +17,9 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
         android:fitsSystemWindows="true"
-        app:layout_constraintTop_toTopOf="parent"
         app:headerLayout="@layout/nav_header_principal"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:menu="@menu/activity_menu_drawer"
-        app:itemIconTint="@color/colorAccent" />
-
-
+        app:itemIconTint="@color/colorAccent"/>
 
 </android.support.v4.widget.DrawerLayout>

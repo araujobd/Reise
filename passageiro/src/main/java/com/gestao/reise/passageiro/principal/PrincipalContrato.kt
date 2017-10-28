@@ -1,5 +1,6 @@
 package com.gestao.reise.passageiro.principal
 
+import com.gestao.reise.reisecommon.model.Passageiro
 import com.gestao.reise.reisecommon.model.Viagem
 
 /**
@@ -9,10 +10,12 @@ interface PrincipalContrato {
 
     interface View {
         fun direcionarBusca()
-        fun mostrarViagens(viagens: (MutableList<Viagem>))
+        fun mostrarViagens(viagens: MutableList<Viagem>)
+        fun mostrarNavHeader(passageiro: Passageiro)
     }
 
     interface Presenter {
+        fun configNavHeader()
         fun possuiViagens()
     }
 

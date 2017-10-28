@@ -21,13 +21,13 @@ class PrincipalPresenter(val view: PrincipalContrato.View) : FirebaseMessagingSe
     }
 
     override fun possuiViagens() {
-        source.buscarViagens("motorista",auth.currentUser!!.uid) { viagens ->
+        source.buscarViagens("motoristas",auth.currentUser!!.uid.toString()) { viagens ->
                 if(viagens.isEmpty()){
                     view.direcionarCadastro()
                 }else{
                     view.mostrarViagens(viagens)
                 }
-            }
+        }
     }
 
 }

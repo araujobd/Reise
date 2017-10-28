@@ -13,7 +13,7 @@
         app:layout_constraintRight_toRightOf="parent"
         style="@style/InputTIL"
         android:layout_marginTop="16dp"
-        android:layout_marginLeft="8dp">
+        android:layout_marginStart="8dp">
 
         <EditText
             android:id="@+id/et_origem"
@@ -75,6 +75,7 @@
             android:inputType="time" />
 
     </android.support.design.widget.TextInputLayout>
+
     <TextView
         android:id="@+id/tv_frequencia"
         android:layout_width="wrap_content"
@@ -88,82 +89,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintHorizontal_bias="0.502"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintTop_toBottomOf="@+id/til_horario" />
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="372dp"
-        android:layout_height="53dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_frequencia">
-
-        <CheckBox
-            android:id="@+id/cb_domingo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="18dp" />
-
-        <CheckBox
-            android:id="@+id/cb_segunda"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/cb_domingo"
-            android:layout_alignBottom="@+id/cb_domingo"
-            android:layout_marginStart="18dp"
-            android:layout_toEndOf="@+id/cb_domingo" />
-
-        <CheckBox
-            android:id="@+id/cb_terca"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/cb_segunda"
-            android:layout_alignBottom="@+id/cb_segunda"
-            android:layout_marginStart="18dp"
-            android:layout_toEndOf="@+id/cb_segunda" />
-
-        <CheckBox
-            android:id="@+id/cb_quarta"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/cb_terca"
-            android:layout_alignBottom="@+id/cb_terca"
-            android:layout_marginStart="18dp"
-            android:layout_toEndOf="@+id/cb_terca" />
-
-        <CheckBox
-            android:id="@+id/cb_quinta"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/cb_quarta"
-            android:layout_alignBottom="@+id/cb_quarta"
-            android:layout_marginStart="18dp"
-            android:layout_toEndOf="@+id/cb_quarta" />
-
-        <CheckBox
-            android:id="@+id/cb_sexta"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/cb_quinta"
-            android:layout_alignBottom="@+id/cb_quinta"
-            android:layout_marginStart="18dp"
-            android:layout_toEndOf="@+id/cb_quinta" />
-
-        <CheckBox
-            android:id="@+id/cb_sabado"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/cb_sexta"
-            android:layout_alignBottom="@+id/cb_sexta"
-            android:layout_marginStart="18dp"
-            android:layout_toEndOf="@+id/cb_sexta" />
-    </RelativeLayout>
 
     <Button
         android:id="@+id/bt_salvar"
@@ -182,6 +110,141 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintVertical_bias="0.28" />
 
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="372dp"
+        android:layout_height="89dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_frequencia">
+
+        <TextView
+            android:id="@+id/tv_dom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="26dp"
+            android:layout_marginTop="18dp"
+            android:text="Dom" />
+
+        <TextView
+            android:id="@+id/tv_seg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/cb_segunda"
+            android:layout_marginLeft="23dp"
+            android:layout_toStartOf="@+id/cb_terca"
+            android:text="Seg" />
+
+        <TextView
+            android:id="@+id/tv_ter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/cb_terca"
+            android:layout_marginLeft="24dp"
+            android:layout_toStartOf="@+id/tv_qua"
+            android:text="Ter" />
+
+        <TextView
+            android:id="@+id/tv_qua"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/cb_quarta"
+            android:layout_marginLeft="31dp"
+            android:layout_toStartOf="@+id/cb_quinta"
+            android:text="Qua" />
+
+        <TextView
+            android:id="@+id/tv_qui"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/cb_quinta"
+            android:layout_marginLeft="24dp"
+            android:layout_toStartOf="@+id/tv_sex"
+            android:text="Qui" />
+
+        <TextView
+            android:id="@+id/tv_sex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/cb_sexta"
+            android:layout_alignTop="@+id/tv_sab"
+            android:layout_marginLeft="29dp"
+            android:layout_toStartOf="@+id/cb_sabado"
+            android:text="Sex" />
+
+
+        <TextView
+            android:id="@+id/tv_sab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tv_dom"
+            android:layout_alignEnd="@+id/cb_sabado"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:text="Sáb" />
+
+
+        <CheckBox
+            android:id="@+id/cb_domingo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_dom"
+            android:layout_toStartOf="@+id/cb_segunda" />
+
+        <CheckBox
+            android:id="@+id/cb_segunda"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_dom"
+            android:layout_marginStart="12dp"
+            android:layout_toEndOf="@+id/tv_dom" />
+
+        <CheckBox
+            android:id="@+id/cb_terca"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/cb_segunda"
+            android:layout_alignBottom="@+id/cb_segunda"
+            android:layout_marginStart="18dp"
+            android:layout_toEndOf="@+id/cb_segunda" />
+
+        <CheckBox
+            android:id="@+id/cb_quarta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/cb_quinta"
+            android:layout_alignBottom="@+id/cb_quinta"
+            android:layout_centerHorizontal="true" />
+
+        <CheckBox
+            android:id="@+id/cb_quinta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/cb_sexta"
+            android:layout_alignBottom="@+id/cb_sexta"
+            android:layout_marginStart="18dp"
+            android:layout_toEndOf="@+id/cb_quarta" />
+
+        <CheckBox
+            android:id="@+id/cb_sexta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/cb_sabado"
+            android:layout_alignBottom="@+id/cb_sabado"
+            android:layout_marginStart="18dp"
+            android:layout_toEndOf="@+id/cb_quinta" />
+
+        <CheckBox
+            android:id="@+id/cb_sabado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_sab"
+            android:layout_marginStart="18dp"
+            android:layout_toEndOf="@+id/cb_sexta" />
+    </RelativeLayout>
 
 
 </android.support.constraint.ConstraintLayout>
