@@ -1,5 +1,7 @@
 package com.gestao.reise.motorista.principal
 
+import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.facebook.internal.Mutable
 import com.gestao.reise.motorista.R
+import com.gestao.reise.motorista.detalhesViagem.DetalhesActivity
 import com.gestao.reise.reisecommon.model.Viagem
 
 /**
@@ -20,13 +23,18 @@ class Adaptador(val viagens: MutableList<Viagem>): RecyclerView.Adapter<Adaptado
         return ViewHolder(vr)
 
     }
-
+    fun mostrarDetalhes(context: Context, viagem: Viagem){
+        val intent = Intent(context, DetalhesActivity::class.java)
+        intent.putExtra("detalhes",viagem)
+        context.startActivity(intent)
+    }
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
         val viagem: Viagem = viagens[position]
         holder!!.tituloOrigem!!.text = viagem.origem
         holder!!.tituloDestino!!.text = viagem.destino
         holder!!.tituloHorario!!.text = viagem.horario
         holder!!.tituloPreco!!.text = viagem.preco
+        holder!!.botaoDetalhes!!.setOnClickListener{ mostrarDetalhes(holder.context,viagem) }
     }
 
     override fun getItemCount(): Int {
@@ -38,6 +46,8 @@ class Adaptador(val viagens: MutableList<Viagem>): RecyclerView.Adapter<Adaptado
         val tituloDestino = itemView.findViewById<TextView>(R.id.tv_viagem_destino)
         val tituloHorario = itemView.findViewById<TextView>(R.id.tv_horario)
         val tituloPreco = itemView.findViewById<TextView>(R.id.tv_preco)
+        val botaoDetalhes = itemView.findViewById<TextView>(R.id.bt_detalhes)
+        val context = itemView.context
     }
 
 }

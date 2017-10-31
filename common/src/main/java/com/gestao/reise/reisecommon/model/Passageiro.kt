@@ -1,6 +1,7 @@
 package com.gestao.reise.reisecommon.model
 
 
+
 /**
  * Created by bruno on 30/08/17.
  */

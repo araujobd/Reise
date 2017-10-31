@@ -35,7 +35,7 @@ class DetalhesActivity: Activity(), DetalhesContrato.view {
         tv_det_destino.setText(viagem.destino)
         tv_det_horario.setText(viagem.horario)
         tv_det_preco.setText(viagem.preco)
-        tv_det_vagas.setText(viagem.horario)
+        tv_det_vagas.text = viagem.qtd_vagas.toString()
         mostrarFrequencia(viagem)
     }
 

@@ -23,11 +23,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".Completar_perfil_infor_carro"/>
+
         <activity android:name=".principal.PrincipalActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".completarPerfil.pessoal.CompletarPerfilActivity" />
+
         <activity android:name=".cadastrarViagem.CadastrarViagemActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <activity android:name=".detalhesViagem.DetalhesActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <activity android:name=".detalhesPassageiros.DetalhesPassageirosActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
 

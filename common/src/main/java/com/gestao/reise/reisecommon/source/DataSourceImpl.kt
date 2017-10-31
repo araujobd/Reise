@@ -199,6 +199,26 @@ object DataSourceImpl : DataSource {
         root.child("passageiros").child(uid).addValueEventListener(listener)
     }
 
+    override fun buscarFrequencia(uid_freq: String, dia: String, action: (MutableList<Passageiro>) -> Unit) {
+        val passageiros: MutableList<Passageiro> = mutableListOf()
+        val listener = object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError?) {
+            }
+
+            override fun onDataChange(dataSnapshot: DataSnapshot?) {
+                dataSnapshot?.children?.forEach {
+                    Log.i("logBusca",dataSnapshot.toString())
+                    buscarPassageiro(it.key){
+                        passageiro ->  passageiros.add(passageiro)
+                        Log.i("logBusca", "Buscou: "+passageiro)
+                        action(passageiros)
+                    }
+                }
+            }
+        }
+        root.child("frequencias").child(uid_freq).child(dia).addValueEventListener(listener)
+    }
+
 override fun salvarImagem(uid: String, imagePath: Uri?, sucesso: (String) -> Unit) {
     val storageRef = FirebaseStorage.getInstance().reference.child("images")
     val upload = storageRef.child(uid).child("profile").putFile(imagePath!!)
