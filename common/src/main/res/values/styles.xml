@@ -62,7 +62,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginEnd">@dimen/eight</item>
         <item name="android:layout_marginStart">@dimen/eight</item>
-        <item name="android:layout_gravity">center_vertical</item>
+<!--        <item name="android:layout_gravity">center_vertical</item>-->
     </style>
 
     <!-- Switch -->

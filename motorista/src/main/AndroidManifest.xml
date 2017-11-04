@@ -29,6 +29,12 @@
         <activity android:name=".completarPerfil.pessoal.CompletarPerfilActivity" />
         <activity android:name=".cadastrarViagem.CadastrarViagemActivity"
             android:theme="@style/Theme.AppCompat.Light" />
+
+        <activity android:name=".perfil.PerfilActivity"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <activity android:name=".perfil.editar.EditarPerfilActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
 
 </manifest>

@@ -10,7 +10,6 @@ import android.text.TextUtils
 import com.gestao.reise.reisecommon.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_editar_perfil.*
-import kotlinx.android.synthetic.main.appbar_editar_perfil.*
 import kotlinx.android.synthetic.main.content_editar_perfil.*
 
 /**
