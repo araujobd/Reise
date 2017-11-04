@@ -32,6 +32,9 @@
         <activity
             android:name=".primeiroLogin.CompletarPerfilActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".perfil.editar.EditarPerfilActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".perfil.PerfilActivity"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity

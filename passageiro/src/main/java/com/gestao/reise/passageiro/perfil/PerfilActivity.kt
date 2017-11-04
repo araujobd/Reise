@@ -5,9 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import com.gestao.reise.passageiro.BaseActivity
-
 import com.gestao.reise.passageiro.R
-import com.gestao.reise.passageiro.primeiroLogin.CompletarPerfilActivity
+import com.gestao.reise.passageiro.perfil.editar.EditarPerfilActivity
 import com.gestao.reise.reisecommon.model.Passageiro
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_perfil.*
@@ -32,7 +31,7 @@ class PerfilActivity : BaseActivity(), PerfilContrato.View {
 
     private fun configureButtons() {
         fab_editar.setOnClickListener {
-            startActivity(Intent(this@PerfilActivity, CompletarPerfilActivity::class.java))
+            startActivity(Intent(this@PerfilActivity, EditarPerfilActivity::class.java))
         }
 
         bt_call.setOnClickListener { mostrarMensagem(it, "CHAMANDO") }

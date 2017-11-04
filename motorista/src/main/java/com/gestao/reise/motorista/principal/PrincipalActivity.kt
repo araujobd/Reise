@@ -6,14 +6,13 @@ import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.MenuItem
 import android.widget.LinearLayout
 import com.gestao.reise.motorista.R
 import com.gestao.reise.motorista.cadastrarViagem.CadastrarViagemActivity
+import com.gestao.reise.motorista.perfil.PerfilActivity
 import com.gestao.reise.reisecommon.model.Viagem
 import kotlinx.android.synthetic.main.activity_principal.*
 import kotlinx.android.synthetic.main.app_bar_principal.*
@@ -58,7 +57,7 @@ class PrincipalActivity : Activity(), NavigationView.OnNavigationItemSelectedLis
         if(id == R.id.nav_viagem)
             startActivity(Intent(this@PrincipalActivity, CadastrarViagemActivity::class.java))
         if(id == R.id.nav_perfil)
-           // startActivity(Intent(this@PrincipalActivity, PerfilActivity::class.java))
+            startActivity(Intent(this@PrincipalActivity, PerfilActivity::class.java))
 
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
