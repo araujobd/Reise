@@ -11,7 +11,7 @@
     <android.support.v7.widget.CardView
         android:id="@+id/card_view_busca"
         android:layout_width="match_parent"
-        android:layout_height="174dp"
+        android:layout_height="166dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="2dp"
@@ -25,66 +25,79 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <ImageView
+                android:id="@+id/img_origem"
+                android:layout_width="31dp"
+                android:layout_height="27dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="6dp"
+                android:src="@drawable/ic_my_location"
+                android:tint="@color/background"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_origem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="91dp"
-                android:layout_marginStart="91dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="6dp"
                 android:text="Origem"
                 android:textSize="20sp"
-                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/img_origem"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tv_a"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="11dp"
-                android:layout_marginStart="11dp"
-                android:layout_marginTop="6dp"
-                android:text="à"
-                android:textSize="22sp"
-                app:layout_constraintLeft_toRightOf="@+id/tv_origem"
-                app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:id="@+id/img_destino"
+                android:layout_width="31dp"
+                android:layout_height="27dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/ic_location"
+                android:tint="@color/background"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_origem" />
+
 
             <TextView
                 android:id="@+id/tv_destino"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="40dp"
                 android:text="Destino"
                 android:textSize="20sp"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintLeft_toRightOf="@+id/tv_a"
-                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/img_destino"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/img_hora"
+                android:layout_width="31dp"
+                android:layout_height="27dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/ic_clock"
+                android:tint="@color/background"
+                app:layout_constraintEnd_toStartOf="@+id/tv_horario"
+                app:layout_constraintTop_toBottomOf="@+id/tv_rs" />
 
             <TextView
                 android:id="@+id/tv_horario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="113dp"
-                android:layout_marginLeft="154dp"
-                android:layout_marginStart="153dp"
+                android:layout_marginEnd="60dp"
+                android:layout_marginTop="8dp"
                 android:text="Horário"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_preco" />
 
             <TextView
                 android:id="@+id/tv_preco"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="144dp"
-                android:layout_marginRight="144dp"
-                android:layout_marginTop="60dp"
+                android:layout_marginRight="60dp"
+                android:layout_marginTop="6dp"
                 android:text="Preco"
                 android:textSize="18sp"
                 app:layout_constraintRight_toRightOf="parent"
@@ -95,28 +108,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="2dp"
-                android:layout_marginRight="2dp"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="6dp"
                 android:text="R$"
                 android:textSize="18sp"
-                app:layout_constraintRight_toLeftOf="@+id/tv_preco"
+                app:layout_constraintEnd_toStartOf="@+id/tv_preco"
                 app:layout_constraintTop_toTopOf="parent" />
 
-
-
-                <Button
-                    android:id="@+id/bt_detalhes"
-                    android:layout_width="355dp"
-                    android:layout_height="61dp"
-                    android:layout_weight="1"
-                    android:background="@color/colorPrimary"
-                    android:text="Detalhes"
-                    android:layout_marginRight="8dp"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="8dp"
-                    app:layout_constraintLeft_toLeftOf="parent" />
+            <Button
+                android:id="@+id/bt_detalhes"
+                android:layout_width="355dp"
+                android:layout_height="61dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:text="Detalhes"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
 
 
         </android.support.constraint.ConstraintLayout>

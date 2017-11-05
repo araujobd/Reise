@@ -56,34 +56,34 @@ class DetalhesActivity: Activity(), DetalhesContrato.view {
 
     fun mostrarFrequencia(viagem: Viagem){
 
-        if(viagem.frequencia[0]) {
-            bt_dom.setBackgroundColor(Color.BLUE)
+        /*if(viagem.frequencia[0]) {
+            bt_dom.background = getDrawable(R.drawable.circle_tint)
             bt_dom.setOnClickListener{ presenter.interesseVaga(viagem,"dom") }
         }
         if(viagem.frequencia[1]) {
-            bt_seg.setBackgroundColor(Color.BLUE)
+            bt_seg.background = getDrawable(R.drawable.circle_tint)
             bt_seg.setOnClickListener{ presenter.interesseVaga(viagem,"seg") }
         }
         if(viagem.frequencia[2]) {
-            bt_ter.setBackgroundColor(Color.BLUE)
+            bt_ter.background = getDrawable(R.drawable.circle_tint)
             bt_ter.setOnClickListener{ presenter.interesseVaga(viagem,"ter") }
         }
         if(viagem.frequencia[3]) {
-            bt_qua.setBackgroundColor(Color.BLUE)
+            bt_qua.background = getDrawable(R.drawable.circle_tint)
             bt_qua.setOnClickListener{ presenter.interesseVaga(viagem,"qua") }
         }
         if(viagem.frequencia[4]) {
-            bt_qui.setBackgroundColor(Color.BLUE)
+            bt_qui.background = getDrawable(R.drawable.circle_tint)
             bt_qui.setOnClickListener{ presenter.interesseVaga(viagem,"qui") }
         }
         if(viagem.frequencia[5]) {
-            bt_sex.setBackgroundColor(Color.BLUE)
+            bt_sex.background = getDrawable(R.drawable.circle_tint)
             bt_sex.setOnClickListener{ presenter.interesseVaga(viagem,"sex") }
         }
         if(viagem.frequencia[6]) {
-            bt_sab.setBackgroundColor(Color.BLUE)
+            bt_sab.background = getDrawable(R.drawable.circle_tint)
             bt_sab.setOnClickListener{ presenter.interesseVaga(viagem,"sab") }
-         }
+         }*/
     }
 
     override fun msgSucesso() {

@@ -24,60 +24,82 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/tv_saida_pas"
+            <ImageView
+                android:id="@+id/img_origem_pas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Saída:"
-                android:textSize="22sp"
-                android:layout_marginLeft="6dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="8dp" />
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/ic_my_location"
+                android:tint="@color/background"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_origem_pas"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="25dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
                 android:text="origem"
                 android:textSize="20sp"
-                app:layout_constraintLeft_toRightOf="@+id/tv_saida_pas"
-                android:layout_marginLeft="5dp"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="8dp" />
+                app:layout_constraintLeft_toRightOf="@+id/img_origem_pas"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tv_dest_pas"
+            <ImageView
+                android:id="@+id/img_destino_pas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Destino:"
-                android:textSize="22sp"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="40dp"
-                android:layout_marginLeft="6dp"
-                app:layout_constraintLeft_toLeftOf="parent" />
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/ic_location"
+                android:tint="@color/background"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_origem_pas" />
 
             <TextView
                 android:id="@+id/tv_destino_pas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="16dp"
                 android:text="destino"
                 android:textSize="20sp"
-                app:layout_constraintLeft_toRightOf="@+id/tv_dest_pas"
-                android:layout_marginLeft="5dp"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="40dp" />
+                app:layout_constraintLeft_toRightOf="@+id/img_destino_pas"
+                app:layout_constraintTop_toBottomOf="@+id/tv_origem_pas" />
+
+            <ImageView
+                android:id="@+id/img_hr_pas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/ic_location"
+                android:tint="@color/background"
+                app:layout_constraintEnd_toStartOf="@+id/tv_horario_pas"
+                app:layout_constraintTop_toBottomOf="@+id/tv_rs_pas" />
 
             <TextView
                 android:id="@+id/tv_horario_pas"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="24dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="16dp"
                 android:text="horário"
                 android:textSize="20sp"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="71dp"
-                app:layout_constraintLeft_toRightOf="@+id/tv_hr_pas"
-                android:layout_marginLeft="5dp" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_preco_pas" />
+
+            <TextView
+                android:id="@+id/tv_rs_pas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="8dp"
+                android:text="R$"
+                android:textSize="18sp"
+                app:layout_constraintRight_toLeftOf="@+id/tv_preco_pas"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_preco_pas"
@@ -90,49 +112,27 @@
                 android:layout_marginRight="8dp"
                 app:layout_constraintRight_toRightOf="parent" />
 
-            <TextView
-                android:id="@+id/tv_rs_pas"
+            <ImageView
+                android:id="@+id/img_dia_pas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="R$"
-                android:textSize="18sp"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="8dp"
-                app:layout_constraintRight_toLeftOf="@+id/tv_preco_pas"
-                android:layout_marginRight="2dp" />
-
-            <TextView
-                android:id="@+id/tv_hr_pas"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Horário:"
-                android:textSize="22sp"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="71dp"
-                android:layout_marginLeft="6dp"
-                app:layout_constraintLeft_toLeftOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_dia"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Dia:"
-                android:textSize="22sp"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="100dp"
-                android:layout_marginLeft="6dp"
-                app:layout_constraintLeft_toLeftOf="parent" />
+                android:layout_marginEnd="28dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/ic_date"
+                android:tint="@color/background"
+                app:layout_constraintEnd_toStartOf="@+id/tv_dia_pas"
+                app:layout_constraintTop_toBottomOf="@+id/img_hr_pas" />
 
             <TextView
                 android:id="@+id/tv_dia_pas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="16dp"
                 android:text="dia"
                 android:textSize="20sp"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="101dp"
-                app:layout_constraintLeft_toRightOf="@+id/tv_dia"
-                android:layout_marginLeft="5dp" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_horario_pas" />
 
             <Button
                 android:id="@+id/bt_remover"

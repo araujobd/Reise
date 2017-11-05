@@ -7,8 +7,6 @@
     <stroke
         android:width="3dp"
         android:color="@color/background" />
-<!--
     <solid
         android:color="@color/colorAccentLight" />
--->
 </shape>
