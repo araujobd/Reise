@@ -8,32 +8,31 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@color/colorPrimary" />
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
-        android:text="Origem"
-        android:textSize="24sp" />
+
+    <ImageView
+        android:id="@+id/img_origem"
+        android:layout_width="31dp"
+        android:layout_height="27dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_my_location" />
 
     <TextView
         android:id="@+id/tv_det_origem"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="5dp"
         android:text="Origem"
-        android:textSize="18sp"  />
+        android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
-        android:text="Destino"
-        android:textSize="24sp"  />
+    <ImageView
+        android:id="@+id/img_destino"
+        android:layout_width="31dp"
+        android:layout_height="27dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_location" />
 
     <TextView
         android:id="@+id/tv_det_destino"
@@ -44,14 +43,13 @@
         android:text="Destino"
         android:textSize="18sp"  />
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
-        android:text="Horário"
-        android:textSize="24sp"  />
+    <ImageView
+        android:id="@+id/img_hora"
+        android:layout_width="31dp"
+        android:layout_height="27dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_clock" />
 
     <TextView
         android:id="@+id/tv_det_horario"
@@ -68,7 +66,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
-        android:text="Preço (R$)"
+        android:text="R$"
         android:textSize="24sp"  />
 
     <TextView
@@ -78,7 +76,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="5dp"
         android:text="Preço"
-        android:textSize="18sp"  />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/textView8"
@@ -87,7 +85,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
         android:text="Vagas"
-        android:textSize="24sp"  />
+        android:textSize="24sp" />
 
     <TextView
         android:id="@+id/tv_det_vagas"
@@ -96,31 +94,39 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="5dp"
         android:text="Qtd_vagas"
-        android:textSize="18sp"  />
+        android:textSize="18sp" />
+
+    <ImageView
+        android:id="@+id/img_data"
+        android:layout_width="31dp"
+        android:layout_height="27dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_date" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/tv_det_data"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
-        android:text="Frequência"
-        android:textSize="24sp"  />
+        android:text="Data"
+        android:textSize="24sp" />
 
-    <LinearLayout
+    <!--<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="5dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal" >
 
         <Button
             android:id="@+id/bt_dom"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/botao"
             android:layout_weight="1"
-            android:background="@color/background"
+            android:background="@drawable/circle"
             android:clickable="false"
             android:text="Dom"
             android:textSize="12sp" />
@@ -128,9 +134,9 @@
         <Button
             android:id="@+id/bt_seg"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/botao"
             android:layout_weight="1"
-            android:background="@color/background"
+            android:background="@drawable/circle"
             android:clickable="false"
             android:text="Seg"
             android:textSize="12sp" />
@@ -138,9 +144,9 @@
         <Button
             android:id="@+id/bt_ter"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/botao"
             android:layout_weight="1"
-            android:background="@color/background"
+            android:background="@drawable/circle"
             android:clickable="false"
             android:text="Ter"
             android:textSize="12sp" />
@@ -148,9 +154,9 @@
         <Button
             android:id="@+id/bt_qua"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/botao"
             android:layout_weight="1"
-            android:background="@color/background"
+            android:background="@drawable/circle"
             android:clickable="false"
             android:text="Qua"
             android:textSize="12sp" />
@@ -158,9 +164,9 @@
         <Button
             android:id="@+id/bt_qui"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/botao"
             android:layout_weight="1"
-            android:background="@color/background"
+            android:background="@drawable/circle"
             android:clickable="false"
             android:text="Qui"
             android:textSize="12sp" />
@@ -168,9 +174,9 @@
         <Button
             android:id="@+id/bt_sex"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/botao"
             android:layout_weight="1"
-            android:background="@color/background"
+            android:background="@drawable/circle"
             android:clickable="false"
             android:text="Sex"
             android:textSize="12sp" />
@@ -178,13 +184,13 @@
         <Button
             android:id="@+id/bt_sab"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/botao"
             android:layout_weight="1"
-            android:background="@color/background"
+            android:background="@drawable/circle"
             android:clickable="false"
             android:text="Sáb"
             android:textSize="12sp" />
-    </LinearLayout>
+    </LinearLayout>-->
 
 
 </LinearLayout>
