@@ -6,10 +6,10 @@ package com.gestao.reise.motorista.carro
 interface EditarCarroContrato {
 
     interface View {
-
+        fun done()
     }
 
     interface Presenter {
-
+        fun cadastrarCarro(cor: String, modelo: String, placa: String, qtd_vagas: Int, vaga_crianca: Boolean)
     }
 }

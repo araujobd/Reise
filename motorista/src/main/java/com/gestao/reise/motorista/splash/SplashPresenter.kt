@@ -10,7 +10,7 @@ import com.google.firebase.auth.FirebaseUser
  */
 class SplashPresenter(view: SplashContrato.View) : BaseSplashPresenter(view) {
 
-    override val typeUser: String = "passageiros"
+    override val typeUser: String = "motoristas"
 
     override fun salvarUsuario(user: FirebaseUser) {
         val motorista = Motorista()

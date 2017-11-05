@@ -15,7 +15,7 @@ interface LoginContrato {
 
     interface Presenter {
         fun verificarLogin()
-        fun signinWithGoogle(result: GoogleSignInAccount?)
+        fun signinWithGoogle(account: GoogleSignInAccount?)
         fun signinWithFacebook(token: AccessToken?)
     }
 }

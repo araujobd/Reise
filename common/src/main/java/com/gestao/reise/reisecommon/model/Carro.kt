@@ -9,8 +9,8 @@ data class Carro(var uid: String,
                  var modelo: String,
                  var cor: String,
                  var qtd_vagas: Int,
-                 var vaga_crianca: Int) {
-    constructor() : this("", "", "", "", -1, -1)
+                 var vaga_crianca: Boolean) {
+    constructor() : this("", "", "", "", -1, false)
 }
 
 

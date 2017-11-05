@@ -1,20 +1,10 @@
 package com.gestao.reise.reisecommon.source
 
 import android.net.Uri
-import android.text.method.SingleLineTransformationMethod
 import android.util.Log
 import com.gestao.reise.reisecommon.model.*
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.GenericTypeIndicator
-
-
-
-
 
 /**
  * Created by bruno on 31/08/17.
@@ -34,7 +24,7 @@ object DataSourceImpl : DataSource {
 
     override fun salvarMotorista(motorista: Motorista) {
         //motorista.uid = root.child("motoristas").push().key
-        root.child("motoristas").child(motorista.uid).setValue(motorista)
+        root.child("motoristas").child(motorista.uid).updateChildren(motorista.toMap())
     }
 
     override fun salvarPassageiro(passageiro: Passageiro) {
@@ -63,9 +53,9 @@ object DataSourceImpl : DataSource {
         sucesso()
     }
 
-    override fun salvarCarro(carro: Carro) {
+    override fun salvarCarro(uid_motorista: String, carro: Carro) {
         carro.uid = root.child("carros").push().key
-        root.child("carros").child(carro.uid).setValue(carro)
+        root.child("motoristas").child(uid_motorista).child("carro").setValue(carro)
     }
 
     override fun buscarDia(uid: String, action: (String) -> Unit) {
@@ -136,10 +126,10 @@ object DataSourceImpl : DataSource {
 
             override fun onDataChange(dataSnapshot: DataSnapshot?) {
                 dataSnapshot?.children?.forEach {
-                    val passageiro: MutableMap<String, Any>? = it.getValue(Passageiro::class.java)  as MutableMap<String, Any>
+                    val passageiro: Passageiro? = it.getValue(Passageiro::class.java)
                     if (passageiro != null) {
 
-                        passageiros.add(passageiro as Passageiro)
+                        passageiros.add(passageiro)
                     }
                 }
                 callback(passageiros)
@@ -174,7 +164,8 @@ object DataSourceImpl : DataSource {
 
             override fun onDataChange(dataSnapshot: DataSnapshot?) {
                 val motorista: Motorista? = dataSnapshot?.getValue(Motorista::class.java)
-                motorista?.let { sucesso(it) }
+                if (motorista != null)
+                    sucesso(motorista)
             }
 
         }
@@ -183,16 +174,12 @@ object DataSourceImpl : DataSource {
     }
 
     override fun buscarPassageiro(uid: String, sucesso: (passageiro: Passageiro) -> Unit) {
-        Log.i("logBusca", "buscarPassageiro")
         val listener = object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError?) {
             }
 
             override fun onDataChange(dataSnapshot: DataSnapshot?) {
-                Log.i("logBusca", "#################################################")
-                Log.i("logBusca", dataSnapshot.toString())
                 val passageiro: Passageiro? = dataSnapshot?.getValue(Passageiro::class.java)
-                Log.i("logBusca", ""+passageiro)
                 sucesso(passageiro as Passageiro)
             }
         }

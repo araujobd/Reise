@@ -4,6 +4,8 @@
     <string name="comp_perfil_infor_carro">Informações do Carro</string>
     <string name="veiculo_modelo">Modelo</string>
     <string name="veiculo_placa">Placa</string>
+    <string name="veiculo_cor">Cor</string>
+    <string name="veiculo_qtd_vagas">Quantidade de Vagas</string>
     <string name="qte_vagas">Quantidade de Vagas</string>
     <string name="vaga_crianca">Vagas para Crianças</string>
     <string name="destino">Destino</string>

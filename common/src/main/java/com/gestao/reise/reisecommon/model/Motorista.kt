@@ -13,5 +13,21 @@ data class Motorista(var uid: String,
                      var descricao: String,
                      var carro: Carro) {
     constructor() : this("", "", "", "", mapOf<String,Boolean>(), "", "", Carro())
+
+    fun toMap(): MutableMap<String, Any> {
+        val map = mutableMapOf<String, Any>()
+
+        map.put("uid", uid)
+        map.put("nome", nome)
+        map.put("telefone", telefone)
+        map.put("viagens", viagens)
+        map.put("endereco", endereco)
+        map.put("descricao", descricao)
+        map.put("carro", carro)
+        if (fotoUrl.length > 0)
+            map.put("fotoUrl", fotoUrl)
+
+        return map
+    }
 }
 

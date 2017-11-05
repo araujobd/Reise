@@ -3,6 +3,94 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.gestao.reise.motorista.carro.EditarCarroActivity">
+
+    <Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/til_modelo"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        style="@style/InputTIL" >
+
+        <EditText
+            android:id="@+id/ed_modelo"
+            style="@style/EditText"
+            android:hint="@string/veiculo_modelo" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/til_cor"
+        app:layout_constraintTop_toBottomOf="@id/til_modelo"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        style="@style/InputTIL" >
+
+        <EditText
+            android:id="@+id/ed_cor"
+            style="@style/EditText"
+            android:hint="@string/veiculo_cor" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/til_placa"
+        app:layout_constraintTop_toBottomOf="@id/til_cor"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        style="@style/InputTIL" >
+
+        <EditText
+            android:id="@+id/ed_placa"
+            style="@style/EditText"
+            android:hint="@string/veiculo_placa" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/til_qtd_vagas"
+        app:layout_constraintTop_toBottomOf="@id/til_placa"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        style="@style/InputTIL" >
+
+        <EditText
+            android:id="@+id/ed_qtd_vagas"
+            style="@style/EditText"
+            android:hint="@string/veiculo_qtd_vagas" />
+    </android.support.design.widget.TextInputLayout>
+
+    <Switch
+        android:id="@+id/sw_vaga_crianca"
+        style="@style/Switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Possui vaga para crianças"
+        android:textSize="16sp"
+        android:paddingHorizontal="4dp"
+        app:layout_constraintHorizontal_bias="0.927"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/til_qtd_vagas" />
+
+    <Button
+        android:id="@+id/bt_cadastrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="Cadastrar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sw_vaga_crianca" />
 
 </android.support.constraint.ConstraintLayout>

@@ -12,6 +12,7 @@ import android.view.MenuItem
 import android.widget.LinearLayout
 import com.gestao.reise.motorista.R
 import com.gestao.reise.motorista.cadastrarViagem.CadastrarViagemActivity
+import com.gestao.reise.motorista.carro.EditarCarroActivity
 import com.gestao.reise.motorista.perfil.PerfilActivity
 import com.gestao.reise.reisecommon.model.Viagem
 import kotlinx.android.synthetic.main.activity_principal.*
@@ -58,6 +59,8 @@ class PrincipalActivity : Activity(), NavigationView.OnNavigationItemSelectedLis
             startActivity(Intent(this@PrincipalActivity, CadastrarViagemActivity::class.java))
         if(id == R.id.nav_perfil)
             startActivity(Intent(this@PrincipalActivity, PerfilActivity::class.java))
+        if(id == R.id.nav_carro)
+            startActivity(Intent(this@PrincipalActivity, EditarCarroActivity::class.java))
 
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
