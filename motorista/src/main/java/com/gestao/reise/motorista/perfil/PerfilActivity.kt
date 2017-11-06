@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import com.gestao.reise.motorista.R.layout.activity_perfil
+import com.gestao.reise.motorista.R
 import com.gestao.reise.motorista.perfil.editar.EditarPerfilActivity
 import com.gestao.reise.reisecommon.model.Motorista
 import kotlinx.android.synthetic.main.activity_perfil.*
@@ -16,7 +16,7 @@ class PerfilActivity : AppCompatActivity(), PerfilContrato.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(activity_perfil)
+        setContentView(R.layout.activity_perfil)
 
         setActionBar(toolbar)
         actionBar.setDisplayHomeAsUpEnabled(true)

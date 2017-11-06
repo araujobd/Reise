@@ -17,8 +17,8 @@ import kotlinx.android.synthetic.main.content_editar_perfil.*
  */
 abstract class BaseEditarPerfilActivity : AppCompatActivity(), EditarPerfilContrato.View {
 
-    protected val RC_PICK_IMAGE = 1
-    protected var imagePath: Uri? = null
+    private val RC_PICK_IMAGE = 1
+    private var imagePath: Uri? = null
     abstract protected val presenter: EditarPerfilContrato.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,7 +46,7 @@ abstract class BaseEditarPerfilActivity : AppCompatActivity(), EditarPerfilContr
         presenter.carregarPerfil()
     }
 
-    protected fun inicializar() {
+    private fun inicializar() {
         btimg_upload.setOnClickListener { escolherImagem() }
         fab_editar.setOnClickListener { atualizarPerfil() }
     }
@@ -70,18 +70,18 @@ abstract class BaseEditarPerfilActivity : AppCompatActivity(), EditarPerfilContr
         ed_descricao.setText(descricao)
     }
 
-    protected fun atualizarPerfil() {
+    private fun atualizarPerfil() {
         if (validar()) {
             presenter.atualizarPerfil(imagePath,
                     ed_nome.text.toString(),
                     ed_telefone.text.toString(),
                     ed_endereco.text.toString(),
                     ed_descricao.text.toString())
-            iniciarPrincipal()
+            //iniciarPrincipal()
         }
     }
 
-    protected fun validar(): Boolean {
+    private fun validar(): Boolean {
         var flag = true
         if (TextUtils.isEmpty(ed_nome.text)) {
             flag = false
