@@ -1,9 +1,6 @@
 package com.gestao.reise.passageiro.principal
 
-import android.app.AlertDialog
-import android.content.Context
 import android.util.Log
-import com.gestao.reise.reisecommon.model.Viagem
 import com.gestao.reise.reisecommon.source.DataSource
 import com.gestao.reise.reisecommon.source.DataSourceImpl
 import com.google.firebase.auth.FirebaseAuth
@@ -29,8 +26,12 @@ class PrincipalPresenter(val view: PrincipalContrato.View) : FirebaseMessagingSe
     }
 
     override fun configNavHeader() {
-        source.buscarPassageiro(auth.currentUser!!.uid.toString()) {
+/*        source.buscarPassageiro(auth.currentUser!!.uid.toString()) {
             passageiro ->  view.mostrarNavHeader(passageiro)
+        }*/
+        val uid  = auth.currentUser!!.uid
+        source.navBusca(uid, "passageiros") { nome: String, fotoUrl: String ->
+            view.mostrarNavHeader(nome, fotoUrl)
         }
 
     }

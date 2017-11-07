@@ -206,13 +206,26 @@ object DataSourceImpl : DataSource {
         root.child("frequencias").child(uid_freq).child(dia).addValueEventListener(listener)
     }
 
-override fun salvarImagem(uid: String, imagePath: Uri?, sucesso: (String) -> Unit) {
-    val storageRef = FirebaseStorage.getInstance().reference.child("images")
-    val upload = storageRef.child(uid).child("profile").putFile(imagePath!!)
+    override fun salvarImagem(uid: String, imagePath: Uri?, sucesso: (String) -> Unit) {
+        val storageRef = FirebaseStorage.getInstance().reference.child("images")
+        val upload = storageRef.child(uid).child("profile").putFile(imagePath!!)
 
-   upload.addOnCompleteListener { sucesso(it.result.downloadUrl.toString()) }
+       upload.addOnCompleteListener { sucesso(it.result.downloadUrl.toString()) }
+    }
+
+    /* *************************************************************************** */
+    override fun navBusca(uid: String, type: String, sucesso: (nome: String, fotoUrl: String) -> Unit) {
+        val listener = object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError?) {
+            }
+
+            override fun onDataChange(dataSnapshot: DataSnapshot?) {
+                val nome = dataSnapshot?.child("nome")?.value.toString()
+                val fotoUrl = dataSnapshot?.child("fotoUrl")?.value.toString()
+                sucesso(nome, fotoUrl)
+            }
+        }
+        root.child("navigation").child(type).child(uid).addValueEventListener(listener)
+    }
+
 }
-
-}
-
-

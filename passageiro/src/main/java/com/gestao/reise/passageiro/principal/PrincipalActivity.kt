@@ -10,13 +10,14 @@ import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import com.gestao.reise.passageiro.BaseActivity
 
 import com.gestao.reise.passageiro.R
 import com.gestao.reise.passageiro.buscarViagem.BuscarViagemActivity
 import com.gestao.reise.passageiro.perfil.PerfilActivity
-import com.gestao.reise.reisecommon.model.Passageiro
 import com.gestao.reise.reisecommon.model.Viagem
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_principal.*
@@ -39,13 +40,15 @@ Log.i("teste","onCreate Principal")
 
         nav_drawer.setNavigationItemSelectedListener(this)
         presenter.possuiViagens()
-        //presenter.configNavHeader()
+        presenter.configNavHeader()
     }
 
-    override fun mostrarNavHeader(passageiro: Passageiro) {
-        /*val header: View = nav_drawer.getHeaderView(0)
-        tv_name.setText(passageiro.nome)
-        Picasso.with(this).load(passageiro.fotoUrl).noFade().into(header.nav_img_perfil)*/
+    override fun mostrarNavHeader(nome: String, fotoUrl: String) {
+        val header: View = nav_drawer.getHeaderView(0)
+        val s: TextView = header.findViewById(R.id.tv_name)
+        val image: ImageView = header.findViewById(R.id.nav_img_perfil)
+        s.text = nome
+        Picasso.with(this).load(fotoUrl).noFade().into(image)
     }
     override fun direcionarBusca() {
         startActivity(Intent(this@PrincipalActivity, BuscarViagemActivity::class.java))

@@ -27,4 +27,9 @@ interface DataSource {
     fun buscarFrequencia(uid_freq: String, dia: String, action: (MutableList<Passageiro>) -> Unit)
 
     fun salvarImagem(uid: String, imagePath : Uri?, sucesso: (String) -> Unit)
+
+
+    /* ********************* ********************/
+
+    fun navBusca(uid: String, type: String, sucesso: (nome: String, fotoUrl: String) -> Unit)
 }
