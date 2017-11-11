@@ -32,4 +32,7 @@ interface DataSource {
     /* ********************* ********************/
 
     fun navBusca(uid: String, type: String, sucesso: (nome: String, fotoUrl: String) -> Unit)
+    fun buscarPerfilPassageiro(uid: String, sucesso: (passageiro: Passageiro) -> Unit)
+    fun buscarPerfilMotorista(uid: String, sucesso: (motorista: Motorista) -> Unit)
+    fun buscarViagensPorPassageiro(uid: String, sucesso: (viagens: MutableList<Viagem>) -> Unit)
 }
