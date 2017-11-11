@@ -270,4 +270,48 @@ object DataSourceImpl : DataSource {
         }
         root.child("viagens_passageiro_principal").child(uid).orderByChild("data").addValueEventListener(listener)
     }
+
+    override fun buscarViagensPorMotorista(uid: String, sucesso: (viagens: MutableList<Viagem>) -> Unit) {
+        val viagens = mutableListOf<Viagem>()
+        val listener = object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError?) {
+            }
+
+            override fun onDataChange(dataSnapshot: DataSnapshot?) {
+                dataSnapshot?.children?.forEach {
+                    val viagem: Viagem? = it.getValue(Viagem::class.java)
+                    viagem?.let { viagens.add(it) }
+                }
+                sucesso(viagens)
+            }
+        }
+        root.child("viagens_motorista").child(uid).orderByChild("data").addValueEventListener(listener)
+    }
+
+    override fun buscarDetalhesBuscaViagem(uid: String, sucesso: (viagem: Viagem) -> Unit) {
+        val listener = object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError?) {
+            }
+
+            override fun onDataChange(dataSnapshot: DataSnapshot?) {
+                val viagem: Viagem? = dataSnapshot?.getValue(Viagem::class.java)
+                viagem?.let(sucesso)
+            }
+        }
+        root.child("detalhes_viagem_busca").child(uid).addValueEventListener(listener)
+    }
+
+    override fun buscarDetalhesViagemMotorista(uid: String, sucesso: (viagem: Viagem) -> Unit) {
+        val listener = object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError?) {
+            }
+
+            override fun onDataChange(dataSnapshot: DataSnapshot?) {
+                val viagem: Viagem? = dataSnapshot?.getValue(Viagem::class.java)
+                viagem?.let(sucesso)
+            }
+        }
+        root.child("detalhes_viagem_motorista").child(uid).addValueEventListener(listener)
+    }
+
 }

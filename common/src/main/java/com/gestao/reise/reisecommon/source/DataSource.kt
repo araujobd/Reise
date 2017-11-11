@@ -35,4 +35,7 @@ interface DataSource {
     fun buscarPerfilPassageiro(uid: String, sucesso: (passageiro: Passageiro) -> Unit)
     fun buscarPerfilMotorista(uid: String, sucesso: (motorista: Motorista) -> Unit)
     fun buscarViagensPorPassageiro(uid: String, sucesso: (viagens: MutableList<Viagem>) -> Unit)
+    fun buscarViagensPorMotorista(uid: String, sucesso: (viagens: MutableList<Viagem>) -> Unit)
+    fun buscarDetalhesBuscaViagem(uid: String, sucesso: (viagem: Viagem) -> Unit)
+    fun buscarDetalhesViagemMotorista(uid: String, sucesso: (viagem: Viagem) -> Unit)
 }
