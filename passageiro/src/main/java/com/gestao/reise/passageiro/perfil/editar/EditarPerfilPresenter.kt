@@ -16,7 +16,7 @@ class EditarPerfilPresenter(val view: EditarPerfilContrato.View) : EditarPerfilC
     private val source: DataSource by lazy { DataSourceImpl }
 
     override fun carregarPerfil() {
-        source.buscarPassageiro(auth.currentUser?.uid!!) {
+        source.buscarPerfilPassageiro(auth.currentUser?.uid!!) {
             view.mostrarPerfil(it.fotoUrl, it.nome, it.telefone, it.endereco, it.descricao)
         }
     }

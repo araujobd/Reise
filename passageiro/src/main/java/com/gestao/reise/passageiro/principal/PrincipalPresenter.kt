@@ -30,7 +30,7 @@ class PrincipalPresenter(val view: PrincipalContrato.View) : FirebaseMessagingSe
             passageiro ->  view.mostrarNavHeader(passageiro)
         }*/
         val uid  = auth.currentUser!!.uid
-        source.navBusca(uid, "passageiros") { nome: String, fotoUrl: String ->
+        source.navBusca(uid, "passageiro") { nome: String, fotoUrl: String ->
             view.mostrarNavHeader(nome, fotoUrl)
         }
 

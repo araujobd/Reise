@@ -14,7 +14,7 @@ class PerfilPresenter(val view: PerfilContrato.View) : PerfilContrato.Presenter 
     private val source: DataSource = DataSourceImpl
 
     override fun carregarPerfil() {
-        source.buscarPassageiro(auth.currentUser?.uid!!) {
+        source.buscarPerfilPassageiro(auth.currentUser?.uid!!) {
             passageiro ->  view.mostrarPerfil(passageiro)
         }
     }

@@ -39,7 +39,8 @@ class PerfilActivity : BaseActivity(), PerfilContrato.View {
 
     override fun mostrarPerfil(passageiro: Passageiro) {
         Log.i("logBusca", "mostrarPerfil")
-        Picasso.with(this).load(passageiro.fotoUrl).noFade().into(img_perfil)
+        if (passageiro.fotoUrl.length > 0)
+            Picasso.with(this).load(passageiro.fotoUrl).noFade().into(img_perfil)
         Log.i("logBusca", "foto")
         tv_nome.setText(passageiro.nome)
         tv_telefone.setText(passageiro.telefone)

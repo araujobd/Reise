@@ -29,7 +29,8 @@ object DataSourceImpl : DataSource {
 
     override fun salvarPassageiro(passageiro: Passageiro) {
         //root.child("passageiros").child(passageiro.uid).setValue(passageiro)
-        root.child("passageiros").child(passageiro.uid).updateChildren(passageiro.toMap())
+        //root.child("passageiros").child(passageiro.uid).updateChildren(passageiro.toMap())
+        root.child("users/passageiro").child(passageiro.uid).updateChildren(passageiro.toMap())
     }
 
     override fun salvarViagem(viagem: Viagem, uid_motorista: String) {
@@ -153,7 +154,8 @@ object DataSourceImpl : DataSource {
             }
         }
         //                     Busca exata pelo Uid
-        root.child(typeUser).orderByKey().equalTo(uid).addListenerForSingleValueEvent(listener)
+        //root.child(typeUser).orderByKey().equalTo(uid).addListenerForSingleValueEvent(listener)
+        root.child("users/passageiro").orderByKey().equalTo(uid).addListenerForSingleValueEvent(listener)
 
     }
 
@@ -225,7 +227,7 @@ object DataSourceImpl : DataSource {
                 sucesso(nome, fotoUrl)
             }
         }
-        root.child("navigation").child(type).child(uid).addValueEventListener(listener)
+        root.child("nav").child(type).child(uid).addValueEventListener(listener)
     }
 
     override fun buscarPerfilPassageiro(uid: String, sucesso: (passageiro: Passageiro) -> Unit) {

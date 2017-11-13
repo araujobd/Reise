@@ -30,8 +30,7 @@ class PrincipalActivity : BaseActivity(), NavigationView.OnNavigationItemSelecte
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_principal)
-Log.i("teste","onCreate Principal")
-        showProgress()
+//        showProgress()
 
         val toggle = ActionBarDrawerToggle(this, drawer_layout, toolbar, R.string.drawer_open, R.string.drawer_close)
 

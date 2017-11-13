@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.support.v7.app.AppCompatActivity
 import android.text.TextUtils
+import android.util.Log
 import com.gestao.reise.reisecommon.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_editar_perfil.*
@@ -17,8 +18,8 @@ import kotlinx.android.synthetic.main.content_editar_perfil.*
  */
 abstract class BaseEditarPerfilActivity : AppCompatActivity(), EditarPerfilContrato.View {
 
-    private val RC_PICK_IMAGE = 1
-    private var imagePath: Uri? = null
+    protected val RC_PICK_IMAGE = 1
+    protected var imagePath: Uri? = null
     abstract protected val presenter: EditarPerfilContrato.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,12 +34,13 @@ abstract class BaseEditarPerfilActivity : AppCompatActivity(), EditarPerfilContr
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == RC_PICK_IMAGE && resultCode == Activity.RESULT_OK) {
+            data?.let { imagePath = it.data }
             val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, imagePath)
             img_perfil.setImageBitmap(bitmap)
         }
     }
 
-    private fun configurarTela() {
+    protected fun configurarTela() {
         setActionBar(toolbar)
         actionBar.setDisplayHomeAsUpEnabled(false)
         actionBar.title = "Atualizar Perfil"
@@ -46,12 +48,12 @@ abstract class BaseEditarPerfilActivity : AppCompatActivity(), EditarPerfilContr
         presenter.carregarPerfil()
     }
 
-    private fun inicializar() {
+    protected fun inicializar() {
         btimg_upload.setOnClickListener { escolherImagem() }
         fab_editar.setOnClickListener { atualizarPerfil() }
     }
 
-    private fun escolherImagem() {
+    protected fun escolherImagem() {
         val intent = Intent()
         intent.type = "image/*"
         intent.action = Intent.ACTION_PICK
@@ -59,10 +61,11 @@ abstract class BaseEditarPerfilActivity : AppCompatActivity(), EditarPerfilContr
     }
 
     override fun mostrarPerfil(fotoUrl: String, nome: String, telefone: String, endereco: String, descricao: String) {
-        Picasso.with(this)
-                .load(fotoUrl)
-                .noFade()
-                .into(img_perfil)
+        if (fotoUrl.length > 0)
+            Picasso.with(this)
+                    .load(fotoUrl)
+                    .noFade()
+                    .into(img_perfil)
 
         ed_nome.setText(nome)
         ed_telefone.setText(telefone)
@@ -70,14 +73,14 @@ abstract class BaseEditarPerfilActivity : AppCompatActivity(), EditarPerfilContr
         ed_descricao.setText(descricao)
     }
 
-    private fun atualizarPerfil() {
+    protected fun atualizarPerfil() {
+        Log.d("Image" , imagePath.toString())
         if (validar()) {
             presenter.atualizarPerfil(imagePath,
                     ed_nome.text.toString(),
                     ed_telefone.text.toString(),
                     ed_endereco.text.toString(),
                     ed_descricao.text.toString())
-            //iniciarPrincipal()
         }
     }
 
