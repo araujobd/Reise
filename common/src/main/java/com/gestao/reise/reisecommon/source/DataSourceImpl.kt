@@ -216,6 +216,9 @@ object DataSourceImpl : DataSource {
     }
 
     /* *************************************************************************** */
+
+
+
     override fun navBusca(uid: String, type: String, sucesso: (nome: String, fotoUrl: String) -> Unit) {
         val listener = object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError?) {
@@ -315,5 +318,60 @@ object DataSourceImpl : DataSource {
         }
         root.child("detalhes_viagem_motorista").child(uid).addValueEventListener(listener)
     }
+
+    override fun buscarViagensPorOrigem(origem: String, action: (MutableList<Viagem>) -> Unit) {
+        val viagens: MutableList<Viagem> = mutableListOf()
+
+        val listener = object: ChildEventListener{
+            override fun onChildMoved(p0: DataSnapshot?, p1: String?) {}
+            override fun onChildChanged(p0: DataSnapshot?, p1: String?) {}
+            override fun onChildRemoved(p0: DataSnapshot?) {}
+            override fun onCancelled(p0: DatabaseError?) {Log.d("DATASSS", "Error")}
+            override fun onChildAdded(p0: DataSnapshot?, p1: String?) {
+                val viagem: Viagem? = p0!!.getValue(Viagem::class.java)
+                    Log.i("logBusca", viagem!!.origem)
+                    viagens.add(viagem)
+                    action(viagens)
+            }
+        }
+        root.child("viagens").orderByChild("origem").equalTo(origem).addChildEventListener(listener)
+    }
+
+    override fun buscarViagensPorDestino(destino: String, action: (MutableList<Viagem>) -> Unit) {
+        val viagens: MutableList<Viagem> = mutableListOf()
+
+        val listener = object: ChildEventListener{
+            override fun onChildMoved(p0: DataSnapshot?, p1: String?) {}
+            override fun onChildChanged(p0: DataSnapshot?, p1: String?) {}
+            override fun onChildRemoved(p0: DataSnapshot?) {}
+            override fun onCancelled(p0: DatabaseError?) {Log.d("DATASSS", "Error")}
+            override fun onChildAdded(p0: DataSnapshot?, p1: String?) {
+                val viagem: Viagem? = p0!!.getValue(Viagem::class.java)
+                Log.i("logBusca", viagem!!.destino)
+                viagens.add(viagem)
+                action(viagens)
+            }
+        }
+        root.child("viagens").orderByChild("destino").equalTo(destino).addChildEventListener(listener)
+    }
+
+    override fun buscarViagensPorOrigemDestino(origem: String, destino: String, action: (MutableList<Viagem>) -> Unit) {
+        val viagens: MutableList<Viagem> = mutableListOf()
+
+        val listener = object: ChildEventListener{
+            override fun onChildMoved(p0: DataSnapshot?, p1: String?) {}
+            override fun onChildChanged(p0: DataSnapshot?, p1: String?) {}
+            override fun onChildRemoved(p0: DataSnapshot?) {}
+            override fun onCancelled(p0: DatabaseError?) {Log.d("DATASSS", "Error")}
+            override fun onChildAdded(p0: DataSnapshot?, p1: String?) {
+                val viagem: Viagem? = p0!!.getValue(Viagem::class.java)
+                Log.i("logBusca", viagem!!.origem + viagem!!.destino)
+                viagens.add(viagem)
+                action(viagens)
+            }
+        }
+        root.child("viagens").orderByChild("origemdestino").equalTo(origem+destino).addChildEventListener(listener)
+    }
+
 
 }
