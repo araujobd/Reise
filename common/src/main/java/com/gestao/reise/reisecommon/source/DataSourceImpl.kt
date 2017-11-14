@@ -24,7 +24,7 @@ object DataSourceImpl : DataSource {
 
     override fun salvarMotorista(motorista: Motorista) {
         //motorista.uid = root.child("motoristas").push().key
-        root.child("motoristas").child(motorista.uid).updateChildren(motorista.toMap())
+        root.child("users/motoristas").child(motorista.uid).updateChildren(motorista.toMap())
     }
 
     override fun salvarPassageiro(passageiro: Passageiro) {
