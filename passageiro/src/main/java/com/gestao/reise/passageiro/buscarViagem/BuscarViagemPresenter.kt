@@ -13,8 +13,23 @@ class BuscarViagemPresenter(val view: BuscarViagemContrato.View): BuscarViagemCo
     private var source: DataSource = DataSourceImpl
 
     override fun contemViagens(origem: String, destino: String) {
-        if(validarEntrada(origem,destino))
-            source.buscarViagensOD(origem,destino){viagens ->
+        val entrada = validarEntrada(origem,destino)
+        if(entrada == 3)
+            source.buscarViagensPorOrigemDestino(origem,destino){viagens ->
+                if(viagens.isNotEmpty())
+                    view.listarViagens(viagens)
+                else
+                    erroBusca()
+            }
+        else if(entrada == 1)
+            source.buscarViagensPorOrigem(origem){viagens ->
+                if(viagens.isNotEmpty())
+                    view.listarViagens(viagens)
+                else
+                    erroBusca()
+            }
+        else if(entrada == 2)
+            source.buscarViagensPorDestino(destino){viagens ->
                 if(viagens.isNotEmpty())
                     view.listarViagens(viagens)
                 else
@@ -27,10 +42,13 @@ class BuscarViagemPresenter(val view: BuscarViagemContrato.View): BuscarViagemCo
         view.mostrarMSG()
         view.listarViagens(mutableListOf())
     }
-    fun validarEntrada(origem: String, destino: String): Boolean {
-        if(origem.isBlank()){
-            return false
-        }
-        return true
+    fun validarEntrada(origem: String, destino: String): Int {
+        if(origem.isNotBlank() && destino.isNotBlank())
+            return 3
+        else if(origem.isNotBlank())
+            return 1
+        else if(destino.isNotBlank())
+            return 2
+        return 0
     }
 }

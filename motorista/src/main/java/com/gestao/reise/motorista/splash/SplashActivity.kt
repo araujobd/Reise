@@ -16,7 +16,8 @@ class SplashActivity : BaseSplashActivity() {
     }
 
     override fun primeiroLogin() {
-        startActivity(Intent(this@SplashActivity, EditarPerfilActivity::class.java))
+        startActivity(Intent(this@SplashActivity, PrincipalActivity::class.java))
+        //startActivity(Intent(this@SplashActivity, EditarPerfilActivity::class.java))
         mostrarMensagem("PROXIMA TELA -> Completar Login")
         finish()
     }

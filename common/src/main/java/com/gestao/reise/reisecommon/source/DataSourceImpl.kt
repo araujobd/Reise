@@ -40,7 +40,7 @@ object DataSourceImpl : DataSource {
         viagem.uid = root.child("viagens").push().key
         root.child("viagens").child(viagem.uid).setValue(viagem)
         root.child("frequencias").child(frequencia.uid).setValue(frequencia)
-        root.child("motoristas").child(uid_motorista).child("viagens").child(viagem.uid).setValue(true)
+        //root.child("motoristas").child(uid_motorista).child("viagens").child(viagem.uid).setValue(true)
     }
 
     override fun removerCard(uid_user: String, uid_viagem: String,uid_freq: String,dia: String) {
@@ -334,7 +334,7 @@ object DataSourceImpl : DataSource {
                     action(viagens)
             }
         }
-        root.child("viagens").orderByChild("origem").equalTo(origem).addChildEventListener(listener)
+        root.child("busca_viagens").orderByChild("origem").equalTo(origem).addChildEventListener(listener)
     }
 
     override fun buscarViagensPorDestino(destino: String, action: (MutableList<Viagem>) -> Unit) {
@@ -352,7 +352,7 @@ object DataSourceImpl : DataSource {
                 action(viagens)
             }
         }
-        root.child("viagens").orderByChild("destino").equalTo(destino).addChildEventListener(listener)
+        root.child("busca_viagens").orderByChild("destino").equalTo(destino).addChildEventListener(listener)
     }
 
     override fun buscarViagensPorOrigemDestino(origem: String, destino: String, action: (MutableList<Viagem>) -> Unit) {
@@ -370,7 +370,7 @@ object DataSourceImpl : DataSource {
                 action(viagens)
             }
         }
-        root.child("viagens").orderByChild("origemdestino").equalTo(origem+destino).addChildEventListener(listener)
+        root.child("busca_viagens").orderByChild("origemdestino").equalTo(origem+destino).addChildEventListener(listener)
     }
 
 
