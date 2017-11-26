@@ -16,8 +16,8 @@
         android:elevation="0dp"
         android:layerType="none"
         app:cardBackgroundColor="@color/colorPrimaryDark"
-        app:cardUseCompatPadding="true"
-        app:cardCornerRadius="5dp">
+        app:cardCornerRadius="5dp"
+        app:cardUseCompatPadding="true">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -28,8 +28,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="26dp"
                 android:layout_marginLeft="4dp"
-                android:layout_marginTop="8dp"
-                android:text="Origem"
+                android:layout_marginTop="10dp"
+                android:text="ORIGEM"
+                android:textColor="@color/colorAccentDark"
                 android:textSize="18sp"
                 app:layout_constraintLeft_toRightOf="@+id/tv_de"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -38,15 +39,15 @@
                 android:id="@+id/tv_viagem_destino"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="153dp"
-                android:layout_marginTop="8dp"
-                android:text="Destino"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="10dp"
+                android:text="DESTINO"
+                android:textColor="@color/colorAccentDark"
                 android:textSize="18sp"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintHorizontal_bias="0.041"
                 app:layout_constraintLeft_toRightOf="@+id/tv_a"
-                android:layout_marginLeft="8dp"
-                app:layout_constraintHorizontal_bias="0.263" />
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_de"
@@ -57,7 +58,6 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="8dp"
                 android:text="De:"
-                android:textColor="@color/colorAccentDark"
                 android:textSize="22sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -70,11 +70,25 @@
                 android:id="@+id/tv_a"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="13dp"
-                android:layout_marginTop="16dp"
-                android:text="à"
-                android:textColor="@color/colorAccentDark"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="9dp"
+                android:text="até"
+                android:textSize="20sp"
                 app:layout_constraintLeft_toRightOf="@+id/tv_viagem_origem"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="45dp"
+                android:text="Data"
+                android:textSize="14sp"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -83,7 +97,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:layout_marginTop="45dp"
+                android:layout_marginTop="65dp"
                 android:text="Horário"
                 android:textSize="14sp"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -98,7 +112,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="8dp"
-                android:text="Preço"
+                android:text=" Preço"
                 android:textSize="14sp"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintLeft_toLeftOf="parent"

@@ -16,7 +16,7 @@ class PrincipalPresenter(val view: PrincipalContrato.View) : FirebaseMessagingSe
     private val source: DataSource = DataSourceImpl
 
     override fun possuiViagens() {
-        source.buscarViagens("passageiros", auth.currentUser!!.uid) { viagens ->
+        source.buscarViagensPorPassageiro(auth.currentUser!!.uid) { viagens ->
             if(viagens.isEmpty()){
                 view.direcionarBusca()
             }else{

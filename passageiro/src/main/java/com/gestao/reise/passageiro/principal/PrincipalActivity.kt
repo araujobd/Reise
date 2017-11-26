@@ -51,7 +51,6 @@ class PrincipalActivity : BaseActivity(), NavigationView.OnNavigationItemSelecte
     }
     override fun direcionarBusca() {
         startActivity(Intent(this@PrincipalActivity, BuscarViagemActivity::class.java))
-        finish()
     }
 
     override fun mostrarViagens(viagens: MutableList<Viagem>) {

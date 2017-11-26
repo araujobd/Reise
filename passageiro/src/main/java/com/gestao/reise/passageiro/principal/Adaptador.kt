@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,7 +35,7 @@ class Adaptador(val viagens: MutableList<Viagem>): RecyclerView.Adapter<Adaptado
         holder!!.tituloDestino!!.text = viagem.destino.capitalize()
         holder!!.tituloHorario!!.text = viagem.horario
         holder!!.tituloPreco!!.text = viagem.preco
-        //holder!!.tituloDia!!.text =
+        holder!!.tituloDia!!.text = viagem.data
         holder!!.botaoRemover.setOnClickListener{ dialogo(holder.context, viagem,position) }
 
     }

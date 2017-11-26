@@ -8,10 +8,11 @@ import com.gestao.reise.reisecommon.model.Viagem
 interface DetalhesContrato {
     interface view {
         fun msgSucesso()
-        fun dialogo(viagem: Viagem,dia: String)
+        fun msgErro()
+        fun dialogo(viagem: Viagem )
     }
     interface presenter {
-        fun interesseVaga(viagem: Viagem,dia: String)
-        fun reservarVaga(viagem: Viagem, dia: String)
+        fun interesseVaga(viagem: Viagem)
+        fun reservarVaga(viagem: Viagem)
     }
 }

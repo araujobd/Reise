@@ -19,7 +19,6 @@ interface DataSource {
 
     fun buscarUidUser(typeUser: String, uid: String, sucesso: () -> Unit, erro: () -> Unit)
     fun buscarPassageiros(callback: (MutableList<Passageiro>) -> Unit)
-    fun buscarMotorista(uid: String, sucesso: (motorista: Motorista) -> Unit)
     fun buscarPassageiro(uid: String, sucesso: (passageiro: Passageiro) -> Unit)
     fun buscarViagens(user: String, uid: String, action: (MutableList<Viagem>) -> Unit)
     fun buscarDia(uid: String,action: (String) -> Unit)
@@ -32,6 +31,7 @@ interface DataSource {
     /* ********************* ********************/
 
     fun navBusca(uid: String, type: String, sucesso: (nome: String, fotoUrl: String) -> Unit)
+    fun buscarVagas(uid_via: String, sucesso: (vagas: Int) -> Unit)
     fun buscarPerfilPassageiro(uid: String, sucesso: (passageiro: Passageiro) -> Unit)
     fun buscarPerfilMotorista(uid: String, sucesso: (motorista: Motorista) -> Unit)
     fun buscarViagensPorPassageiro(uid: String, sucesso: (viagens: MutableList<Viagem>) -> Unit)
@@ -41,4 +41,8 @@ interface DataSource {
     fun buscarViagensPorOrigem(origem: String, action: (MutableList<Viagem>) -> Unit)
     fun buscarViagensPorDestino(destino: String, action: (MutableList<Viagem>) -> Unit)
     fun buscarViagensPorOrigemDestino(origem: String,destino: String, action: (MutableList<Viagem>) -> Unit)
+    fun buscarMotorista(uid: String, sucesso: (motorista: Motorista) -> Unit)
+    fun reservar(uid_via: String, vagas: Int, passageiro: Passageiro, sucesso: () -> Unit)
+    fun removerViagemMotorista(uid_mot: String, uid_via: String, sucesso: () -> Unit)
+    //fun removerCardMotorista()
 }

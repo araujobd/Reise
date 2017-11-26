@@ -1,9 +1,12 @@
 package com.gestao.reise.motorista.carro
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.TextUtils
+import android.view.MenuItem
 import com.gestao.reise.motorista.R
+import com.gestao.reise.motorista.cadastrarViagem.CadastrarViagemActivity
 import kotlinx.android.synthetic.main.activity_editar_carro.*
 
 class EditarCarroActivity : AppCompatActivity(), EditarCarroContrato.View {
@@ -13,16 +16,19 @@ class EditarCarroActivity : AppCompatActivity(), EditarCarroContrato.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_editar_carro)
-
+        setActionBar(toolbar)
+        actionBar.setDisplayHomeAsUpEnabled(true)
+        actionBar.setHomeButtonEnabled(true)
+        actionBar.title = "Cadastrar Carro"
         configurarBotoes()
     }
 
     private fun configurarBotoes() {
         bt_cadastrar.setOnClickListener { cadastrarCarro() }
-        bt_cadastrar.background = getDrawable(R.color.colorAccent)
     }
 
     override fun done() {
+        startActivity(Intent(this@EditarCarroActivity, CadastrarViagemActivity::class.java))
         finish()
     }
 
@@ -61,5 +67,16 @@ class EditarCarroActivity : AppCompatActivity(), EditarCarroContrato.View {
         }
 
         return flag
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item!!.getItemId()) {
+            android.R.id.home -> {
+                startActivity(Intent(this@EditarCarroActivity, CadastrarViagemActivity::class.java))
+                finish()
+            }
+            else -> {}
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

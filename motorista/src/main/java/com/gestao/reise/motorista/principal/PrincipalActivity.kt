@@ -40,8 +40,7 @@ class PrincipalActivity : Activity(), NavigationView.OnNavigationItemSelectedLis
 
 
     override fun direcionarCadastro() {
-        startActivity(Intent(this@PrincipalActivity, CadastrarViagemActivity::class.java))
-        finish()
+        startActivity(Intent(this@PrincipalActivity, EditarCarroActivity::class.java))
     }
 
     override fun mostrarViagens(viagens: MutableList<Viagem>) {

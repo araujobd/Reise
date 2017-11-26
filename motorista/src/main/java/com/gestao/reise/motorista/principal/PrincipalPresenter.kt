@@ -19,9 +19,9 @@ class PrincipalPresenter(val view: PrincipalContrato.View) : FirebaseMessagingSe
     override fun onMessageReceived(p0: RemoteMessage?) {
         Log.i("logNotification",p0!!.notification.body)
     }
-
+//buscarViagens("motoristas",auth.currentUser!!.uid.toString())
     override fun possuiViagens() {
-        source.buscarViagens("motoristas",auth.currentUser!!.uid.toString()) { viagens ->
+        source.buscarViagensPorMotorista(auth.currentUser!!.uid) { viagens ->
                 if(viagens.isEmpty()){
                     view.direcionarCadastro()
                 }else{

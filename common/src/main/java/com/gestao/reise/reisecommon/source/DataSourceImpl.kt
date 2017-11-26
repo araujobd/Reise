@@ -23,29 +23,39 @@ object DataSourceImpl : DataSource {
     }
 
     override fun salvarMotorista(motorista: Motorista) {
-        //motorista.uid = root.child("motoristas").push().key
         root.child("users/motoristas").child(motorista.uid).updateChildren(motorista.toMap())
     }
 
     override fun salvarPassageiro(passageiro: Passageiro) {
-        //root.child("passageiros").child(passageiro.uid).setValue(passageiro)
-        //root.child("passageiros").child(passageiro.uid).updateChildren(passageiro.toMap())
         root.child("users/passageiro").child(passageiro.uid).updateChildren(passageiro.toMap())
     }
 
     override fun salvarViagem(viagem: Viagem, uid_motorista: String) {
-        val frequencia = Frequencia()
-        frequencia.uid = root.child("frequencias").push().key
-        viagem.uid_frequencia = frequencia.uid
         viagem.uid = root.child("viagens").push().key
         root.child("viagens").child(viagem.uid).setValue(viagem)
-        root.child("frequencias").child(frequencia.uid).setValue(frequencia)
-        //root.child("motoristas").child(uid_motorista).child("viagens").child(viagem.uid).setValue(true)
     }
 
     override fun removerCard(uid_user: String, uid_viagem: String,uid_freq: String,dia: String) {
-        root.child("passageiros").child(uid_user).child("viagens").child(uid_viagem).removeValue()
-        //root.child("frequencias").child(uid_freq).child(dia).child(uid_user).removeValue()
+        buscarVagas(uid_viagem){vagas ->
+            val qtdVagas = vagas + 1
+            root.child("viagens").child(uid_viagem).child("qtd_vagas").setValue(qtdVagas)
+            root.child("viagens").child(uid_viagem).child("passageiros").child(uid_user).removeValue()
+            root.child("viagens_passageiro_principal").child(uid_user).child(uid_viagem).removeValue()
+        }
+
+    }
+
+    override fun buscarVagas(uid_via: String, sucesso: (vagas: Int) -> Unit) {
+        val listener = object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError?) {
+            }
+
+            override fun onDataChange(dataSnapshot: DataSnapshot?) {
+                val vagas = dataSnapshot?.value.toString().toInt()
+                sucesso(vagas)
+            }
+        }
+        root.child("viagens").child(uid_via).child("qtd_vagas").addListenerForSingleValueEvent(listener)
     }
 
     override fun reservarViagem(dia: String,viagem: Viagem, uid_passageiro: String, sucesso: () -> Unit) {
@@ -55,8 +65,8 @@ object DataSourceImpl : DataSource {
     }
 
     override fun salvarCarro(uid_motorista: String, carro: Carro) {
-        carro.uid = root.child("carros").push().key
-        root.child("motoristas").child(uid_motorista).child("carro").setValue(carro)
+        carro.uid = root.child("users/motoristas").child(uid_motorista).child("carro").push().key
+        root.child("users/motoristas").child(uid_motorista).child("carro").setValue(carro)
     }
 
     override fun buscarDia(uid: String, action: (String) -> Unit) {
@@ -159,21 +169,7 @@ object DataSourceImpl : DataSource {
 
     }
 
-    override fun buscarMotorista(uid: String, sucesso: (motorista: Motorista) -> Unit) {
-        val listener = object : ValueEventListener {
-            override fun onCancelled(p0: DatabaseError?) {
-            }
 
-            override fun onDataChange(dataSnapshot: DataSnapshot?) {
-                val motorista: Motorista? = dataSnapshot?.getValue(Motorista::class.java)
-                if (motorista != null)
-                    sucesso(motorista)
-            }
-
-        }
-
-        root.child("motoristas").child(uid).addValueEventListener(listener)
-    }
 
     override fun buscarPassageiro(uid: String, sucesso: (passageiro: Passageiro) -> Unit) {
         val listener = object : ValueEventListener {
@@ -185,7 +181,7 @@ object DataSourceImpl : DataSource {
                 sucesso(passageiro as Passageiro)
             }
         }
-        root.child("passageiros").child(uid).addValueEventListener(listener)
+        root.child("users/passageiro").child(uid).addValueEventListener(listener)
     }
 
     override fun buscarFrequencia(uid_freq: String, dia: String, action: (MutableList<Passageiro>) -> Unit) {
@@ -290,7 +286,7 @@ object DataSourceImpl : DataSource {
                 sucesso(viagens)
             }
         }
-        root.child("viagens_motorista").child(uid).orderByChild("data").addValueEventListener(listener)
+        root.child("viagem_motorista").child(uid).orderByChild("data").addValueEventListener(listener)
     }
 
     override fun buscarDetalhesBuscaViagem(uid: String, sucesso: (viagem: Viagem) -> Unit) {
@@ -373,5 +369,47 @@ object DataSourceImpl : DataSource {
         root.child("busca_viagens").orderByChild("origemdestino").equalTo(origem+destino).addChildEventListener(listener)
     }
 
+    override fun buscarMotorista(uid: String, sucesso: (motorista: Motorista) -> Unit) {
+        val listener = object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError?) {
+            }
 
+            override fun onDataChange(dataSnapshot: DataSnapshot?) {
+                val motorista: Motorista? = dataSnapshot?.getValue(Motorista::class.java)
+                if (motorista != null)
+                    sucesso(motorista)
+            }
+
+        }
+
+        root.child("users").child("motoristas").child(uid).addValueEventListener(listener)
+    }
+
+    override fun reservar(uid_via: String, vagas: Int, passageiro: Passageiro, sucesso: () -> Unit) {
+        root.child("viagens").child(uid_via).child("qtd_vagas").setValue(vagas)
+        root.child("viagens").child(uid_via).child("passageiros").child(passageiro.uid).setValue(passageiro)
+    }
+
+    override fun removerViagemMotorista(uid_mot: String, uid_via: String, sucesso: () -> Unit) {
+        val listener = object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError?) {}
+
+            override fun onDataChange(dataSnapshot: DataSnapshot?) {
+                dataSnapshot?.children?.forEach {
+                    val pas: Passageiro? = it.getValue(Passageiro::class.java)
+                    Log.i("logBusca","Passageiro: "+pas!!.uid)
+                    root.child("viagens_passageiro_principal").child(pas.uid).child(uid_via).removeValue()
+
+                }
+                sucesso()
+            }
+        }
+        root.child("viagens").child(uid_via).child("passageiros").addValueEventListener(listener)
+
+        root.child("viagens").child(uid_via).removeValue()
+        root.child("viagem_motorista").child(uid_mot).child(uid_via).removeValue()
+        root.child("detalhes_viagens_motorista").child(uid_via).removeValue()
+        root.child("detalhes_viagens_busca").child(uid_via).removeValue()
+        root.child("busca_viagens").child(uid_via).removeValue()
+    }
 }

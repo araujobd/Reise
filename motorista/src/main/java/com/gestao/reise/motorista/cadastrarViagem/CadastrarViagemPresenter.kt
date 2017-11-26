@@ -16,20 +16,22 @@ class CadastrarViagemPresenter(val view: CadastrarViagemContrato.view) : Cadastr
     private val source: DataSource = DataSourceImpl
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
-    override fun cadastrarViagem(origem : String, destino : String, preco : String, horario: String, frequencia: ArrayList<Boolean>) {
+    override fun cadastrarViagem(origem : String, destino : String, preco : String, horario: String, data: String//,frequencia: ArrayList<Boolean>
+    ) {
         val uid_motorista = auth.currentUser?.uid!!
-        val viagem = Viagem()
-        source.buscarMotorista(uid_motorista) {
-            viagem.qtd_vagas = it.carro.qtd_vagas
+        var viagem = Viagem()
+        source.buscarMotorista(uid_motorista) { motorista ->
+            viagem.qtd_vagas = motorista.carro.qtd_vagas
+            viagem.origem = origem
+            viagem.destino = destino
+            viagem.preco = preco
+            viagem.horario = horario
+            viagem.data = data
+            viagem.uid_mot = uid_motorista
+            source.salvarViagem(viagem,uid_motorista)
+            view.msgSucesso()
         }
-        viagem.origem = origem
-        viagem.destino = destino
-        viagem.preco = preco
-        viagem.horario = horario
-        viagem.frequencia = frequencia
-        viagem.motorista = uid_motorista
-        source.salvarViagem(viagem,uid_motorista)
-        view.msgSucesso()
+
     }
 
 }

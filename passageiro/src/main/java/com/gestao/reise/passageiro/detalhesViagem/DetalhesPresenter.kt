@@ -1,5 +1,6 @@
 package com.gestao.reise.passageiro.detalhesViagem
 
+import com.gestao.reise.reisecommon.model.Passageiro
 import com.gestao.reise.reisecommon.model.Viagem
 import com.gestao.reise.reisecommon.source.DataSource
 import com.gestao.reise.reisecommon.source.DataSourceImpl
@@ -13,12 +14,17 @@ class DetalhesPresenter(val view: DetalhesContrato.view) : DetalhesContrato.pres
     private val source: DataSource = DataSourceImpl
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
-    override fun interesseVaga(viagem: Viagem,dia: String) {
-        view.dialogo(viagem,dia)
+    override fun interesseVaga(viagem: Viagem) {
+        view.dialogo(viagem)
     }
 
-    override fun reservarVaga(viagem: Viagem,dia: String) {
-        source.reservarViagem(dia,viagem,auth.currentUser!!.uid,
-                sucesso = {view.msgSucesso()})
+    override fun reservarVaga(viagem: Viagem) {
+        if(viagem.qtd_vagas > 0)
+            source.buscarPassageiro(auth.currentUser!!.uid,
+                sucesso = { passageiro -> source.reservar(viagem.uid,(viagem.qtd_vagas - 1),passageiro,
+                                             sucesso = {view.msgSucesso()})})
+        else
+            view.msgErro()
+
     }
 }

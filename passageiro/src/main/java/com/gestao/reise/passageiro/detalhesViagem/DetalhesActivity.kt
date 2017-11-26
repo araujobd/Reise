@@ -31,20 +31,22 @@ class DetalhesActivity: Activity(), DetalhesContrato.view {
     }
 
     fun mostrarDetalhes(viagem: Viagem) {
-        tv_det_origem.setText(viagem.origem)
-        tv_det_destino.setText(viagem.destino)
+        //tv_det_origem.setText(viagem.origem)
+        //tv_det_destino.setText(viagem.destino)
         tv_det_horario.setText(viagem.horario)
         tv_det_preco.setText(viagem.preco)
         tv_det_vagas.text = viagem.qtd_vagas.toString()
-        mostrarFrequencia(viagem)
+        tv_det_data.text = viagem.data
+        bt_reservar.setOnClickListener{ presenter.interesseVaga(viagem) }
+        //mostrarFrequencia(viagem)
     }
 
 
-    override fun dialogo(viagem: Viagem,dia: String) {
+    override fun dialogo(viagem: Viagem) {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Deseja reservar vaga neste dia?")
         builder.setPositiveButton("Sim", { dialog, which ->
-            presenter.reservarVaga(viagem,dia)
+            presenter.reservarVaga(viagem)
             finish()
         })
         builder.setNegativeButton("Não", { dialog, which ->
@@ -89,7 +91,9 @@ class DetalhesActivity: Activity(), DetalhesContrato.view {
     override fun msgSucesso() {
         Toast.makeText(this,"Viagem reservada com sucesso!!",Toast.LENGTH_LONG).show()
     }
-
+    override fun msgErro() {
+        Toast.makeText(this,"A viagem está cheia.",Toast.LENGTH_LONG).show()
+    }
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item!!.getItemId()) {
             android.R.id.home -> { finish() }

@@ -13,9 +13,10 @@ data class Viagem(var uid: String,
                   var origem: String,
                   var destino: String,
                   var horario: String,
+                  var data: String,
                   var preco: String,
                   var qtd_vagas: Int,
                   var frequencia: ArrayList<Boolean>,
-                  var motorista: String) : Serializable{
-    constructor() : this("", "", "", "", "", "", -1, arrayListOf(), "")
+                  var uid_mot: String) : Serializable{
+    constructor() : this("", "", "","", "", "", "", -1, arrayListOf(), "")
 }

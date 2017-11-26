@@ -31,10 +31,11 @@ class DetalhesActivity: Activity() {
         tv_det_horario.text = viagem.horario
         tv_det_preco.text = viagem.preco
         tv_det_vagas.text = viagem.qtd_vagas.toString()
-        mostrarFrequencia(viagem)
+        tv_det_data.text = viagem.data
+        //mostrarFrequencia(viagem)
     }
 
-    fun mostrarPassageiros(uid_freq: String, dia: String) {
+    /*fun mostrarPassageiros(uid_freq: String, dia: String) {
         val freq: Array<String> = arrayOf(uid_freq,dia)
         val intent = Intent(this@DetalhesActivity, DetalhesPassageirosActivity::class.java)
         intent.putExtra("freq",freq)
@@ -70,7 +71,7 @@ class DetalhesActivity: Activity() {
             bt_sab.setBackgroundColor(Color.MAGENTA)
             bt_sab.setOnClickListener{  mostrarPassageiros(viagem.uid_frequencia,"sab")  }
         }
-    }
+    }*/
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item!!.getItemId()) {
             android.R.id.home -> { finish() }

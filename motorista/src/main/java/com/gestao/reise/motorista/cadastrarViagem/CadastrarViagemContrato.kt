@@ -12,6 +12,7 @@ interface CadastrarViagemContrato {
         fun msgSucesso()
     }
     interface presenter{
-        fun cadastrarViagem(origem : String, destino : String, preco : String, horario: String, frequencia: ArrayList<Boolean>)
+        fun cadastrarViagem(origem : String, destino : String, preco : String, horario: String,  data: String//, frequencia: ArrayList<Boolean>
+        )
     }
 }
