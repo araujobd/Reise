@@ -38,4 +38,9 @@ class PrincipalPresenter(val view: PrincipalContrato.View) : FirebaseMessagingSe
     override fun onMessageReceived(p0: RemoteMessage?) {
         Log.i("logNotification",p0!!.notification.body)
     }
+
+    override fun sair() {
+        auth.signOut()
+        view.sair()
+    }
 }

@@ -14,6 +14,13 @@ class EditarCarroPresenter(val view: EditarCarroContrato.View) : EditarCarroCont
     private val source: DataSource = DataSourceImpl
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
+    override fun carregarCarro() {
+        source.buscarCarro(auth.currentUser!!.uid){carro ->
+            view.entregarCarro(carro)
+        }
+    }
+
+
     override fun cadastrarCarro(cor: String, modelo: String, placa: String, qtd_vagas: Int, vaga_crianca: Boolean) {
         val uid = auth.currentUser?.uid!!
         val carro = Carro()

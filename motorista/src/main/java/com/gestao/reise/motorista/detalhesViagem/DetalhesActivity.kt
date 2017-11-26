@@ -32,17 +32,16 @@ class DetalhesActivity: Activity() {
         tv_det_preco.text = viagem.preco
         tv_det_vagas.text = viagem.qtd_vagas.toString()
         tv_det_data.text = viagem.data
-        //mostrarFrequencia(viagem)
+        bt_passageiros.setOnClickListener{ mostrarPassageiros(viagem.uid) }
     }
 
-    /*fun mostrarPassageiros(uid_freq: String, dia: String) {
-        val freq: Array<String> = arrayOf(uid_freq,dia)
+    fun mostrarPassageiros(uid_via: String) {
         val intent = Intent(this@DetalhesActivity, DetalhesPassageirosActivity::class.java)
-        intent.putExtra("freq",freq)
+        intent.putExtra("uid",uid_via)
         startActivity(intent)
     }
 
-    fun mostrarFrequencia(viagem: Viagem) {
+    /*fun mostrarFrequencia(viagem: Viagem) {
         if(viagem.frequencia[0]) {
             bt_dom.setBackgroundColor(Color.MAGENTA)
             bt_dom.setOnClickListener{  mostrarPassageiros(viagem.uid_frequencia,"dom") }

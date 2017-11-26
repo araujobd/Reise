@@ -18,7 +18,6 @@ interface DataSource {
     fun reservarViagem(dia: String,viagem: Viagem,uid_passageiro: String, sucesso: () -> Unit)
 
     fun buscarUidUser(typeUser: String, uid: String, sucesso: () -> Unit, erro: () -> Unit)
-    fun buscarPassageiros(callback: (MutableList<Passageiro>) -> Unit)
     fun buscarPassageiro(uid: String, sucesso: (passageiro: Passageiro) -> Unit)
     fun buscarViagens(user: String, uid: String, action: (MutableList<Viagem>) -> Unit)
     fun buscarDia(uid: String,action: (String) -> Unit)
@@ -41,7 +40,9 @@ interface DataSource {
     fun buscarViagensPorOrigem(origem: String, action: (MutableList<Viagem>) -> Unit)
     fun buscarViagensPorDestino(destino: String, action: (MutableList<Viagem>) -> Unit)
     fun buscarViagensPorOrigemDestino(origem: String,destino: String, action: (MutableList<Viagem>) -> Unit)
+    fun buscarPassageiros(uid_via: String, callback: (MutableList<Passageiro>) -> Unit)
     fun buscarMotorista(uid: String, sucesso: (motorista: Motorista) -> Unit)
+    fun buscarCarro(uid_mot: String, sucesso: (carro: Carro) -> Unit)
     fun reservar(uid_via: String, vagas: Int, passageiro: Passageiro, sucesso: () -> Unit)
     fun removerViagemMotorista(uid_mot: String, uid_via: String, sucesso: () -> Unit)
     //fun removerCardMotorista()

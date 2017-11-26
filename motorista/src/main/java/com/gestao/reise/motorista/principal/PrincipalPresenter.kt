@@ -29,5 +29,8 @@ class PrincipalPresenter(val view: PrincipalContrato.View) : FirebaseMessagingSe
                 }
         }
     }
-
+    override fun sair() {
+        auth.signOut()
+        view.sair()
+    }
 }

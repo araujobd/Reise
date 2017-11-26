@@ -80,6 +80,16 @@
         android:layout_marginTop="5dp"
         android:text="Data"
         android:textSize="18sp"  />
+
+    <Button
+        android:id="@+id/bt_passageiros"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/colorAccent"
+        android:textColor="@color/background"
+        android:text="Lista de passageiros" />
+
     <!--<TextView
         android:id="@+id/textView9"
         android:layout_width="match_parent"

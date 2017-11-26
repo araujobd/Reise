@@ -1,12 +1,14 @@
 package com.gestao.reise.motorista.carro
 
 import android.content.Intent
+import android.graphics.Typeface
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.TextUtils
 import android.view.MenuItem
 import com.gestao.reise.motorista.R
 import com.gestao.reise.motorista.cadastrarViagem.CadastrarViagemActivity
+import com.gestao.reise.reisecommon.model.Carro
 import kotlinx.android.synthetic.main.activity_editar_carro.*
 
 class EditarCarroActivity : AppCompatActivity(), EditarCarroContrato.View {
@@ -20,6 +22,7 @@ class EditarCarroActivity : AppCompatActivity(), EditarCarroContrato.View {
         actionBar.setDisplayHomeAsUpEnabled(true)
         actionBar.setHomeButtonEnabled(true)
         actionBar.title = "Cadastrar Carro"
+        presenter.carregarCarro()
         configurarBotoes()
     }
 
@@ -30,6 +33,13 @@ class EditarCarroActivity : AppCompatActivity(), EditarCarroContrato.View {
     override fun done() {
         startActivity(Intent(this@EditarCarroActivity, CadastrarViagemActivity::class.java))
         finish()
+    }
+
+    override fun entregarCarro(carro: Carro) {
+        ed_cor.setText(carro.cor)
+        ed_modelo.setText(carro.modelo)
+        ed_placa.setText(carro.placa)
+        ed_qtd_vagas.setText(carro.qtd_vagas.toString())
     }
 
     private fun cadastrarCarro() {

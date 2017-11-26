@@ -14,8 +14,8 @@ class DetalhesPassageirosPresenter(val view: DetalhesPassageirosContrato.view): 
     private val source: DataSource = DataSourceImpl
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
-    override fun buscarFrequencia(freq: Array<String>) {
-        source.buscarFrequencia(freq[0],freq[1]){
+    override fun buscarPassageiros(uid_via: String) {
+        source.buscarPassageiros(uid_via){
             passageiros: MutableList<Passageiro> ->
             Log.i("logBusca",""+passageiros)
             view.mostrarPassageiros(passageiros)

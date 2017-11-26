@@ -11,11 +11,13 @@ interface PrincipalContrato {
         fun direcionarBusca()
         fun mostrarViagens(viagens: MutableList<Viagem>)
         fun mostrarNavHeader(nome: String, fotoUrl: String)
+        fun sair()
     }
 
     interface Presenter {
         fun configNavHeader()
         fun possuiViagens()
+        fun sair()
     }
 
 }

@@ -1,6 +1,7 @@
 package com.gestao.reise.motorista.principal
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.NavigationView
@@ -60,8 +61,24 @@ class PrincipalActivity : Activity(), NavigationView.OnNavigationItemSelectedLis
             startActivity(Intent(this@PrincipalActivity, PerfilActivity::class.java))
         if(id == R.id.nav_carro)
             startActivity(Intent(this@PrincipalActivity, EditarCarroActivity::class.java))
-
+        if(id == R.id.nav_sair)
+            dialogoSair()
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
+    }
+    fun dialogoSair() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Deseja realmente sair?")
+        builder.setPositiveButton("Sim", { dialog, which ->
+            presenter.sair()
+        })
+        builder.setNegativeButton("Não", { dialog, which ->
+            dialog.cancel()
+        })
+        val alert = builder.create()
+        alert.show()
+    }
+    override fun sair() {
+        finish()
     }
 }

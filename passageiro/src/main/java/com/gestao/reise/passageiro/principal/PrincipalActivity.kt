@@ -1,5 +1,6 @@
 package com.gestao.reise.passageiro.principal
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.NavigationView
@@ -68,6 +69,19 @@ class PrincipalActivity : BaseActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
+    fun dialogoSair() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Deseja realmente sair?")
+        builder.setPositiveButton("Sim", { dialog, which ->
+            presenter.sair()
+        })
+        builder.setNegativeButton("Não", { dialog, which ->
+            dialog.cancel()
+        })
+        val alert = builder.create()
+        alert.show()
+    }
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         val id: Int = item.itemId
 
@@ -75,8 +89,15 @@ class PrincipalActivity : BaseActivity(), NavigationView.OnNavigationItemSelecte
             startActivity(Intent(this@PrincipalActivity, BuscarViagemActivity::class.java))
         if(id == R.id.nav_perfil)
             startActivity(Intent(this@PrincipalActivity, PerfilActivity::class.java))
+        if(id == R.id.nav_sair)
+            dialogoSair()
 
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
+
+    override fun sair() {
+        finish()
+    }
+
 }

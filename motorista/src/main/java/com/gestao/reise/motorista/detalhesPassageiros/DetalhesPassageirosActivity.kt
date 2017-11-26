@@ -22,12 +22,12 @@ class DetalhesPassageirosActivity: Activity(), DetalhesPassageirosContrato.view 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detalhes_passageiros)
-        val freq = intent.getStringArrayExtra("freq")
+        val uid_via = intent.getStringExtra("uid")
         setActionBar(toolbarDetalhesPas)
         actionBar.setDisplayHomeAsUpEnabled(true)
         actionBar.setHomeButtonEnabled(true)
-        actionBar.title = freq[1]+"/ Passageiros"
-        presenter.buscarFrequencia(freq)
+        actionBar.title = "Passageiros"
+        presenter.buscarPassageiros(uid_via)
     }
 
     override fun mostrarPassageiros(passageiros: MutableList<Passageiro>) {

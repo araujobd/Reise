@@ -10,10 +10,12 @@ interface PrincipalContrato {
     interface View {
         fun direcionarCadastro()
         fun mostrarViagens(viagens: (MutableList<Viagem>))
+        fun sair()
     }
 
     interface Presenter {
         fun possuiViagens()
+        fun sair()
     }
 
 }

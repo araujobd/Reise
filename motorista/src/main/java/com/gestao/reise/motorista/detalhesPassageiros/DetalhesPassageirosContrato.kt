@@ -12,7 +12,7 @@ interface DetalhesPassageirosContrato {
     }
 
     interface presenter{
-        fun buscarFrequencia(freq: Array<String>)
+        fun buscarPassageiros(uid_via: String)
     }
 
 }
