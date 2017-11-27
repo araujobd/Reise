@@ -1,7 +1,6 @@
 package com.gestao.reise.motorista.principal
 
 import android.util.Log
-import com.gestao.reise.reisecommon.model.Viagem
 import com.gestao.reise.reisecommon.source.DataSource
 import com.gestao.reise.reisecommon.source.DataSourceImpl
 import com.google.firebase.auth.FirebaseAuth
@@ -27,6 +26,13 @@ class PrincipalPresenter(val view: PrincipalContrato.View) : FirebaseMessagingSe
                 }else{
                     view.mostrarViagens(viagens)
                 }
+        }
+    }
+
+    override fun configNavHeader() {
+        val uid  = auth.currentUser!!.uid
+        source.navBusca(uid, "motorista") { nome: String, fotoUrl: String ->
+            view.mostrarNavHeader(nome, fotoUrl)
         }
     }
     override fun sair() {

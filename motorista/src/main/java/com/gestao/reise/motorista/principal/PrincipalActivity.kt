@@ -10,12 +10,16 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.MenuItem
+import android.view.View
+import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import com.gestao.reise.motorista.R
 import com.gestao.reise.motorista.cadastrarViagem.CadastrarViagemActivity
 import com.gestao.reise.motorista.carro.EditarCarroActivity
 import com.gestao.reise.motorista.perfil.PerfilActivity
 import com.gestao.reise.reisecommon.model.Viagem
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_principal.*
 import kotlinx.android.synthetic.main.app_bar_principal.*
 
@@ -37,6 +41,7 @@ class PrincipalActivity : Activity(), NavigationView.OnNavigationItemSelectedLis
 
         nav_drawer.setNavigationItemSelectedListener(this)
         presenter.possuiViagens()
+        presenter.configNavHeader()
     }
 
 
@@ -80,5 +85,13 @@ class PrincipalActivity : Activity(), NavigationView.OnNavigationItemSelectedLis
     }
     override fun sair() {
         finish()
+    }
+
+    override fun mostrarNavHeader(nome: String, fotoUrl: String) {
+        val header: View = nav_drawer.getHeaderView(0)
+        val s: TextView = header.findViewById(R.id.tv_name)
+        val image: ImageView = header.findViewById(R.id.nav_img_perfil)
+        s.text = nome
+        Picasso.with(this).load(fotoUrl).noFade().into(image)
     }
 }

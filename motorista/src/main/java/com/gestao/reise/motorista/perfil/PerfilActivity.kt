@@ -5,8 +5,9 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import com.gestao.reise.motorista.R
-import com.gestao.reise.motorista.perfil.editar.EditarPerfilActivity
+import com.gestao.reise.motorista.perfil.atualizar.EditarPerfilActivity
 import com.gestao.reise.reisecommon.model.Motorista
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_perfil.*
 import kotlinx.android.synthetic.main.content_perfil.*
 
@@ -38,7 +39,8 @@ class PerfilActivity : AppCompatActivity(), PerfilContrato.View {
     override fun mostrarPerfil(motorista: Motorista) {
         Log.i("logBusca", "mostrarPerfil")
         Log.i("logBusca", motorista.toString())
-        //Picasso.with(this).load(motorista.fotoUrl).noFade().into(img_perfil)
+        if (motorista.fotoUrl.length > 0)
+            Picasso.with(this).load(motorista.fotoUrl).noFade().into(img_perfil)
         Log.i("logBusca", "foto")
         tv_nome.setText(motorista.nome)
         tv_telefone.setText(motorista.telefone)

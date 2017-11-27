@@ -40,7 +40,7 @@
         <activity android:name=".perfil.PerfilActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
-        <activity android:name=".perfil.editar.EditarPerfilActivity"
+        <activity android:name=".perfil.atualizar.EditarPerfilActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <activity android:name=".carro.EditarCarroActivity"
