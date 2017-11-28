@@ -36,6 +36,7 @@ object DataSourceImpl : DataSource {
     override fun salvarViagem(viagem: Viagem, uid_motorista: String) {
         viagem.uid = root.child("viagens").push().key
         root.child("viagens").child(viagem.uid).setValue(viagem)
+        root.child("viagem_motorista").child(uid_motorista).child(viagem.uid).updateChildren(viagem.viagem_motorista())
     }
 
     override fun removerCard(uid_user: String, uid_viagem: String,uid_freq: String,dia: String) {
@@ -62,8 +63,8 @@ object DataSourceImpl : DataSource {
     }
 
     override fun reservarViagem(dia: String,viagem: Viagem, uid_passageiro: String, sucesso: () -> Unit) {
-        root.child("frequencias").child(viagem.uid_frequencia).child(dia).child(uid_passageiro).setValue(true)
         root.child("passageiros").child(uid_passageiro).child("viagens").child(viagem.uid).child(dia).setValue(true)
+
         sucesso()
     }
 
@@ -402,9 +403,10 @@ object DataSourceImpl : DataSource {
         root.child("users").child("motoristas").child(uid_mot).child("carro").addValueEventListener(listener)
     }
 
-    override fun reservar(uid_via: String, vagas: Int, passageiro: Passageiro, sucesso: () -> Unit) {
-        root.child("viagens").child(uid_via).child("qtd_vagas").setValue(vagas)
-        root.child("viagens").child(uid_via).child("passageiros").child(passageiro.uid).setValue(passageiro)
+    override fun reservar(viagem: Viagem, vagas: Int, passageiro: Passageiro, sucesso: () -> Unit) {
+        root.child("viagens").child(viagem.uid).child("qtd_vagas").setValue(vagas)
+        root.child("viagens").child(viagem.uid).child("passageiros").child(passageiro.uid).setValue(passageiro)
+        root.child("viagens_passageiro_principal").child(passageiro.uid).child(viagem.uid).updateChildren(viagem.reserva())
     }
 
     override fun removerViagemMotorista(uid_mot: String, uid_via: String, sucesso: () -> Unit) {

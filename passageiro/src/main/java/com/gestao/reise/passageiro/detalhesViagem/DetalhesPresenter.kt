@@ -28,7 +28,7 @@ class DetalhesPresenter(val view: DetalhesContrato.view) : DetalhesContrato.pres
     override fun reservarVaga(viagem: Viagem) {
         if(viagem.qtd_vagas > 0)
             source.buscarPassageiro(auth.currentUser!!.uid,
-                sucesso = { passageiro -> source.reservar(viagem.uid,(viagem.qtd_vagas - 1),passageiro,
+                sucesso = { passageiro -> source.reservar(viagem,(viagem.qtd_vagas - 1),passageiro,
                                              sucesso = {view.msgSucesso()})})
         else
             view.msgErro()

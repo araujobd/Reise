@@ -43,7 +43,7 @@ interface DataSource {
     fun buscarPassageiros(uid_via: String, callback: (MutableList<Passageiro>) -> Unit)
     fun buscarMotorista(uid: String, sucesso: (motorista: Motorista) -> Unit)
     fun buscarCarro(uid_mot: String, sucesso: (carro: Carro) -> Unit)
-    fun reservar(uid_via: String, vagas: Int, passageiro: Passageiro, sucesso: () -> Unit)
+    fun reservar(viagem: Viagem, vagas: Int, passageiro: Passageiro, sucesso: () -> Unit)
     fun removerViagemMotorista(uid_mot: String, uid_via: String, sucesso: () -> Unit)
     //fun removerCardMotorista()
 }
