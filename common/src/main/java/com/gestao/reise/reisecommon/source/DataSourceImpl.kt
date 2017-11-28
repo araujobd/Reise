@@ -244,6 +244,7 @@ object DataSourceImpl : DataSource {
 
             override fun onDataChange(dataSnapshot: DataSnapshot?) {
                 Log.d("VIAGENSS", dataSnapshot.toString())
+                viagens.clear()
                 dataSnapshot?.children?.forEach {
                     val viagem: Viagem? = it.getValue(Viagem::class.java)
                     viagem?.let { viagens.add(it) }
@@ -261,12 +262,14 @@ object DataSourceImpl : DataSource {
             }
 
             override fun onDataChange(dataSnapshot: DataSnapshot?) {
+                viagens.clear()
                 dataSnapshot?.children?.forEach {
                     val viagem: Viagem? = it.getValue(Viagem::class.java)
                     viagem?.let { viagens.add(it) }
                 }
                 sucesso(viagens)
             }
+
         }
         root.child("viagem_motorista").child(uid).orderByChild("data").addValueEventListener(listener)
     }

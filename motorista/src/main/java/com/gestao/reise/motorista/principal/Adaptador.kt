@@ -57,6 +57,7 @@ class Adaptador(val viagens: MutableList<Viagem>): RecyclerView.Adapter<Adaptado
             deletarCard(contexto,viagem.uid,auth.currentUser!!.uid)
             viagens.remove(viagem)
             notifyItemRemoved(posicao)
+            notifyItemChanged(posicao)
         })
         builder.setNegativeButton("Não", { dialog, which ->
             dialog.cancel()
