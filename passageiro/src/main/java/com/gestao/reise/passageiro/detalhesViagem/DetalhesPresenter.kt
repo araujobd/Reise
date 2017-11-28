@@ -18,6 +18,13 @@ class DetalhesPresenter(val view: DetalhesContrato.view) : DetalhesContrato.pres
         view.dialogo(viagem)
     }
 
+    override fun buscaMotorista(uid_mot: String) {
+        source.buscarMotorista(uid_mot){motorista ->
+            view.devolveMotorista(motorista)
+        }
+    }
+
+
     override fun reservarVaga(viagem: Viagem) {
         if(viagem.qtd_vagas > 0)
             source.buscarPassageiro(auth.currentUser!!.uid,

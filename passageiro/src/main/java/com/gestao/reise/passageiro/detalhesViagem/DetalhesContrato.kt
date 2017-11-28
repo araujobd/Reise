@@ -1,5 +1,6 @@
 package com.gestao.reise.passageiro.detalhesViagem
 
+import com.gestao.reise.reisecommon.model.Motorista
 import com.gestao.reise.reisecommon.model.Viagem
 
 /**
@@ -10,9 +11,11 @@ interface DetalhesContrato {
         fun msgSucesso()
         fun msgErro()
         fun dialogo(viagem: Viagem )
+        fun devolveMotorista(mot: Motorista)
     }
     interface presenter {
         fun interesseVaga(viagem: Viagem)
         fun reservarVaga(viagem: Viagem)
+        fun buscaMotorista(uid_mot: String)
     }
 }

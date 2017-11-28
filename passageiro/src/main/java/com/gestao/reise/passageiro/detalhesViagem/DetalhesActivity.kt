@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
 import com.gestao.reise.passageiro.R
+import com.gestao.reise.reisecommon.model.Motorista
 import com.gestao.reise.reisecommon.model.Viagem
 import kotlinx.android.synthetic.main.activity_detalhes_viagem.*
 
@@ -31,14 +32,20 @@ class DetalhesActivity: Activity(), DetalhesContrato.view {
     }
 
     fun mostrarDetalhes(viagem: Viagem) {
-        //tv_det_origem.setText(viagem.origem)
-        //tv_det_destino.setText(viagem.destino)
-        tv_det_horario.setText(viagem.horario)
-        tv_det_preco.setText(viagem.preco)
+        presenter.buscaMotorista(viagem.uid_mot)
+        tv_det_horario.text = viagem.horario
+        tv_det_preco.text = viagem.preco
         tv_det_vagas.text = viagem.qtd_vagas.toString()
         tv_det_data.text = viagem.data
         bt_reservar.setOnClickListener{ presenter.interesseVaga(viagem) }
-        //mostrarFrequencia(viagem)
+
+    }
+
+    override fun devolveMotorista(mot: Motorista) {
+        tv_nome_mot.text = mot.nome
+        tv_tel_mot.text = mot.telefone
+        tv_car_modelo.text = mot.carro.modelo
+        tv_car_cor.text = mot.carro.cor
     }
 
 
@@ -56,37 +63,6 @@ class DetalhesActivity: Activity(), DetalhesContrato.view {
         alert.show()
     }
 
-    fun mostrarFrequencia(viagem: Viagem){
-
-        /*if(viagem.frequencia[0]) {
-            bt_dom.background = getDrawable(R.drawable.circle_tint)
-            bt_dom.setOnClickListener{ presenter.interesseVaga(viagem,"dom") }
-        }
-        if(viagem.frequencia[1]) {
-            bt_seg.background = getDrawable(R.drawable.circle_tint)
-            bt_seg.setOnClickListener{ presenter.interesseVaga(viagem,"seg") }
-        }
-        if(viagem.frequencia[2]) {
-            bt_ter.background = getDrawable(R.drawable.circle_tint)
-            bt_ter.setOnClickListener{ presenter.interesseVaga(viagem,"ter") }
-        }
-        if(viagem.frequencia[3]) {
-            bt_qua.background = getDrawable(R.drawable.circle_tint)
-            bt_qua.setOnClickListener{ presenter.interesseVaga(viagem,"qua") }
-        }
-        if(viagem.frequencia[4]) {
-            bt_qui.background = getDrawable(R.drawable.circle_tint)
-            bt_qui.setOnClickListener{ presenter.interesseVaga(viagem,"qui") }
-        }
-        if(viagem.frequencia[5]) {
-            bt_sex.background = getDrawable(R.drawable.circle_tint)
-            bt_sex.setOnClickListener{ presenter.interesseVaga(viagem,"sex") }
-        }
-        if(viagem.frequencia[6]) {
-            bt_sab.background = getDrawable(R.drawable.circle_tint)
-            bt_sab.setOnClickListener{ presenter.interesseVaga(viagem,"sab") }
-         }*/
-    }
 
     override fun msgSucesso() {
         Toast.makeText(this,"Viagem reservada com sucesso!!",Toast.LENGTH_LONG).show()
