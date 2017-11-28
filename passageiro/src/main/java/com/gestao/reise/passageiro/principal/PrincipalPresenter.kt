@@ -17,6 +17,8 @@ class PrincipalPresenter(val view: PrincipalContrato.View) : FirebaseMessagingSe
 
     override fun possuiViagens() {
         source.buscarViagensPorPassageiro(auth.currentUser!!.uid) { viagens ->
+            Log.d("VIAGENS", viagens.size.toString())
+
             if(viagens.isEmpty()){
                 view.direcionarBusca()
             }else{
@@ -26,9 +28,6 @@ class PrincipalPresenter(val view: PrincipalContrato.View) : FirebaseMessagingSe
     }
 
     override fun configNavHeader() {
-/*        source.buscarPassageiro(auth.currentUser!!.uid.toString()) {
-            passageiro ->  view.mostrarNavHeader(passageiro)
-        }*/
         val uid  = auth.currentUser!!.uid
         source.navBusca(uid, "passageiro") { nome: String, fotoUrl: String ->
             view.mostrarNavHeader(nome, fotoUrl)

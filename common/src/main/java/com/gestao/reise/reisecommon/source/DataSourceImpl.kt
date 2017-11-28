@@ -2,7 +2,10 @@ package com.gestao.reise.reisecommon.source
 
 import android.net.Uri
 import android.util.Log
-import com.gestao.reise.reisecommon.model.*
+import com.gestao.reise.reisecommon.model.Carro
+import com.gestao.reise.reisecommon.model.Motorista
+import com.gestao.reise.reisecommon.model.Passageiro
+import com.gestao.reise.reisecommon.model.Viagem
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 
@@ -239,6 +242,7 @@ object DataSourceImpl : DataSource {
             }
 
             override fun onDataChange(dataSnapshot: DataSnapshot?) {
+                Log.d("VIAGENSS", dataSnapshot.toString())
                 dataSnapshot?.children?.forEach {
                     val viagem: Viagem? = it.getValue(Viagem::class.java)
                     viagem?.let { viagens.add(it) }

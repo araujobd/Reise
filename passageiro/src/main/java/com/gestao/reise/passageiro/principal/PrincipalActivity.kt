@@ -31,7 +31,6 @@ class PrincipalActivity : BaseActivity(), NavigationView.OnNavigationItemSelecte
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_principal)
-//        showProgress()
 
         val toggle = ActionBarDrawerToggle(this, drawer_layout, toolbar, R.string.drawer_open, R.string.drawer_close)
 
@@ -57,6 +56,7 @@ class PrincipalActivity : BaseActivity(), NavigationView.OnNavigationItemSelecte
     override fun mostrarViagens(viagens: MutableList<Viagem>) {
         Log.i("teste","mostrarViagens")
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewPas)
+
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
         val adapter = Adaptador(viagens)
         recyclerView.adapter = adapter
