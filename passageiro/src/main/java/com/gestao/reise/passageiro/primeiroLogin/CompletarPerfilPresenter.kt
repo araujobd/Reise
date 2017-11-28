@@ -32,7 +32,7 @@ class CompletarPerfilPresenter(val view: CompletarPerfilContrato.View) : Complet
         passageiro.descricao = descricao
 
         if (imagePath != null)
-            source.salvarImagem(uid, imagePath) {
+            source.salvarImagem("passageiro", uid, imagePath) {
                 passageiro.fotoUrl = it
                 Log.d("URL", it)
                 source.salvarPassageiro(passageiro)

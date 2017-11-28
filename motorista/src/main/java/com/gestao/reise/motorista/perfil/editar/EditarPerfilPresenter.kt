@@ -32,7 +32,7 @@ class EditarPerfilPresenter(val view: EditarPerfilContrato.View) : EditarPerfilC
         motorista.descricao = descricao
 
         if (imagePath != null)
-            source.salvarImagem(uid, imagePath) {
+            source.salvarImagem("motorista", uid, imagePath) {
                 motorista.fotoUrl = it
                 source.salvarMotorista(motorista)
             }

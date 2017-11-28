@@ -24,7 +24,7 @@ interface DataSource {
     fun buscarViagensOD(origem: String, destino: String, action: (MutableList<Viagem>) -> Unit)
     fun buscarFrequencia(uid_freq: String, dia: String, action: (MutableList<Passageiro>) -> Unit)
 
-    fun salvarImagem(uid: String, imagePath : Uri?, sucesso: (String) -> Unit)
+    fun salvarImagem(type: String, uid: String, imagePath : Uri?, sucesso: (String) -> Unit)
 
 
     /* ********************* ********************/

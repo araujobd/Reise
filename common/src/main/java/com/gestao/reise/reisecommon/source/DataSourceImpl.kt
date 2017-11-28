@@ -184,9 +184,9 @@ object DataSourceImpl : DataSource {
         root.child("frequencias").child(uid_freq).child(dia).addValueEventListener(listener)
     }
 
-    override fun salvarImagem(uid: String, imagePath: Uri?, sucesso: (String) -> Unit) {
+    override fun salvarImagem(type: String, uid: String, imagePath: Uri?, sucesso: (String) -> Unit) {
         val storageRef = FirebaseStorage.getInstance().reference.child("images")
-        val upload = storageRef.child(uid).child("profile").putFile(imagePath!!)
+        val upload = storageRef.child(type).child(uid).child("profile").putFile(imagePath!!)
 
        upload.addOnCompleteListener { sucesso(it.result.downloadUrl.toString()) }
     }
